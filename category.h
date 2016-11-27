@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <QColor>
 
 
 class Category{
@@ -14,17 +15,18 @@ private:
     std::string catName;
     bool visible;
     void init(std::string&,int,int);
+    enum CatColour{red, green, mauve};
+    CatColour categorycolour;
 public:
     Category(std::string&);
     Category(std::string&,int,int);
-
+    CatColour categoryColour();
     bool isVisible() const;
     std::string getName() const;
-    int getColour() const;
+    QColor getColour();
     int getPriority() const;
     void changeVisible();
     void setPriority(int);
-
     void incPriority();
     void decPriority();
     void swap(Category& c);

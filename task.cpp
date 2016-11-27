@@ -47,19 +47,11 @@ Task::Task(string& in){
     int i = 0;
     size_t pos = in.find(',');
     while(pos != string::npos && i < 6){
-        cout << "Inside while loop: "<< i << endl;
-        cout << "pos is : " << pos << endl;
-        cout << "in is : " << in << endl;
         inputs[i] = in.substr(0,pos);
-        cout << "input is :" << inputs[i] << endl;
         in.erase(0,pos+1);
         i++;
         pos = in.find(",");
-        if (pos == string::npos){
-            cout << "Pos is npos and remainder of string is : " << in << endl;
-        }
     }
-    cout << "Done task while loop" << endl;
 
 
     try{
@@ -78,7 +70,6 @@ Category* Task::findCategory(string& catName){
     Category* ptr = NULL;
     int i;
     for(i = 0; i < Profile::categories.size(); i++){
-        cout << catName << endl;
         if(Profile::categories[i]->getName() == catName){
             ptr = Profile::categories[i];
             break;
@@ -112,7 +103,7 @@ time_t Task::strToTime(string& t){
     //string must have structure DDD MMM NN hh:mm:ss YYYY
     struct tm tm;
     istringstream ss(t);
-    ss >> get_time(&tm, "%c");
+    ss >> std::get_time(&tm, "%a %b %d %H:%M:%S %Y");
     return mktime(&tm);
 }
 
@@ -279,7 +270,21 @@ string Category::fileWrite() const{
     return output;
 }
 
-int Category::getColour() const{return colour;}
+QColor Category::getColour()
+{
+    if(colour == 16711680){
+        categorycolour = red;
+        return Qt::red;
+    }else if( colour == 65280){
+        categorycolour = green;
+        return Qt::green;
+    }else{
+        categorycolour = mauve;
+        return Qt::blue;
+    }
+
+
+}
 
 int Category::getPriority() const{return priority;}
 

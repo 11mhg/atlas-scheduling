@@ -58,6 +58,7 @@ void CollapsedTask::update(){
     QRect controlRect(drawLeft, drawTop, drawWidth, abs(drawBottom - drawTop));
     this->setGeometry(controlRect);
 
+    QWidget::update();
 }
 
 void CollapsedTask::paintEvent(QPaintEvent *pe){
