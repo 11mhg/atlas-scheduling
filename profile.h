@@ -38,7 +38,7 @@ public:
     void SaveUserInfo();
     void UpdateSave();
     void LogOut();
-    std::string LoadInfo();
+    void LoadInfo();
     void LoadTasks();
     Profile();
     stats Stats;
