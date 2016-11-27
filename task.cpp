@@ -103,7 +103,7 @@ time_t Task::strToTime(string& t){
     //string must have structure DDD MMM NN hh:mm:ss YYYY
     struct tm tm;
     istringstream ss(t);
-    ss >> std::get_time(&tm, "%a %b %d %H:%M:%S %Y");
+    ss >> get_time(&tm, "%c");
     return mktime(&tm);
 }
 
@@ -270,11 +270,20 @@ string Category::fileWrite() const{
     return output;
 }
 
-QColor Category::getColour() const
+QColor Category::getColour()
 {
-    if (colour == 16711680){
-        return QRed;
+    if(colour == 16711680){
+        categorycolour = red;
+        return Qt::red;
+    }else if( colour == 65280){
+        categorycolour = green;
+        return Qt::green;
+    }else{
+        categorycolour = mauve;
+        return Qt::blue;
     }
+
+
 }
 
 int Category::getPriority() const{return priority;}
