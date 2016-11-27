@@ -98,7 +98,6 @@ bool SuccessfulLogin(std::string username, std::string password){
     if (iFile.is_open()){
         std::string lines;
         while(std::getline(iFile,lines)){
-            std::cout << lines << std::endl;
             if (Botan::check_bcrypt(toFind,lines)){
                 iFile.close();
                 return true;
