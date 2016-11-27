@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="welcomePage">
      <widget class="QLabel" name="welcomeMessage">
@@ -1011,9 +1011,9 @@
      <widget class="WeeklyCalendar" name="calendar">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>170</x>
         <y>100</y>
-        <width>881</width>
+        <width>771</width>
         <height>331</height>
        </rect>
       </property>
@@ -1025,6 +1025,16 @@
         <y>50</y>
         <width>881</width>
         <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="CategoryList" name="catList" native="true">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>100</y>
+        <width>111</width>
+        <height>331</height>
        </rect>
       </property>
      </widget>
@@ -2650,13 +2660,19 @@
  <customwidgets>
   <customwidget>
    <class>WeeklyCalendar</class>
-   <extends>QTableView</extends>
+   <extends>QTableWidget</extends>
    <header>weeklycalendar.h</header>
   </customwidget>
   <customwidget>
    <class>WeekHeader</class>
    <extends>QWidget</extends>
    <header>weekheader.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CategoryList</class>
+   <extends>QWidget</extends>
+   <header>categorylist.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
