@@ -1,0 +1,51 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-11-18T20:48:46
+#
+#-------------------------------------------------
+
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = Atlas
+TEMPLATE = app
+
+
+SOURCES += main.cpp\
+    atlaswelcome.cpp \
+    profile.cpp \
+    weeklycalendar.cpp \
+    taskcollapsed.cpp \
+    taskexpanded.cpp \
+    task.cpp \
+    scheduler.cpp
+
+HEADERS  += atlaswelcome.h \
+    category.h \
+    group.h \
+    profile.h \
+    scheduler.h \
+    weeklycalendar.h \
+    taskcollapsed.h \
+    taskexpanded.h \
+    task.h
+
+FORMS    += atlaswelcome.ui \
+    login.ui \
+    newprofile.ui \
+    profilecustomization.ui \
+    addtask.ui \
+    mycalendar.ui \
+    mycharacter.ui \
+    removetask.ui \
+    settings.ui \
+    mytreasurechest.ui \
+    weeklycalendar.ui \
+    taskexpanded.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../botan-master/ -lbotan
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../botan-master/ -lbotand
+
+INCLUDEPATH += $$PWD/../botan-master/build/include
+DEPENDPATH += $$PWD/../botan-master/build/include
