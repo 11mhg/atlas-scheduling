@@ -15,7 +15,6 @@ private:
 public:
     Category(std::string&);
     Category(std::string&,int,int);
-    ~Category();
 
     bool isVisible() const;
     std::string getName() const;
