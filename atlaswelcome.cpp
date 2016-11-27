@@ -224,12 +224,12 @@ void AtlasWelcome::on_saveCatButton_clicked()
         }else{
             col = 13408767;
         }
-        Category newCat(string(ui->newCatNameIn->text().toUtf8().constData()),col,1);
+        Category *newCat = new Category(string(ui->newCatNameIn->text().toUtf8().constData()),col,1);
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
         std::string endd = enddate.toString().toUtf8().constData();
-        User.categories.push_back(&newCat);
-        Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,newCat.getName());
+        User.categories.push_back(newCat);
+        Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,newCat->getName());
         User.ptasks.push_back(newTask);
     }
     User.SaveUserInfo();
