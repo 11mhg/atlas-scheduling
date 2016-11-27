@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     taskexpanded.cpp \
     task.cpp \
     scheduler.cpp \
-    weekheader.cpp
+    weekheader.cpp \
+    categorylist.cpp
 
 HEADERS  += atlaswelcome.h \
     category.h \
@@ -31,7 +32,8 @@ HEADERS  += atlaswelcome.h \
     taskcollapsed.h \
     taskexpanded.h \
     task.h \
-    weekheader.h
+    weekheader.h \
+    categorylist.h
 
 FORMS    += atlaswelcome.ui \
     login.ui \
@@ -45,7 +47,8 @@ FORMS    += atlaswelcome.ui \
     mytreasurechest.ui \
     weeklycalendar.ui \
     taskexpanded.ui \
-    weekheader.ui
+    weekheader.ui \
+    categorylist.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../botan-master/ -lbotan
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../botan-master/ -lbotand

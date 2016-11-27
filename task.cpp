@@ -286,3 +286,5 @@ int Category::getPriority() const{return priority;}
 string Category::getName() const{return catName;}
 
 void Category::changeVisible(){ visible = !visible; }
+
+bool Category::isVisible() const { return visible; }

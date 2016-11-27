@@ -93,6 +93,7 @@ void AtlasWelcome::on_loginCheckButton_clicked()
         messageBox.critical(0,"Access Denied","Your username or password is wrong.");
         messageBox.setFixedSize(500,200);
     }
+    ui->catList->setProfile(&User);
 }
 
 

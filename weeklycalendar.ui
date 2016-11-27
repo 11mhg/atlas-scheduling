@@ -17,7 +17,7 @@
    <widget class="WeeklyCalendar" name="tableView">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>70</x>
       <y>10</y>
       <width>781</width>
       <height>411</height>
