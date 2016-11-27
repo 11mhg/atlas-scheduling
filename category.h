@@ -20,7 +20,11 @@ public:
 
     bool isVisible() const;
     std::string getName() const;
-    int getColour() const;
+    enum CategoryColours{
+        red = new QColour(new QRed());
+
+    };
+
     int getPriority() const;
     void changeVisible();
     void setPriority(int);

@@ -144,15 +144,15 @@ void AtlasWelcome::on_finishCharacter_clicked()
 void AtlasWelcome::on_LogoutButton_clicked()
 {
     //logout, clear memory and return to welcome page.
-
+    User.SaveUserInfo();
+    User.~Profile();
     ui->stacked->setCurrentIndex(0);
 }
 
 void AtlasWelcome::on_SettingsButton_clicked()
 {
     //open the settings page
-    User.SaveUserInfo();
-    User.~Profile();
+
     ui->stacked->setCurrentIndex(9);
 }
 
@@ -186,6 +186,7 @@ void AtlasWelcome::on_logoutButton_clicked()
 {
     //logout, clear memory and return to welcome page.
     User.SaveUserInfo();
+    ui->pswdIn->clear();
     ui->stacked->setCurrentIndex(0);
 }
 
@@ -234,6 +235,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
     }
     ui->calendar->loadTasks(weekTasks);
     setCategorySelect();
+    ui->pswdIn->clear();
 }
 
 void AtlasWelcome::setCategorySelect(){
@@ -302,7 +304,8 @@ void AtlasWelcome::on_settingsButton_2_clicked()
 
 void AtlasWelcome::on_logoutButton_2_clicked()
 {
-
+    User.~Profile();
+    ui->pswdIn->clear();
     ui->stacked->setCurrentIndex(0);
 }
 

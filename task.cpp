@@ -270,7 +270,12 @@ string Category::fileWrite() const{
     return output;
 }
 
-int Category::getColour() const{return colour;}
+QColor Category::getColour() const
+{
+    if (colour == 16711680){
+        return QRed;
+    }
+}
 
 int Category::getPriority() const{return priority;}
 
