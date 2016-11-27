@@ -2,7 +2,7 @@
 #include <ctime>
 #include <iomanip>
 #include <task.h>
-#include <profile.h>
+#include <atlaswelcome.h>
 
 Task::Task(string& name, string& start, string& end, string& due, string& catName):
     task_name(name),
@@ -40,8 +40,8 @@ Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& 
 Task::Task(string& in){
     string inputs[5];
     int i = 0;
-    while(in.find('|') != -1){
-        size_t pos = in.find('|');
+    while(in.find(',') != -1){
+        size_t pos = in.find(',');
         inputs[i] = in.substr(0,pos);
         in = in.substr(pos);
     }
@@ -145,7 +145,7 @@ string Task::getEnd() const{ return end_date_time; }
 string Task::getDuration() const{ return duration_date_time; }
 
 string Task::fileWrite() const{
-    string output = task_name+"|"+start_date_time+"|"+end_date_time+"|"+due_date_time+"|"+ category->getName();
+    string output = task_name+","+start_date_time+","+end_date_time+","+due_date_time+","+ category->getName();
     return output;
 }
 
@@ -207,13 +207,21 @@ Category::Category(string& name, int colour, int p){
 }
 
 Category::Category(string& in){
+    cout << "In constructor for category" << endl;
+    cout << "string is : " << in << endl;
     string inputs[3];
+    size_t pos = 0;
     int i = 0;
-    while(in.find('|') != -1){
-        size_t pos = in.find('|');
+    while(pos = in.find(',') != string::npos && i < 4){
+        cout << "Inside while loop: "<< i << endl;
+        cout << "pos is : " << pos << endl;
+        cout << "in is : " << in << endl;
         inputs[i] = in.substr(0,pos);
-        in = in.substr(pos);
+        cout << "input is :" << in.substr(0,pos) << endl;
+        in.erase(0,pos+strlen(","));
+        i++;
     }
+    cout << "Done category while loop" << endl;
 
     int colour = atoi(inputs[1].c_str()),
         p = atoi(inputs[2].c_str());
@@ -255,7 +263,7 @@ string Category::fileWrite() const{
     string c = to_string(colour),
                 p = to_string(priority);
 
-    string output = catName+"|"+c+"|"+p;
+    string output = catName+","+c+","+p;
     return output;
 }
 

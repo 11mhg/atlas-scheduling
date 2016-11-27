@@ -133,18 +133,6 @@ void Profile::UpdateSave(){
     std::string FileName = HashUserName(username);
     remove (FileName.c_str());
     SaveUserInfo();
-    //Get all strings to save here
-    std::string toEncrypt;
-    //save all tasks and encrypt here
-    std::string EncryptedToSave = Encrypt(toEncrypt);
-
-    std::ofstream iFile;
-    iFile.open(FileName,std::ios_base::app);
-    if (iFile.is_open())
-    {
-        iFile << EncryptedToSave << std::endl;
-    }
-    iFile.close();
 }
 
 std::string Profile::Encrypt(std::string toEncrypt)
@@ -206,7 +194,7 @@ std::string Profile::Decrypt(std::string toDecrypt)
 
 }
 
-std::string Profile::LoadInfo()
+void Profile::LoadInfo()
 {
     std::string FileName = HashUserName(username);
     std::string toDecrypt;
@@ -224,7 +212,31 @@ std::string Profile::LoadInfo()
             i+=1;
         }
     }
-    return Decrypt(toDecrypt);
+    std::string UserInfo = Decrypt(toDecrypt);
+    size_t pos = 0;
+    i = 0;
+    std::string inf;
+    while ((pos = UserInfo.find(","))!=std::string::npos){
+        inf = UserInfo.substr(0,pos);
+        switch(i){
+        case 0:
+            this->name = inf;
+            break;
+
+        case 1:
+            this->gender = inf;
+            break;
+        case 2:
+            this->DoB = inf;
+            break;
+        case 3:
+            this->characterSelect = inf;
+            break;
+        }
+
+        UserInfo.erase(0,pos + std::strlen(","));
+        i++;
+    }
 
 }
 
@@ -239,22 +251,31 @@ void Profile::LoadTasks()
     ptasks.clear();
     wtasks.clear();
     if (iFile.is_open()){
+        cout << "File is open"<<endl;
         while(std::getline(iFile,lines))
         {
+            cout << i << endl;
             if (i>1)
             {
                 if (c==1 && lines.find("Tasks")==std::string::npos){
-                    Category *temp = new Category(Decrypt(lines));
-                    categories.push_back(temp);
+                    std::string tempDec = this->Decrypt(lines);
+                    cout << tempDec << endl;
+                    Category temp(tempDec);
+                    cout << "Cat has been created" << endl;
+                    categories.push_back(&temp);
+                    cout << "Done Pusing new category back" << endl;
                 }
                 if (c==2){
                     Task temp(Decrypt(lines));
                     ptasks.push_back(temp);
+                    cout << "Done pushing new task back " << endl;
                 }
                 if (lines.find("Category")!=std::string::npos){
+                    cout << "Found Categories" << endl;
                     c = 1;
                 }
                 if (lines.find("Tasks")!=std::string::npos){
+                    cout << "Found Tasks" << endl;
                     c = 2;
                 }
 
@@ -262,6 +283,7 @@ void Profile::LoadTasks()
             i+=1;
         }
     }
+    cout << "Done while loop" << endl;
     std::sort(ptasks.begin(),ptasks.end());
 
     time_t rawtime;
