@@ -101,6 +101,8 @@ private slots:
     void on_characterSelect4_2_clicked();
 
     void on_characterSelect5_2_clicked();
+
+    void setCategorySelect();
 private:
     Ui::AtlasWelcome *ui;
 };

@@ -41,6 +41,7 @@ public:
     void LoadInfo();
     void LoadTasks();
     Profile();
+    ~Profile();
     stats Stats;
     std::string name;
     std::string gender;

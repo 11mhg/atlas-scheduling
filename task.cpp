@@ -47,19 +47,11 @@ Task::Task(string& in){
     int i = 0;
     size_t pos = in.find(',');
     while(pos != string::npos && i < 6){
-        cout << "Inside while loop: "<< i << endl;
-        cout << "pos is : " << pos << endl;
-        cout << "in is : " << in << endl;
         inputs[i] = in.substr(0,pos);
-        cout << "input is :" << inputs[i] << endl;
         in.erase(0,pos+1);
         i++;
         pos = in.find(",");
-        if (pos == string::npos){
-            cout << "Pos is npos and remainder of string is : " << in << endl;
-        }
     }
-    cout << "Done task while loop" << endl;
 
 
     try{
@@ -78,7 +70,6 @@ Category* Task::findCategory(string& catName){
     Category* ptr = NULL;
     int i;
     for(i = 0; i < Profile::categories.size(); i++){
-        cout << catName << endl;
         if(Profile::categories[i]->getName() == catName){
             ptr = Profile::categories[i];
             break;
