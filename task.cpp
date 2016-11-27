@@ -103,7 +103,7 @@ time_t Task::strToTime(string& t){
     //string must have structure DDD MMM NN hh:mm:ss YYYY
     struct tm tm;
     istringstream ss(t);
-    ss >> get_time(&tm, "%c");
+    ss >> std::get_time(&tm, "%a %b %d %H:%M:%S %Y");
     return mktime(&tm);
 }
 
