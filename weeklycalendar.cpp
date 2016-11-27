@@ -70,5 +70,6 @@ void WeeklyCalendar::loadTasks(vector<Task*> newTasks){
 
     for(unsigned int i = 0; i < newTasks.size(); i++){
         currentTasks.push_back(new CollapsedTask(this, newTasks[i]));
+        currentTasks[i]->show();
     }
 }

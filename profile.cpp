@@ -301,13 +301,13 @@ void Profile::LoadTasks()
     timeinfo = std::localtime(&rawtime);
     starTime = std::mktime(timeinfo);
     int wday = timeinfo->tm_wday;
-    starTime = starTime -(60*60*24*wday);
-    endTime = starTime + (60*60*24*7);
+    starTime = starTime -(60*60*24*wday) - timeinfo->tm_sec - 60*timeinfo->tm_min - 60*60*timeinfo->tm_hour;
+    endTime = starTime + (60*60*24*7) + ((60*60*24) - 1);
 
     for (unsigned int i=0; i < ptasks.size(); i++){
         if (starTime < ptasks.at(i).task_time.start)
         {
-            if(ptasks.at(i).task_time.start < endTime)
+            if(ptasks.at(i).task_time.end < endTime)
             {
                 wtasks.push_back(ptasks.at(i));
             }
