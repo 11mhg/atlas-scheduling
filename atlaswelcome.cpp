@@ -212,7 +212,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
         enddate.addDays(7);
         std::string endd = enddate.toString().toUtf8().constData();
         Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,(User.categories.at(2))->getName());
-        User.ptasks.push_back(newTask);
+        User.addTask(newTask);
     }else{
         int col;
         if (ui->NewCatColourSelect->currentText().toUtf8().constData() == "Red")
@@ -229,8 +229,8 @@ void AtlasWelcome::on_saveCatButton_clicked()
         enddate.addDays(7);
         std::string endd = enddate.toString().toUtf8().constData();
         User.categories.push_back(newCat);
-        Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,newCat->getName());
-        User.ptasks.push_back(newTask);
+        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(), enddate,newCat->getName());
+        User.addTask(newTask);
     }
     User.SaveUserInfo();
     User.LoadInfo();

@@ -21,7 +21,9 @@ Profile::Profile(std::string User, std::string Pass)
     SaveUserInfo();
 }
 
-
+void Profile::addTask(Task newTask){
+    this->ptasks.push_back(newTask);
+}
 
 /**
  * @brief EncryptLogin

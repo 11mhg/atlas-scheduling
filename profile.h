@@ -47,6 +47,7 @@ public:
     std::string DoB;
     std::string email;
     std::string characterSelect;
+    void addTask(Task newTask);
 private:
     std::string Encrypt(std::string s);
     std::string Decrypt(std::string s);

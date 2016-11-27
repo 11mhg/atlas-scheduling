@@ -18,6 +18,25 @@ Task::Task(string& name, string& start, string& end, string& due, string& catNam
     setTimes();
 }
 
+Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& catName):
+    task_name(name),
+    completeFlag(false){
+
+    time_t holder = time_t(start.toTime_t());
+    start_date_time = ctime(&holder);
+    holder = time_t(end.toTime_t());
+    end_date_time = ctime(&holder);
+    holder = time_t(due.toTime_t());
+    due_date_time = ctime(&holder);
+
+    try{
+        category = findCategory(catName);
+    }catch(TaskException e){
+        cout << e.what() << endl;
+    }
+    setTimes();
+}
+
 Task::Task(string& in){
     string inputs[5];
     int i = 0;
@@ -74,10 +93,10 @@ void Task::setTimes(){
 
 time_t Task::strToTime(string& t){
     //string must have structure DDD MMM NN hh:mm:ss YYYY
-    struct tm* tm;
+    struct tm tm;
     istringstream ss(t);
-    ss >> get_time(tm, "%c");
-    return mktime(tm);
+    ss >> get_time(&tm, "%c");
+    return mktime(&tm);
 }
 
 void Task::setStart(const time_t& time){
