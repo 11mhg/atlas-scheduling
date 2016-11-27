@@ -15,7 +15,7 @@ class CollapsedTask : public QWidget
     Q_OBJECT
 
 public:
-    CollapsedTask(WeeklyCalendar *parent, task content);
+    CollapsedTask(WeeklyCalendar *parent, Task* content);
     ~CollapsedTask();
 
     void update();
@@ -27,7 +27,7 @@ public:
 private:
     bool justUpdated;
     const int MAX_NAME_LENGTH = 20;
-    task content;
+    Task* content;
     QString createString();
     WeeklyCalendar* parent;
 };

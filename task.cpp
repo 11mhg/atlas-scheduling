@@ -4,21 +4,22 @@
 #include <task.h>
 #include <profile.h>
 
-Task::Task(std::string& name, std::string& start, std::string& end, std::string& due, std::string& catName):
+Task::Task(string& name, string& start, string& end, string& due, string& catName):
     task_name(name),
     start_date_time(start),
     end_date_time(end),
-    due_date_time(due) {
+    due_date_time(due),
+    completeFlag(false){
     try{
         category = findCategory(catName);
     }catch(TaskException e){
-        std::cout << e.what() << std::endl;
+        cout << e.what() << endl;
     }
     setTimes();
 }
 
-Task::Task(std::string& in){
-    std::string inputs[5];
+Task::Task(string& in){
+    string inputs[5];
     int i = 0;
     while(in.find('|') != -1){
         size_t pos = in.find('|');
@@ -29,7 +30,7 @@ Task::Task(std::string& in){
     try{
         category = findCategory(inputs[4]);
     }catch(TaskException e){
-        std::cout << e.what() << std::endl;
+        cout << e.what() << endl;
     }
     task_name = inputs[0];
     start_date_time = inputs[1];
@@ -38,7 +39,7 @@ Task::Task(std::string& in){
     setTimes();
 }
 
-Category* Task::findCategory(std::string& catName){
+Category* Task::findCategory(string& catName){
     Category* ptr = NULL;
     int i;
     for(i = 0; i < Profile::categories.size(); i++){
@@ -56,11 +57,11 @@ Category* Task::findCategory(std::string& catName){
 
 void Task::updateTimeString(){
     start_date_time = ctime(&task_time.start);
-    start_date_time.erase(std::remove(start_date_time.begin(), start_date_time.end(), '\n'), start_date_time.end());
+    start_date_time.erase(remove(start_date_time.begin(), start_date_time.end(), '\n'), start_date_time.end());
     end_date_time = ctime(&task_time.end);
-    end_date_time.erase(std::remove(end_date_time.begin(), end_date_time.end(), '\n'), end_date_time.end());
+    end_date_time.erase(remove(end_date_time.begin(), end_date_time.end(), '\n'), end_date_time.end());
     due_date_time = ctime(&due);
-    due_date_time.erase(std::remove(due_date_time.begin(), due_date_time.end(), '\n'), due_date_time.end());
+    due_date_time.erase(remove(due_date_time.begin(), due_date_time.end(), '\n'), due_date_time.end());
 
 }
 
@@ -71,11 +72,11 @@ void Task::setTimes(){
     task_time.duration = difftime(task_time.end,task_time.start);
 }
 
-time_t Task::strToTime(std::string& t){
+time_t Task::strToTime(string& t){
     //string must have structure DDD MMM NN hh:mm:ss YYYY
-    struct std::tm* tm;
-    std::istringstream ss(t);
-    ss >> std::get_time(tm, "%c");
+    struct tm* tm;
+    istringstream ss(t);
+    ss >> get_time(tm, "%c");
     return mktime(tm);
 }
 
@@ -84,20 +85,48 @@ void Task::setStart(const time_t& time){
     task_time.end = task_time.start + task_time.duration;
 }
 
+bool Task::getComplete() const{ return completeFlag; }
+
+void Task::setComplete() {
+    completeFlag = true;
+}
+
 Category* Task::getCategory() const{ return category; }
 
-std::string Task::getName() const{ return task_name; }
+string Task::getName() const{ return task_name; }
 
-std::string Task::getDue() const{ return due_date_time; }
+string Task::getDue() const{ return due_date_time; }
 
-std::string Task::getStart() const{ return start_date_time; }
+int Task::getDrawingDay() const {
+   struct tm* tm = localtime(&task_time.start);
+   int day = ++(tm->tm_wday);
+   return day;
+}
 
-std::string Task::getEnd() const{ return end_date_time; }
+string Task::getStart() const{ return start_date_time; }
 
-std::string Task::getDuration() const{ return duration_date_time; }
+pair<int, int> Task::getDrawingStart() const{
+    pair<int, int> pr;
+    struct tm* tm = localtime(&task_time.start);
+    pr.first = tm->tm_hour;
+    pr.second = tm->tm_min;
+    return pr;
+}
 
-std::string Task::fileWrite() const{
-    std::string output = task_name+"|"+start_date_time+"|"+end_date_time+"|"+due_date_time+"|"+ category->getName();
+pair<int, int> Task::getDrawingEnd() const{
+    pair<int, int> pr;
+    struct tm* tm = localtime(&task_time.end);
+    pr.first = tm->tm_hour;
+    pr.second = tm->tm_min;
+    return pr;
+}
+
+string Task::getEnd() const{ return end_date_time; }
+
+string Task::getDuration() const{ return duration_date_time; }
+
+string Task::fileWrite() const{
+    string output = task_name+"|"+start_date_time+"|"+end_date_time+"|"+due_date_time+"|"+ category->getName();
     return output;
 }
 
@@ -148,18 +177,18 @@ bool Task::time_period::operator<( const time_period& right){
     }
 }
 
-TaskException::TaskException(std::string msg) : message(msg){}
-std::string& TaskException::what() { return message; }
+TaskException::TaskException(string msg) : message(msg){}
+string& TaskException::what() { return message; }
 //----------------------------------------------------------------------------
 
 
-Category::Category(std::string& name, int colour, int p){
+Category::Category(string& name, int colour, int p){
     init(name,colour,p);
 
 }
 
-Category::Category(std::string& in){
-    std::string inputs[3];
+Category::Category(string& in){
+    string inputs[3];
     int i = 0;
     while(in.find('|') != -1){
         size_t pos = in.find('|');
@@ -173,7 +202,7 @@ Category::Category(std::string& in){
     init(inputs[0],colour,p);
 }
 
-void Category::init(std::string& name, int colour, int p){
+void Category::init(string& name, int colour, int p){
     this->catName = name;
     this->colour = colour;
     this->priority = p;
@@ -199,15 +228,15 @@ void Category::setPriority(int n){
 }
 
 void Category::swap(Category& c){
-    std::iter_swap(Profile::categories.begin()+priority, Profile::categories.begin()+c.getPriority());
+    iter_swap(Profile::categories.begin()+priority, Profile::categories.begin()+c.getPriority());
     c.setPriority(priority);
 }
 
-std::string Category::fileWrite() const{
-    std::string c = std::to_string(colour),
-                p = std::to_string(priority);
+string Category::fileWrite() const{
+    string c = to_string(colour),
+                p = to_string(priority);
 
-    std::string output = catName+"|"+c+"|"+p;
+    string output = catName+"|"+c+"|"+p;
     return output;
 }
 
@@ -215,6 +244,6 @@ int Category::getColour() const{return colour;}
 
 int Category::getPriority() const{return priority;}
 
-std::string Category::getName() const{return catName;}
+string Category::getName() const{return catName;}
 
 void Category::changeVisible(){ visible = !visible; }

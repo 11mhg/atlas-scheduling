@@ -19,7 +19,7 @@ public:
     WeeklyCalendar(QWidget* parent);
     ~WeeklyCalendar();
     void paintEvent(QPaintEvent *pe);
-    void loadTasks(vector<task> newTasks);
+    void loadTasks(vector<Task*> newTasks);
 
 private:
     vector<CollapsedTask*> currentTasks;

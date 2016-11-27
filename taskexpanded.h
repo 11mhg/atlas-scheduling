@@ -3,35 +3,11 @@
 
 #include <QWidget>
 #include <QMouseEvent>
+#include "task.h"
 
 #pragma once
 
 using namespace std;
-
-enum Days{
-    Sunday = 1,
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday
-};
-
-struct task{
-    int start_hour, start_minute, end_hour, end_minute;
-    string name;
-    Days day;
-
-    task(string n, int sh, int sm, int eh, int em, int d){
-        name = n;
-        start_hour = sh;
-        start_minute = sm;
-        end_hour = eh;
-        end_minute = em;
-        day = (Days)d;
-    }
-};
 
 namespace Ui {
 class TaskExpanded;
@@ -43,12 +19,15 @@ class ExpandedTask : public QWidget
 
 public:
     explicit ExpandedTask(QWidget *parent = 0);
-    ExpandedTask(QWidget *parent, task content, int origin_x, int origin_y);
+    ExpandedTask(QWidget *parent, Task* newContent, int origin_x, int origin_y);
     ~ExpandedTask();
+    void update();
     void leaveEvent(QEvent* event);
     void paintEvent(QPaintEvent* event);
 
 private:
+    QString createString();
+    Task* content;
     QWidget* parent;
     Ui::TaskExpanded *ui;
 };

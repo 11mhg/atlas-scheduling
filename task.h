@@ -4,25 +4,27 @@
 #include <ctime>
 #include <chrono>
 #include <category.h>
+#include <utility>
 
 class Profile;
 
+using namespace std;
+
 class Task {
 private:
-
-
-    std::string task_name,
+    string task_name,
                 start_date_time,
                 end_date_time,
                 due_date_time,
                 duration_date_time;
 
+    bool completeFlag;
     Category* category;
 
-    //static std::chrono::system_clock::time_point<std::chrono::system_clock::now()> now;
+    //static chrono::system_clock::time_point<chrono::system_clock::now()> now;
 
-    static Category* findCategory(std::string& catName);
-    static time_t strToTime(std::string&);
+    static Category* findCategory(string& catName);
+    static time_t strToTime(string&);
     void setTimes();
     void updateTimeString();
 public:
@@ -39,17 +41,22 @@ public:
     time_t due;
     time_period task_time;
 
-    Task(std::string& name, std::string& start, std::string& end, std::string& due, std::string& category);
-    Task(std::string& in);
+    Task(string& name, string& start, string& end, string& due, string& category);
+    Task(string& in);
 
-    std::string getName() const;
-    std::string getDue() const;
-    std::string getStart() const;
-    std::string getEnd() const;
-    std::string getDuration() const;
+    bool getComplete() const;
+    void setComplete();
+    string getName() const;
+    string getDue() const;
+    int getDrawingDay() const;
+    string getStart() const;
+    pair<int, int> getDrawingStart() const;
+    string getEnd() const;
+    pair<int, int> getDrawingEnd() const;
+    string getDuration() const;
     Category* getCategory() const;
 
-    std::string fileWrite() const;
+    string fileWrite() const;
 
     void setStart(const time_t&);
 
@@ -60,8 +67,8 @@ public:
 
 class TaskException{
 private:
-    std::string message;
+    string message;
 public:
-    TaskException(std::string msg);
-    std::string& what();
+    TaskException(string msg);
+    string& what();
 };

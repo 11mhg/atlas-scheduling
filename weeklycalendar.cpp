@@ -43,8 +43,6 @@ WeeklyCalendar::WeeklyCalendar(QWidget* parent)
         this->setItem(i, 0, new QTableWidgetItem(timeLabel));
     }
 
-    currentTasks.push_back(new CollapsedTask(this, task("First drawing", 10, 30, 13, 00, 1)));
-    currentTasks.push_back(new CollapsedTask(this, task("Second drawing", 8, 30, 11, 00, 2)));
     this->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setColumnWidth(0,75);
 }
@@ -64,7 +62,7 @@ void WeeklyCalendar::paintEvent(QPaintEvent *pe){
     }
 }
 
-void WeeklyCalendar::loadTasks(vector<task> newTasks){
+void WeeklyCalendar::loadTasks(vector<Task*> newTasks){
     for(unsigned int i = 0; i < currentTasks.size(); i++){
         delete(currentTasks[i]);
     }

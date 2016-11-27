@@ -5,7 +5,7 @@
 #include "taskcollapsed.h"
 #include "weeklycalendar.h"
 
-CollapsedTask::CollapsedTask(WeeklyCalendar *parent, task newContent) :
+CollapsedTask::CollapsedTask(WeeklyCalendar *parent, Task* newContent) :
     QWidget((QWidget*)parent),
     content(newContent)
 {
@@ -21,36 +21,40 @@ QString CollapsedTask::createString(){
     string changedName;
     string minute1Addition = "";
     string minute2Addition = "";
-    if(content.name.size() > MAX_NAME_LENGTH){
-        changedName =  content.name.substr(0, MAX_NAME_LENGTH - 3);
+    pair<int, int> startTime = content->getDrawingStart();
+    pair<int, int> endTime = content->getDrawingEnd();
+    if(content->getName().size() > MAX_NAME_LENGTH){
+        changedName =  content->getName().substr(0, MAX_NAME_LENGTH - 3);
         changedName += "...";
     }
     else{
-        changedName = content.name;
+        changedName = content->getName();
     }
 
-    if(content.start_minute < 10){
+    if(startTime.second < 10){
         minute1Addition = "0";
     }
-    if(content.end_minute < 10){
+    if(endTime.second < 10){
         minute2Addition = "0";
     }
 
     changedName += "\n";
-    changedName += to_string(content.start_hour) + ":" + to_string(content.start_minute) + minute1Addition
-                    + " - " + to_string(content.end_hour) + ":" + to_string(content.end_minute) + minute2Addition;
+    changedName += to_string(startTime.first) + ":" + to_string(startTime.second) + minute1Addition
+                    + " - " + to_string(endTime.first) + ":" + to_string(endTime.second) + minute2Addition;
 
     return QString::fromStdString(changedName);
 }
 
 void CollapsedTask::update(){
+    pair<int, int> startTime = content->getDrawingStart();
+    pair<int, int> endTime = content->getDrawingEnd();
     //drawing geometry logic
-    int drawWidth = parent->columnWidth(content.day);
-    int drawLeft = parent->columnViewportPosition(content.day);
-    float percentOfSHour = ((float)content.start_minute/60.0);
-    float percentOfEHour = ((float)content.end_minute/60.0);
-    int drawTop = parent->rowViewportPosition(content.start_hour+1) + parent->rowHeight(content.start_hour+1)*percentOfSHour - 0.25*parent->rowHeight(content.start_hour);
-    int drawBottom = parent->rowViewportPosition(content.end_hour+1) + parent->rowHeight(content.end_hour+1)*percentOfEHour - 0.25*parent->rowHeight(content.end_hour);
+    int drawWidth = parent->columnWidth(content->getDrawingDay());
+    int drawLeft = parent->columnViewportPosition(content->getDrawingDay());
+    float percentOfSHour = ((float)startTime.second/60.0);
+    float percentOfEHour = ((float)endTime.second/60.0);
+    int drawTop = parent->rowViewportPosition(startTime.first+1) + parent->rowHeight(startTime.first+1)*percentOfSHour - 0.25*parent->rowHeight(startTime.first);
+    int drawBottom = parent->rowViewportPosition(endTime.first+1) + parent->rowHeight(endTime.first+1)*percentOfEHour - 0.25*parent->rowHeight(endTime.first);
     QRect controlRect(drawLeft, drawTop, drawWidth, abs(drawBottom - drawTop));
     this->setGeometry(controlRect);
 
@@ -63,7 +67,7 @@ void CollapsedTask::paintEvent(QPaintEvent *pe){
     painter.setOpacity(0.75);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setPen(Qt::black);
-    painter.fillRect(drawingRect, Qt::blue);
+    painter.fillRect(drawingRect, content->getCategory()->getColour());
     painter.setOpacity(1);
     painter.drawText(drawingRect, Qt::AlignCenter | Qt::AlignHCenter, output);
 }
