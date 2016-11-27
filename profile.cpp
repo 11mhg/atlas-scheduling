@@ -260,9 +260,9 @@ void Profile::LoadTasks()
                 if (c==1 && lines.find("Tasks")==std::string::npos){
                     std::string tempDec = this->Decrypt(lines);
                     cout << tempDec << endl;
-                    Category temp(tempDec);
+                    Category *temp = new Category(tempDec);
                     cout << "Cat has been created" << endl;
-                    categories.push_back(&temp);
+                    categories.push_back(temp);
                     cout << "Done Pusing new category back" << endl;
                 }
                 if (c==2){
