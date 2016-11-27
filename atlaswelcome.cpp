@@ -177,6 +177,10 @@ void AtlasWelcome::on_SettingsButton_clicked()
 
 void AtlasWelcome::on_addTaskButton_clicked()
 {
+    ui->newTaskNameIn->setText("New Task");
+    ui->newCatNameIn->setText("");
+    ui->newTaskStartSelect->setDateTime(QDateTime::currentDateTime());
+    ui->newTaskEndSelect->setDateTime((QDateTime::currentDateTime()).addSecs(60*60*2));
     //open up add task button
 
     ui->stacked->setCurrentIndex(7);

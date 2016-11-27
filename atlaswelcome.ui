@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="welcomePage">
      <widget class="QLabel" name="welcomeMessage">
@@ -128,6 +128,9 @@
         <width>113</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
      <widget class="QLabel" name="Slogan_2">
@@ -710,7 +713,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="FirstChoice">
        <widget class="QLabel" name="FirstAvatarPage">
@@ -2641,6 +2644,63 @@
    <header>weeklycalendar.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>SignIn</tabstop>
+  <tabstop>registrationButton_2</tabstop>
+  <tabstop>characterSelect3_2</tabstop>
+  <tabstop>cancelSettingsButton</tabstop>
+  <tabstop>applySettingsButton</tabstop>
+  <tabstop>registrationButton</tabstop>
+  <tabstop>nameProfileIn</tabstop>
+  <tabstop>maleSelect</tabstop>
+  <tabstop>femaleSelect</tabstop>
+  <tabstop>otherSelect</tabstop>
+  <tabstop>DoBSelect</tabstop>
+  <tabstop>FavSubjectProfileIn</tabstop>
+  <tabstop>userProfileIn</tabstop>
+  <tabstop>emailProfileIn</tabstop>
+  <tabstop>PswdProfileIn</tabstop>
+  <tabstop>nextProfile</tabstop>
+  <tabstop>backProfileButton</tabstop>
+  <tabstop>characterSelect5_2</tabstop>
+  <tabstop>userIn</tabstop>
+  <tabstop>pswdIn</tabstop>
+  <tabstop>characterSelect2_2</tabstop>
+  <tabstop>loginCheckButton</tabstop>
+  <tabstop>characterSelect1</tabstop>
+  <tabstop>characterSelect2</tabstop>
+  <tabstop>characterSelect3</tabstop>
+  <tabstop>characterSelect4</tabstop>
+  <tabstop>characterSelect5</tabstop>
+  <tabstop>finishCharacter</tabstop>
+  <tabstop>SettingsButton</tabstop>
+  <tabstop>calendar</tabstop>
+  <tabstop>myProfileButton</tabstop>
+  <tabstop>addTaskButton</tabstop>
+  <tabstop>removeTaskButton</tabstop>
+  <tabstop>LogoutButton</tabstop>
+  <tabstop>settingsButton</tabstop>
+  <tabstop>logoutButton</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>settingsButton_2</tabstop>
+  <tabstop>logoutButton_2</tabstop>
+  <tabstop>newTaskNameIn</tabstop>
+  <tabstop>newTaskStartSelect</tabstop>
+  <tabstop>newTaskEndSelect</tabstop>
+  <tabstop>categorySelect</tabstop>
+  <tabstop>newCatNameIn</tabstop>
+  <tabstop>NewCatColourSelect</tabstop>
+  <tabstop>saveCatButton</tabstop>
+  <tabstop>cancelAddTask</tabstop>
+  <tabstop>deleteTaskButton</tabstop>
+  <tabstop>cancelDeleteButton</tabstop>
+  <tabstop>maleGenderSetting</tabstop>
+  <tabstop>femaleGenderSetting</tabstop>
+  <tabstop>otherGenderSetting</tabstop>
+  <tabstop>changeUserSelect</tabstop>
+  <tabstop>characterSelect1_2</tabstop>
+  <tabstop>characterSelect4_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
