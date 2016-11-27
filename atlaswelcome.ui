@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="welcomePage">
      <widget class="QLabel" name="welcomeMessage">
@@ -1009,9 +1009,19 @@
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>70</y>
+        <y>100</y>
         <width>881</width>
-        <height>361</height>
+        <height>331</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="WeekHeader" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>881</width>
+        <height>51</height>
        </rect>
       </property>
      </widget>
@@ -2637,8 +2647,14 @@
  <customwidgets>
   <customwidget>
    <class>WeeklyCalendar</class>
-   <extends>QTableWidget</extends>
+   <extends>QTableView</extends>
    <header>weeklycalendar.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WeekHeader</class>
+   <extends>QWidget</extends>
+   <header>weekheader.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
