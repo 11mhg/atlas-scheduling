@@ -1,12 +1,16 @@
 #include "atlaswelcome.h"
 #include "ui_atlaswelcome.h"
 #include <QScrollBar>
+#include <sstream>
 
 AtlasWelcome::AtlasWelcome(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AtlasWelcome)
 {
     ui->setupUi(this);
+    ui->NewCatColourSelect->addItem("Red");
+    ui->NewCatColourSelect->addItem("Green");
+    ui->NewCatColourSelect->addItem("Purple");
 
    /*
     // Skin Combo Box
@@ -201,7 +205,33 @@ void AtlasWelcome::on_logoutButton_clicked()
 
 void AtlasWelcome::on_saveCatButton_clicked()
 {
+
     // this case will have to create and save a new category and task.
+    if (ui->newCatNameIn->text().toUtf8().constData() == ""){
+        QDateTime enddate = ui->newTaskEndSelect->dateTime();
+        enddate.addDays(7);
+        std::string endd = enddate.toString().toUtf8().constData();
+        Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,(User.categories.at(2))->getName());
+        User.ptasks.push_back(newTask);
+    }else{
+        int col;
+        if (ui->NewCatColourSelect->currentText().toUtf8().constData() == "Red")
+        {
+            col = 16711680;
+        }else if(ui->NewCatColourSelect->currentText().toUtf8().constData() == "Green")
+        {
+            col = 65280;
+        }else{
+            col = 13408767;
+        }
+        Category newCat(string(ui->newCatNameIn->text().toUtf8().constData()),col,1);
+        QDateTime enddate = ui->newTaskEndSelect->dateTime();
+        enddate.addDays(7);
+        std::string endd = enddate.toString().toUtf8().constData();
+        User.categories.push_back(&newCat);
+        Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,newCat.getName());
+        User.ptasks.push_back(newTask);
+    }
 
     ui->stacked->setCurrentIndex(4);
 
@@ -210,9 +240,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
 void AtlasWelcome::on_cancelAddTask_clicked()
 {
     //cancel add task
-
     ui->stacked->setCurrentIndex(4);
-
 }
 
 void AtlasWelcome::on_deleteTaskButton_clicked()
@@ -255,7 +283,6 @@ void AtlasWelcome::on_myProfileButton_clicked()
 
 void AtlasWelcome::on_registrationButton_clicked()
 {
-
     ui->stacked->setCurrentIndex(2);
 }
 
