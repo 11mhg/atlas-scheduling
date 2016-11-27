@@ -232,7 +232,9 @@ void AtlasWelcome::on_saveCatButton_clicked()
         Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,newCat.getName());
         User.ptasks.push_back(newTask);
     }
-
+    User.SaveUserInfo();
+    User.LoadInfo();
+    User.LoadTasks();
     ui->stacked->setCurrentIndex(4);
 
 }
