@@ -80,8 +80,8 @@ void AtlasWelcome::on_loginCheckButton_clicked()
         ui->UsernameLabel->setText(tempuser);
         //load profile
         User = Profile(user,pass);
-        User.LoadInfo();
         User.LoadTasks();
+        setCategorySelect();
         vector<Task*> weekTasks;
         for (int i = 0 ; i < User.wtasks.size();i++){
             weekTasks.push_back(&User.wtasks.at(i));
@@ -123,7 +123,12 @@ void AtlasWelcome::on_nextProfile_clicked()
             User.gender = "other";
         }
         User.name = ui->DoBSelect->dateTime().toString().toUtf8().constData();
+
         User.SaveUserInfo();
+        User.LoadTasks();
+        std::string def = "Default";
+        Category *newCat = new Category(def,13408767,1);
+        User.categories.push_back(newCat);
         ui->stacked->setCurrentIndex(3);
         ui->usernameDisplay->setText(tempNewUser);
     }
@@ -133,7 +138,6 @@ void AtlasWelcome::on_finishCharacter_clicked()
 {
     // finalize creation of the character.
     ui->stacked->setCurrentIndex(4);
-
 
 }
 
@@ -147,7 +151,8 @@ void AtlasWelcome::on_LogoutButton_clicked()
 void AtlasWelcome::on_SettingsButton_clicked()
 {
     //open the settings page
-
+    User.SaveUserInfo();
+    User.~Profile();
     ui->stacked->setCurrentIndex(9);
 }
 
@@ -157,6 +162,7 @@ void AtlasWelcome::on_addTaskButton_clicked()
     ui->newCatNameIn->setText("");
     ui->newTaskStartSelect->setDateTime(QDateTime::currentDateTime());
     ui->newTaskEndSelect->setDateTime((QDateTime::currentDateTime()).addSecs(60*60*2));
+    setCategorySelect();
     //open up add task button
 
     ui->stacked->setCurrentIndex(7);
@@ -179,7 +185,7 @@ void AtlasWelcome::on_settingsButton_clicked()
 void AtlasWelcome::on_logoutButton_clicked()
 {
     //logout, clear memory and return to welcome page.
-
+    User.SaveUserInfo();
     ui->stacked->setCurrentIndex(0);
 }
 
@@ -191,7 +197,14 @@ void AtlasWelcome::on_saveCatButton_clicked()
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
         std::string endd = enddate.toString().toUtf8().constData();
-        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,(User.categories.at(2))->getName());
+        Category *defCat;
+        for (uint i = 0 ; i < User.categories.size(); i++){
+            if (User.categories.at(i)->getName() == "Default")
+            {
+                defCat = User.categories.at(i);
+            }
+        }
+        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,defCat->getName());
         User.addTask(newTask);
     }else{
         int col;
@@ -213,7 +226,6 @@ void AtlasWelcome::on_saveCatButton_clicked()
         User.addTask(newTask);
     }
     User.UpdateSave();
-    //User.LoadInfo();
     User.LoadTasks();
     ui->stacked->setCurrentIndex(4);
     vector<Task*> weekTasks;
@@ -221,7 +233,16 @@ void AtlasWelcome::on_saveCatButton_clicked()
         weekTasks.push_back(&User.wtasks.at(i));
     }
     ui->calendar->loadTasks(weekTasks);
+    setCategorySelect();
+}
 
+void AtlasWelcome::setCategorySelect(){
+    ui->categorySelect->clear();
+    for (int i = 0 ; i < User.categories.size(); i++)
+    {
+        ui->categorySelect->addItem(QString::fromStdString(User.categories.at(i)->getName()));
+    }
+    cout << User.categories.size() << endl;
 }
 
 void AtlasWelcome::on_cancelAddTask_clicked()

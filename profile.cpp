@@ -239,6 +239,18 @@ void Profile::LoadInfo()
     }
 
 }
+Profile::~Profile()
+{
+    ptasks.clear();
+    wtasks.clear();
+    for (uint i = 0 ; i < categories.size(); i++)
+    {
+        delete(categories.at(i));
+    }
+    categories.clear();
+    username.clear();
+    password.clear();
+}
 
 void Profile::LoadTasks()
 {
@@ -249,33 +261,29 @@ void Profile::LoadTasks()
     int c = 0;
     std::ifstream iFile(FileName);
     ptasks.clear();
+    for (uint i = 0 ; i < categories.size(); i ++){
+        delete(categories.at(i));
+    }
+    categories.clear();
     wtasks.clear();
     if (iFile.is_open()){
-        cout << "File is open"<<endl;
         while(std::getline(iFile,lines))
         {
-            cout << i << endl;
             if (i>1)
             {
                 if (c==1 && lines.find("Tasks")==std::string::npos){
                     std::string tempDec = this->Decrypt(lines);
-                    cout << tempDec << endl;
                     Category *temp = new Category(tempDec);
-                    cout << "Cat has been created" << endl;
                     categories.push_back(temp);
-                    cout << "Done Pusing new category back" << endl;
                 }
                 if (c==2){
                     Task temp(Decrypt(lines));
                     ptasks.push_back(temp);
-                    cout << "Done pushing new task back " << endl;
                 }
                 if (lines.find("Category")!=std::string::npos){
-                    cout << "Found Categories" << endl;
                     c = 1;
                 }
                 if (lines.find("Tasks")!=std::string::npos){
-                    cout << "Found Tasks" << endl;
                     c = 2;
                 }
 
@@ -283,7 +291,6 @@ void Profile::LoadTasks()
             i+=1;
         }
     }
-    cout << "Done while loop" << endl;
     std::sort(ptasks.begin(),ptasks.end());
 
     time_t rawtime;
