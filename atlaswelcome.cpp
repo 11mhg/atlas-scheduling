@@ -102,16 +102,9 @@ void AtlasWelcome::on_loginCheckButton_clicked()
             i++;
         }
         User.LoadTasks();
-        vector<task> weekTasks;
-        for (int i = 0 ; i < User.wtasks.size(); i++){
-            time_t ts = User.wtasks.at(i).task_time.start;
-            time_t te = User.wtasks.at(i).task_time.end;
-            struct std::tm *tm_s;
-            struct std::tm *tm_e;
-            tm_s = std::localtime(&ts);
-            tm_e = std::localtime(&te);
-            task temp((User.wtasks.at(i)).getName(),tm_s->tm_hour, tm_s->tm_min,tm_e->tm_hour, tm_e->tm_min, tm_s->tm_wday+1);
-            weekTasks.push_back(temp);
+        vector<Task*> weekTasks;
+        for (int i = 0 ; i < User.wtasks.size();i++){
+            weekTasks.push_back(&User.wtasks.at(i));
         }
         ui->calendar->loadTasks(weekTasks);
 
