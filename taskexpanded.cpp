@@ -4,6 +4,8 @@
 #include "taskexpanded.h"
 #include "ui_taskexpanded.h"
 
+#include "scheduler.h"
+
 ExpandedTask::ExpandedTask(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TaskExpanded)
@@ -92,3 +94,13 @@ QString ExpandedTask::createString(){
     return QString::fromStdString(changedName);
 }
 
+
+void ExpandedTask::on_buttonDelay_clicked()
+{
+    Scheduler().reschedule(content);
+}
+
+void ExpandedTask::on_buttonComplete_clicked()
+{
+    content->setComplete();
+}

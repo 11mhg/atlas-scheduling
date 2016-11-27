@@ -25,6 +25,11 @@ public:
     void leaveEvent(QEvent* event);
     void paintEvent(QPaintEvent* event);
 
+private slots:
+    void on_buttonDelay_clicked();
+
+    void on_buttonComplete_clicked();
+
 private:
     QString createString();
     Task* content;
