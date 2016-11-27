@@ -15,7 +15,6 @@ private:
 
 public:
     Scheduler();
-    ~Scheduler();
 
     void reschedule();
     void reschedule(Task*);
