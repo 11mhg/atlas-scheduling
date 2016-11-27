@@ -5,6 +5,7 @@
 #include <chrono>
 #include <category.h>
 #include <utility>
+#include <QTime>
 
 class Profile;
 
@@ -42,6 +43,7 @@ public:
     time_period task_time;
 
     Task(string& name, string& start, string& end, string& due, string& category);
+    Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& category);
     Task(string& in);
 
     bool getComplete() const;

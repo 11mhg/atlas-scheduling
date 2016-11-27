@@ -80,31 +80,7 @@ void AtlasWelcome::on_loginCheckButton_clicked()
         ui->UsernameLabel->setText(tempuser);
         //load profile
         User = Profile(user,pass);
-        std::string UserInfo = User.LoadInfo();
-        size_t pos = 0;
-        int i = 0;
-        std::string inf;
-        while ((pos = UserInfo.find(","))!=std::string::npos){
-            inf = UserInfo.substr(0,pos);
-            switch(i){
-            case 0:
-                User.name = inf;
-                break;
-
-            case 1:
-                User.gender = inf;
-                break;
-            case 2:
-                User.DoB = inf;
-                break;
-            case 3:
-                User.characterSelect = inf;
-                break;
-            }
-
-            UserInfo.erase(0,pos + std::strlen(","));
-            i++;
-        }
+        User.LoadInfo();
         User.LoadTasks();
         vector<Task*> weekTasks;
         for (int i = 0 ; i < User.wtasks.size();i++){
@@ -177,6 +153,10 @@ void AtlasWelcome::on_SettingsButton_clicked()
 
 void AtlasWelcome::on_addTaskButton_clicked()
 {
+    ui->newTaskNameIn->setText("New Task");
+    ui->newCatNameIn->setText("");
+    ui->newTaskStartSelect->setDateTime(QDateTime::currentDateTime());
+    ui->newTaskEndSelect->setDateTime((QDateTime::currentDateTime()).addSecs(60*60*2));
     //open up add task button
 
     ui->stacked->setCurrentIndex(7);
@@ -211,8 +191,8 @@ void AtlasWelcome::on_saveCatButton_clicked()
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
         std::string endd = enddate.toString().toUtf8().constData();
-        Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,(User.categories.at(2))->getName());
-        User.ptasks.push_back(newTask);
+        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,(User.categories.at(2))->getName());
+        User.addTask(newTask);
     }else{
         int col;
         if (ui->NewCatColourSelect->currentText().toUtf8().constData() == "Red")
@@ -229,13 +209,18 @@ void AtlasWelcome::on_saveCatButton_clicked()
         enddate.addDays(7);
         std::string endd = enddate.toString().toUtf8().constData();
         User.categories.push_back(newCat);
-        Task newTask(string(ui->newTaskNameIn->text().toUtf8().constData()),string(ui->newTaskStartSelect->text().toUtf8().constData()),string(ui->newTaskEndSelect->text().toUtf8().constData()),endd,newCat->getName());
-        User.ptasks.push_back(newTask);
+        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(), enddate,newCat->getName());
+        User.addTask(newTask);
     }
-    User.SaveUserInfo();
-    User.LoadInfo();
+    User.UpdateSave();
+    //User.LoadInfo();
     User.LoadTasks();
     ui->stacked->setCurrentIndex(4);
+    vector<Task*> weekTasks;
+    for (int i = 0 ; i < User.wtasks.size();i++){
+        weekTasks.push_back(&User.wtasks.at(i));
+    }
+    ui->calendar->loadTasks(weekTasks);
 
 }
 

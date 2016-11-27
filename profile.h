@@ -38,7 +38,7 @@ public:
     void SaveUserInfo();
     void UpdateSave();
     void LogOut();
-    std::string LoadInfo();
+    void LoadInfo();
     void LoadTasks();
     Profile();
     stats Stats;
@@ -47,6 +47,7 @@ public:
     std::string DoB;
     std::string email;
     std::string characterSelect;
+    void addTask(Task newTask);
 private:
     std::string Encrypt(std::string s);
     std::string Decrypt(std::string s);

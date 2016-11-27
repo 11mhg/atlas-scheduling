@@ -2,8 +2,10 @@
 #define SRC_CATEGORY_H_
 #pragma once
 #include <iostream>
+#include <vector>
 #include <string>
 #include <algorithm>
+
 
 class Category{
 private:
