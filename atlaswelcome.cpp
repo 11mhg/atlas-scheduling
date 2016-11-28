@@ -136,7 +136,22 @@ void AtlasWelcome::on_SettingsButton_clicked()
 void AtlasWelcome::on_addTaskButton_clicked()
 {
     ui->newTaskNameIn->setText("New Task");
-    ui->newCatNameIn->setText("");
+    bool defExists = false;
+    for (uint i = 0 ; i < User.categories.size(); i++)
+    {
+        if ((User.categories.at(i))->getName() == "Default"){
+            defExists = true;
+        }
+    }
+    if (!defExists)
+    {
+        ui->categorySelect->addItem("Default");
+        std::string def = "Default";
+        Category *newCat = new Category(def,0,1);
+        User.categories.push_back(newCat);
+        ui->categorySelect->addItem("Default");
+    }
+
     ui->newTaskStartSelect->setDateTime(QDateTime::currentDateTime());
     ui->newTaskEndSelect->setDateTime((QDateTime::currentDateTime()).addSecs(60*60*2));
     setCategorySelect();
@@ -176,17 +191,11 @@ void AtlasWelcome::on_saveCatButton_clicked()
 
     // this case will have to create and save a new category and task.
     if (ui->newCatNameIn->text().toStdString() == ""){
+        std::string s = ui->categorySelect->currentText().toStdString();
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
         std::string endd = enddate.toString().toStdString();
-        Category *defCat;
-        for (uint i = 0 ; i < User.categories.size(); i++){
-            if (User.categories.at(i)->getName() == "Default")
-            {
-                defCat = User.categories.at(i);
-            }
-        }
-        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,defCat->getName(),&User);
+        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,s,&User);
         newTask.setComplete(false);
         User.addTask(newTask);
     }else{

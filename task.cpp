@@ -35,7 +35,7 @@ Task::Task(string& name, string& start, string& end, string& due, string& catNam
     setTimes();
 }
 
-Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& catName,Profile *User):
+Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string catName,Profile *User):
     task_name(name),
     completeFlag(false){
 

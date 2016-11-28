@@ -54,7 +54,7 @@ public:
 
     Task(string& name, string& start, string& end, string& due, string& category,Profile *User);
     Task(string& name, string& start, string& end, string& due, string& category);
-    Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& category,Profile *User);
+    Task(string& name, QDateTime start, QDateTime end, QDateTime due, string category,Profile *User);
     Task(string& in,Profile *User);
 
     bool getComplete() const;
