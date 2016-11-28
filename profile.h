@@ -34,7 +34,7 @@ public:
     static std::vector<Task> wtasks;//weekly tasks
 
     time_t currentWeek; //really the second you log in...shhhhhhhh
-
+    void SetTasks(vector<Task> t);
     std::map<std::string,std::string> settings;
     Profile(std::string User, std::string Pass);
     void SaveUserInfo();
