@@ -94,7 +94,7 @@ void AtlasWelcome::on_loginCheckButton_clicked()
         messageBox.setFixedSize(500,200);
     }
     ui->catList->setProfile(&User);
-    ui->weekHeader->setProfile(&User);
+    ui->weekHeader->setProfile(&User, ui->calendar);
 }
 
 

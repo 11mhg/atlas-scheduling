@@ -293,7 +293,7 @@ void Profile::LoadTasks()
     time_t starTime;
     time_t endTime;
     std::tm *timeinfo;
-    rawtime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    rawtime = currentWeek;
     timeinfo = std::localtime(&rawtime);
     starTime = std::mktime(timeinfo);
     int wday = timeinfo->tm_wday;

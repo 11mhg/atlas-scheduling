@@ -33,8 +33,9 @@ WeekHeader::WeekHeader(QWidget *parent) :
     ui->setupUi(this);
 }
 
-void WeekHeader::setProfile(Profile* currentUser){
+void WeekHeader::setProfile(Profile* currentUser, WeeklyCalendar* cal){
     this->currentUser = currentUser;
+    this->cal = cal;
     std::string days[] = {"Sun","Mon","Tue","Wed", "Thur"};//so on and so forth
     std::string months[] = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     struct std::tm *tm;
@@ -123,12 +124,22 @@ void WeekHeader::on_backButton_clicked()
 {
     currentUser->currentWeek -= 7*24*60*60;
     currentUser->LoadTasks();
-    setProfile(currentUser);
+    vector<Task*> weekTasks;
+    for (int i = 0 ; i < currentUser->wtasks.size();i++){
+        weekTasks.push_back(&currentUser->wtasks.at(i));
+    }
+    cal->loadTasks(weekTasks);
+    setProfile(currentUser, cal);
 }
 
 void WeekHeader::on_forwardButton_clicked()
 {
     currentUser->currentWeek += 7*24*60*60;
     currentUser->LoadTasks();
-    setProfile(currentUser);
+    vector<Task*> weekTasks;
+    for (int i = 0 ; i < currentUser->wtasks.size();i++){
+        weekTasks.push_back(&currentUser->wtasks.at(i));
+    }
+    cal->loadTasks(weekTasks);
+    setProfile(currentUser, cal);
 }
