@@ -238,18 +238,6 @@ void Profile::LoadInfo()
     }
 
 }
-Profile::~Profile()
-{
-    ptasks.clear();
-    wtasks.clear();
-    for (uint i = 0 ; i < categories.size(); i++)
-    {
-        delete(categories.at(i));
-    }
-    categories.clear();
-    username.clear();
-    password.clear();
-}
 
 void Profile::LoadTasks()
 {
