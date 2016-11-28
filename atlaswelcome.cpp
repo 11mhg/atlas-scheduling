@@ -297,6 +297,8 @@ void AtlasWelcome::on_applySettingsButton_clicked()
     User.SaveUserInfo();
     User.LoadInfo();
     User.LoadTasks();
+    ui->usernameDisplay->setText(ui->changeUserSelect->text());
+    ui->changeUserSelect->clear();
     ui->stacked->setCurrentIndex(4);
 
 }
