@@ -18,7 +18,6 @@ Profile::Profile(std::string User, std::string Pass)
 {
     username=User;
     password=Pass;
-    SaveUserInfo();
 }
 
 void Profile::addTask(Task newTask){
