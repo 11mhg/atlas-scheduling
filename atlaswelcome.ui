@@ -642,7 +642,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="Wnude">
          <widget class="QLabel" name="WnudeAvatar">
@@ -2636,12 +2636,25 @@
        <rect>
         <x>710</x>
         <y>140</y>
-        <width>93</width>
-        <height>28</height>
+        <width>181</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="itemsfinal.qrc">
+        <normaloff>:/assets/assets/treasure.png</normaloff>:/assets/assets/treasure.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>90</width>
+        <height>90</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="backCharacterButton">
@@ -2656,6 +2669,9 @@
       <property name="text">
        <string/>
       </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="avatar">
       <property name="geometry">
@@ -2667,7 +2683,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Avatar</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="handsEquip">
@@ -3815,6 +3831,8 @@
   <tabstop>characterSelect1_2</tabstop>
   <tabstop>characterSelect4_2</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="itemsfinal.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/assets">
+        <file>assets/backArrow.png</file>
+        <file>assets/calculator1.png</file>
+        <file>assets/lock.png</file>
+        <file>assets/math.png</file>
+        <file>assets/notebook.png</file>
+        <file>assets/pencil.png</file>
+        <file>assets/star.png</file>
+        <file>assets/thinking.png</file>
+        <file>assets/treasure.png</file>
+        <file>assets/trophy.png</file>
+    </qresource>
+</RCC>

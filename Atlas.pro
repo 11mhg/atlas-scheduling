@@ -55,3 +55,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../botan-master/ -lbota
 
 INCLUDEPATH += $$PWD/../botan-master/build/include
 DEPENDPATH += $$PWD/../botan-master/build/include
+
+RESOURCES += \
+    itemresource.qrc \
+    picresource.qrc \
+    itemsfinal.qrc \
+    ../Atlas-Builds/itemspart2.qrc

@@ -31,7 +31,7 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
     //ui->outfitCombo->addItem("Blue Suit");
     ui->outfitCombo->addItem("Star rek");
 
-    QPixmap pixToTreasure(":/items/assets/treasure.png");
+    QPixmap pixToTreasure(":/assets/assets/treasure.png");
             QIcon ButtonIcon(pixToTreasure);
             ui->toTreasureChest->setIcon(ButtonIcon);
             ui->toTreasureChest->setIconSize(pixToTreasure.rect().size());
@@ -39,7 +39,7 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
             ui->toTreasureChest->setIconSize(QSize(100,100));
 
             //draws the back arrow onto corresponding pushbuttons.
-            QPixmap pixBackArrow(":/items/assets/backArrow.png");
+            QPixmap pixBackArrow(":/assets/assets/backArrow.png");
             QIcon ButtonIcon2(pixBackArrow);
             ui->backCharacterButton->setIcon(ButtonIcon2);
             ui->backCharacterButton->setIconSize(pixBackArrow.rect().size());
@@ -51,7 +51,7 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
             ui->backProfileButton->setIconSize(QSize(100,100));
 
             //draws a lock icon onto "locked item" pushbuttons.
-            QPixmap pixLock(":/items/assets/lock.png");
+            QPixmap pixLock(":/assets/assets/lock.png");
             QIcon ButtonIcon3(pixLock);
             ui->locked1->setIcon(ButtonIcon3);
             ui->locked1->setIconSize(pixLock.rect().size());
@@ -71,42 +71,42 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
             ui->locked4->setIconSize(QSize(100,100));
 
             //draws the equippable items.
-            QPixmap pixCalc(":/items/assets/calculator1.png");
+            QPixmap pixCalc(":/assets/assets/calculator1.png");
             QIcon ButtonIcon4(pixCalc);
             ui->calculator->setIcon(ButtonIcon4);
             ui->calculator->setIconSize(pixCalc.rect().size());
             ui->calculator->setFixedSize(pixCalc.rect().size());
             ui->calculator->setIconSize(QSize(100,100));
             ui->calculator->setIcon(ButtonIcon4);
-            QPixmap pixMath(":/items/assets/math.png");
+            QPixmap pixMath(":/assets/assets/math.png");
             QIcon ButtonIcon5(pixMath);
             ui->owl->setIcon(ButtonIcon5);
             ui->owl->setIconSize(pixMath.rect().size());
             ui->owl->setFixedSize(pixMath.rect().size());
             ui->owl->setIconSize(QSize(100,100));
             ui->owl->setIcon(ButtonIcon5);
-            QPixmap pixStar(":/items/assets/star.png");
+            QPixmap pixStar(":/assets/assets/star.png");
             QIcon ButtonIcon6(pixStar);
             ui->star->setIcon(ButtonIcon6);
             ui->star->setIconSize(pixStar.rect().size());
             ui->star->setFixedSize(pixStar.rect().size());
             ui->star->setIconSize(QSize(100,100));
             ui->star->setIcon(ButtonIcon6);
-            QPixmap pixTrophy(":/items/assets/trophy.png");
+            QPixmap pixTrophy(":/assets/assets/trophy.png");
             QIcon ButtonIcon7(pixTrophy);
             ui->trophy->setIcon(ButtonIcon7);
             ui->trophy->setIconSize(pixTrophy.rect().size());
             ui->trophy->setFixedSize(pixTrophy.rect().size());
             ui->trophy->setIconSize(QSize(100,100));
             ui->trophy->setIcon(ButtonIcon7);
-            QPixmap pixPencil(":/items/assets/pencil.png");
+            QPixmap pixPencil(":/assets/assets/pencil.png");
             QIcon ButtonIcon8(pixPencil);
             ui->pencil->setIcon(ButtonIcon8);
             ui->pencil->setIconSize(pixPencil.rect().size());
             ui->pencil->setFixedSize(pixPencil.rect().size());
             ui->pencil->setIconSize(QSize(100,100));
             ui->pencil->setIcon(ButtonIcon8);
-            QPixmap pixNotebook(":/items/assets/notebook.png");
+            QPixmap pixNotebook(":/assets/assets/notebook.png");
             QIcon ButtonIcon9(pixNotebook);
             ui->notebook->setIcon(ButtonIcon9);
             ui->notebook->setIconSize(pixNotebook.rect().size());
@@ -553,7 +553,7 @@ void AtlasWelcome::on_backCharacterButton_clicked()
 void AtlasWelcome::on_calculator_clicked(bool checked)
 {
     if (checked == true){
-        QPixmap calcEquip("C:/Users/Daniel/Pictures/items/calculator1.png");
+        QPixmap calcEquip(":/assets/assets/calculator1.png");
         ui->handsEquip->setPixmap(calcEquip.scaled(75,75,Qt::KeepAspectRatio));
         ui->handsEquip->setAlignment(Qt::AlignCenter);
         ui->equip1->setPixmap(calcEquip.scaled(60,60,Qt::KeepAspectRatio));
@@ -571,7 +571,7 @@ void AtlasWelcome::on_calculator_clicked(bool checked)
 void AtlasWelcome::on_owl_clicked(bool checked)
 {
     if (checked == true){
-        QPixmap owlEquip("C:/Users/Daniel/Pictures/items/math.png");
+        QPixmap owlEquip(":/assets/assets/math.png");
         ui->shoulderEquip->setPixmap(owlEquip.scaled(60,60,Qt::KeepAspectRatio));
         ui->shoulderEquip->setAlignment(Qt::AlignCenter);
         ui->shoulder->setPixmap(owlEquip.scaled(60,60,Qt::KeepAspectRatio));
@@ -591,7 +591,7 @@ void AtlasWelcome::on_owl_clicked(bool checked)
 void AtlasWelcome::on_star_clicked(bool checked)
 {
     if (checked == true){
-        QPixmap starEquip("C:/Users/Daniel/Pictures/items/star.png");
+        QPixmap starEquip(":/assets/assets/star.png");
         ui->chestEquip->setPixmap(starEquip.scaled(60,60,Qt::KeepAspectRatio));
         ui->chestEquip->setAlignment(Qt::AlignCenter);
         ui->equip3->setPixmap(starEquip.scaled(50,50,Qt::KeepAspectRatio));
@@ -608,7 +608,7 @@ void AtlasWelcome::on_star_clicked(bool checked)
 void AtlasWelcome::on_trophy_clicked(bool checked)
 {
     if (checked == true){
-        QPixmap trophyEquip("C:/Users/Daniel/Pictures/items/trophy.png");
+        QPixmap trophyEquip(":/assets/assets/trophy.png");
         ui->handsEquip->setPixmap(trophyEquip.scaled(75,75,Qt::KeepAspectRatio));
         ui->handsEquip->setAlignment(Qt::AlignCenter);
         ui->equip1->setPixmap(trophyEquip.scaled(50,50,Qt::KeepAspectRatio));
@@ -645,7 +645,7 @@ void AtlasWelcome::on_locked4_clicked()
 void AtlasWelcome::on_pencil_clicked(bool checked)
 {
     if (checked == true){
-        QPixmap pencilEquip("C:/Users/Daniel/Pictures/items/pencil.png");
+        QPixmap pencilEquip(":/assets/assets/pencil.png");
         ui->handsEquip->setPixmap(pencilEquip.scaled(75,75,Qt::KeepAspectRatio));
         ui->handsEquip->setAlignment(Qt::AlignCenter);
         ui->equip1->setPixmap(pencilEquip.scaled(50,50,Qt::KeepAspectRatio));
@@ -663,7 +663,7 @@ void AtlasWelcome::on_pencil_clicked(bool checked)
 void AtlasWelcome::on_notebook_clicked(bool checked)
 {
     if (checked == true){
-        QPixmap notebookEquip("C:/Users/Daniel/Pictures/items/notebook.png");
+        QPixmap notebookEquip(":/assets/assets/notebook.png");
         ui->handsEquip->setPixmap(notebookEquip.scaled(75,75,Qt::KeepAspectRatio));
         ui->handsEquip->setAlignment(Qt::AlignCenter);
         ui->equip1->setPixmap(notebookEquip.scaled(50,50,Qt::KeepAspectRatio));
