@@ -192,6 +192,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
     // this case will have to create and save a new category and task.
     if (ui->newCatNameIn->text().toStdString() == ""){
         std::string s = ui->categorySelect->currentText().toStdString();
+        cout << s << endl;
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
         std::string endd = enddate.toString().toStdString();
