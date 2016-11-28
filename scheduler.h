@@ -4,23 +4,21 @@
 
 class Scheduler {
 private:
-
-    std::vector<Task::free_time> ftimes;
-
-    void removeTask(std::vector<Task>&,Task&);
-    void getFreeTime();
-
-    void setTime(Task*,Task::free_time*);
-    bool fits(const Task*, const Task::free_time*);
+    static std::vector<Task::free_time> ftimes;
+    static std::vector<Task> sleep;
+    static void getFreeTime();
+    static void setTime(Task*,Task::free_time*);
+    static bool fits(const Task*, const Task::free_time*);
+    static void restartWeek(struct std::tm*);
+    static void getSleepTimes();
 
 public:
     Scheduler();
-
-    void reschedule();
-    void reschedule(Task*);
-    void reschedule(std::vector<Task>&);
-    void reschedule(Category&);
-
+    static void reschedule();
+    static void reschedule(Task*);
+    static void reschedule(std::vector<Task*>);
+    static void reschedule(Category*);
+    static void reschedule(std::vector<Task>&);
 
     /* CONSTRAINTS
      * priority 0 categories cannot be rescheduled
@@ -28,7 +26,6 @@ public:
      * cannot start or end after due date
      * tasks may not overlap
      */
-
 
 };
 
