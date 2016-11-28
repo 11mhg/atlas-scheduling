@@ -350,5 +350,13 @@ void Profile::LoadTasks()
     }
 }
 
+void Profile::SetTasks(vector<Task> set)
+{
+    ptasks.clear();
+    for (uint i = 0 ; i < set.size(); i++){
+        ptasks.push_back(set.at(i));
+    }
+}
+
 
 

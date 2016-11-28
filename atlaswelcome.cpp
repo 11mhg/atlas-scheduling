@@ -86,7 +86,6 @@ void AtlasWelcome::on_loginCheckButton_clicked()
             weekTasks.push_back(&User.wtasks.at(i));
         }
         ui->calendar->loadTasks(weekTasks);
-        cout << User.wtasks.size() << " Is the size" << endl;
 
     }else{
         QMessageBox messageBox;
@@ -173,7 +172,11 @@ void AtlasWelcome::on_addTaskButton_clicked()
 void AtlasWelcome::on_removeTaskButton_clicked()
 {
     //open up the remove task view
-
+    ui->RemoveListView->model()->removeRows(0,ui->RemoveListView->model()->rowCount());
+    for (uint i = 0 ; i < User.ptasks.size(); i ++)
+    {
+        ui->RemoveListView->addItem(QString::fromStdString(User.ptasks.at(i).getName()));
+    }
     ui->stacked->setCurrentIndex(8);
 }
 
@@ -258,9 +261,32 @@ void AtlasWelcome::on_cancelAddTask_clicked()
 void AtlasWelcome::on_deleteTaskButton_clicked()
 {
     // delete a task
-
+    vector<std::string> toRemoveName;
+    vector<Task> willReplace;
+    QList<QListWidgetItem *> list = ui->RemoveListView->selectedItems();
+    for (uint i = 0 ; i < list.size(); i++){
+        toRemoveName.push_back(list.at(i)->text().toStdString());
+    }
+    for (uint i = 0 ; i < toRemoveName.size() ; i++){
+        for (uint j = 0 ; j < User.ptasks.size(); j++)
+        {
+            if (User.ptasks.at(j).getName() == toRemoveName.at(i))
+            {
+                continue;
+            }else{
+                willReplace.push_back(User.ptasks.at(j));
+            }
+        }
+    }
+    User.SetTasks(willReplace);
+    User.SaveUserInfo();
+    User.LoadTasks();
+    vector<Task*> weekTasks;
+    for (int i = 0 ; i < User.wtasks.size();i++){
+        weekTasks.push_back(&User.wtasks.at(i));
+    }
+    ui->calendar->loadTasks(weekTasks);
     ui->stacked->setCurrentIndex(4);
-
 }
 
 void AtlasWelcome::on_cancelDeleteButton_clicked()
