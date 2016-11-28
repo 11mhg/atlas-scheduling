@@ -205,21 +205,6 @@ bool Task::time_period::operator<( const time_period& right){
     }
 }
 
-void Task::print(){
-    std::string s_start(ctime(&task_time.start)),
-                s_end(ctime(&task_time.end));
-    std::cout << "name: " << task_name << std::endl
-              << "start: " << s_start
-              << "end:   " << s_end;
-}
-
-void Task::time_period::print(){
-    std::string s_start(ctime(&start)),
-                s_end(ctime(&end));
-    std::cout << "start: " << s_start
-              << "end:   " << s_end;
-}
-
 TaskException::TaskException(string msg) : message(msg){}
 string& TaskException::what() { return message; }
 //----------------------------------------------------------------------------

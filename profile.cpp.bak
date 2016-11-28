@@ -17,28 +17,6 @@ time_t Profile::EndOfWeek(){
     return t;
 }
 
-std::vector<Task*> Profile::getWeeklyTasks(){
-    time_t week_start = StartOfWeek(),
-           week_end = EndOfWeek();
-    return getTasksInTime(week_start,week_end);
-
-}
-
-std::vector<Task*> Profile::getTasksInTime(time_t start,time_t end){
-    std::vector<Task*> v;
-    for(int i = 0; i < ptasks.size(); i++){
-        if(ptasks[i].task_time.start >= start || ptasks[i].task_time.end <= end){
-            Task* ptr = &ptasks[i];
-            v.push_back(ptr);
-        }
-    }
-    for(int i = 0; i < wtasks.size(); i++){
-        Task* ptr = &wtasks[i];
-        v.push_back(ptr);
-    }
-    return v;
-}
-
 /**
  * @brief Profile::Profile
  * Construct empty profile
