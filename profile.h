@@ -33,6 +33,8 @@ public:
     static std::vector<Task> ptasks;//user defined tasks
     static std::vector<Task> wtasks;//weekly tasks
 
+    time_t currentWeek; //really the second you log in...shhhhhhhh
+
     std::map<std::string,std::string> settings;
     Profile(std::string User, std::string Pass);
     void SaveUserInfo();
@@ -40,6 +42,7 @@ public:
     void LogOut();
     void LoadInfo();
     void LoadTasks();
+    void pushTasks();
     Profile();
     stats Stats;
     std::string name;

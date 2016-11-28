@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "ui_weekheader.h"
+#include "profile.h"
 
 namespace Ui {
 class WeekHeader;
@@ -17,8 +18,14 @@ public:
     ~WeekHeader();
     time_t StartOfWeek();
     time_t EndOfWeek();
+    void setProfile(Profile* currentUser);
+private slots:
+    void on_backButton_clicked();
+
+    void on_forwardButton_clicked();
 
 private:
+    Profile* currentUser;
     Ui::WeekHeader *ui;
 };
 

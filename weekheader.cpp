@@ -25,17 +25,22 @@ WeekHeader::WeekHeader(QWidget *parent) :
     ui->setupUi(this);
 }
 */
+
 WeekHeader::WeekHeader(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WeekHeader)
 {
+    ui->setupUi(this);
+}
+
+void WeekHeader::setProfile(Profile* currentUser){
+    this->currentUser = currentUser;
     std::string days[] = {"Sun","Mon","Tue","Wed", "Thur"};//so on and so forth
     std::string months[] = {"January","February","March","April","May","June","July","August","September","October","November","December"};
-    ui->setupUi(this);
     struct std::tm *tm;
     struct std::tm *tm2;
     struct std::tm *tm3;
-    time_t t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    time_t t = currentUser->currentWeek;
     tm = localtime(&t);
     time_t t3;
     t3 = t - tm->tm_wday*24*3600;
@@ -113,3 +118,17 @@ WeekHeader::~WeekHeader()
 }
 
 
+
+void WeekHeader::on_backButton_clicked()
+{
+    currentUser->currentWeek -= 7*24*60*60;
+    currentUser->LoadTasks();
+    setProfile(currentUser);
+}
+
+void WeekHeader::on_forwardButton_clicked()
+{
+    currentUser->currentWeek += 7*24*60*60;
+    currentUser->LoadTasks();
+    setProfile(currentUser);
+}

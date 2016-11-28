@@ -1018,7 +1018,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="WeekHeader" name="widget" native="true">
+     <widget class="WeekHeader" name="weekHeader" native="true">
       <property name="geometry">
        <rect>
         <x>60</x>

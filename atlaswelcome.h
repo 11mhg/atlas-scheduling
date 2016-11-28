@@ -18,6 +18,7 @@ public:
     explicit AtlasWelcome(QWidget *parent = 0);
     Profile User;
     ~AtlasWelcome();
+    Ui::AtlasWelcome *ui;
 
 private slots:
     void on_SignIn_clicked();
@@ -103,8 +104,6 @@ private slots:
     void on_characterSelect5_2_clicked();
 
     void setCategorySelect();
-private:
-    Ui::AtlasWelcome *ui;
 };
 
 #endif // ATLASWELCOME_H

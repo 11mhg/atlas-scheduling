@@ -8,6 +8,7 @@ Profile::Profile()
 {
     username="";
     password="";
+    currentWeek = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 }
 
 /**
@@ -18,6 +19,7 @@ Profile::Profile(std::string User, std::string Pass)
 {
     username=User;
     password=Pass;
+    currentWeek = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 }
 
 void Profile::addTask(Task newTask){
@@ -284,7 +286,7 @@ void Profile::LoadTasks()
     time_t starTime;
     time_t endTime;
     std::tm *timeinfo;
-    std::time(&rawtime);
+    rawtime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     timeinfo = std::localtime(&rawtime);
     starTime = std::mktime(timeinfo);
     int wday = timeinfo->tm_wday;
