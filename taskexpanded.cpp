@@ -25,7 +25,7 @@ ExpandedTask::ExpandedTask(QWidget *parent, Task* newContent, int origin_x, int 
     this->parent = parent;
 
     string styleString = "QLabel { background-color :";
-    styleString += content->getCategory()->getColour() == Qt::red ? "red" : content->getCategory()->getColour() == Qt::green ? "green" : "blue";
+    styleString += content->getCategory()->getColour() == Qt::red ? "red" : content->getCategory()->getColour() == Qt::green ? "light green" : "blue";
     styleString += "}";
 
     ui->labelName->setStyleSheet(QString::fromStdString(styleString));
