@@ -269,7 +269,7 @@
      <widget class="QLineEdit" name="userProfileIn">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>540</x>
         <y>350</y>
         <width>141</width>
         <height>20</height>
@@ -279,7 +279,7 @@
      <widget class="QRadioButton" name="femaleSelect">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>580</x>
         <y>130</y>
         <width>71</width>
         <height>17</height>
@@ -297,7 +297,7 @@
      <widget class="QLabel" name="emailLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>310</x>
         <y>410</y>
         <width>171</width>
         <height>31</height>
@@ -315,7 +315,7 @@
      <widget class="QLabel" name="passwordLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>310</x>
         <y>480</y>
         <width>171</width>
         <height>31</height>
@@ -333,7 +333,7 @@
      <widget class="QLabel" name="nameLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>310</x>
         <y>60</y>
         <width>61</width>
         <height>21</height>
@@ -351,7 +351,7 @@
      <widget class="QLineEdit" name="emailProfileIn">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>540</x>
         <y>420</y>
         <width>141</width>
         <height>20</height>
@@ -381,7 +381,7 @@
      <widget class="QLineEdit" name="nameProfileIn">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>540</x>
         <y>60</y>
         <width>141</width>
         <height>20</height>
@@ -391,7 +391,7 @@
      <widget class="QLineEdit" name="FavSubjectProfileIn">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>540</x>
         <y>280</y>
         <width>141</width>
         <height>20</height>
@@ -401,7 +401,7 @@
      <widget class="QRadioButton" name="maleSelect">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>490</x>
         <y>130</y>
         <width>51</width>
         <height>17</height>
@@ -432,7 +432,7 @@
      <widget class="QDateEdit" name="DoBSelect">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>540</x>
         <y>200</y>
         <width>141</width>
         <height>22</height>
@@ -442,7 +442,7 @@
      <widget class="QRadioButton" name="otherSelect">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>680</x>
         <y>130</y>
         <width>82</width>
         <height>17</height>
@@ -455,7 +455,7 @@
      <widget class="QLabel" name="usernameLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>310</x>
         <y>340</y>
         <width>171</width>
         <height>31</height>
@@ -473,7 +473,7 @@
      <widget class="QLabel" name="genderLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>310</x>
         <y>130</y>
         <width>81</width>
         <height>21</height>
@@ -504,7 +504,7 @@
      <widget class="QLineEdit" name="PswdProfileIn">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>540</x>
         <y>490</y>
         <width>141</width>
         <height>20</height>
@@ -514,7 +514,7 @@
      <widget class="QLabel" name="FavSubjectLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>310</x>
         <y>270</y>
         <width>171</width>
         <height>31</height>
@@ -532,7 +532,7 @@
      <widget class="QLabel" name="DoBLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>310</x>
         <y>200</y>
         <width>131</width>
         <height>21</height>
@@ -545,25 +545,6 @@
       </property>
       <property name="text">
        <string>Date of Birth:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="slogan3">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>60</y>
-        <width>161</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>16</pointsize>
-        <underline>true</underline>
-       </font>
-      </property>
-      <property name="text">
-       <string>Your new Avatar!</string>
       </property>
      </widget>
     </widget>
