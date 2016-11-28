@@ -14,7 +14,8 @@ CategoryList::CategoryList(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CategoryList)
 {
-    update();
+   // update();
+    QApplication::processEvents();
     ui->setupUi(this);
 } // end constructor
 
