@@ -110,9 +110,6 @@ private slots:
 
     void on_outfitCombo_currentIndexChanged(int index);
 
-private:
-    Ui::AtlasWelcome *ui;
-    Profile User;
 };
 
 #endif // ATLASWELCOME_H

@@ -85,6 +85,11 @@ void CategoryList::paintEvent(QPaintEvent *pe) {
     painter.setOpacity(1);
 
     painter.fillRect(pe->rect(), Qt::gray);
+
+    for(unsigned int i = 0; i < checkBoxes.size(); i++){
+        QRect newR(checkBoxes[i]->geometry().left() - 20, checkBoxes[i]->geometry().top() + 7, checkBoxes[i]->geometry().height() - 16, checkBoxes[i]->geometry().height() - 16);
+        painter.fillRect(newR, myProfile->categories[i]->getColour());
+    }
     QWidget::paintEvent(pe);
 
 } // end paint event
