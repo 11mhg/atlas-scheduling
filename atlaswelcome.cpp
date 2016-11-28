@@ -8,46 +8,24 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
     ui(new Ui::AtlasWelcome)
 {
     ui->setupUi(this);
-    ui->NewCatColourSelect->addItem("Red");
-    ui->NewCatColourSelect->addItem("Green");
-    ui->NewCatColourSelect->addItem("Purple");
-
-   /*
     // Skin Combo Box
-    ui->skinColourSelect->addItem("Black");
-    ui->skinColourSelect->addItem("White");
-    ui->skinColourSelect->addItem("Tan");
-
-    // Eye Combo Box
-    ui->eyeColourSelect->addItem("Side-eye");
-    ui->eyeColourSelect->addItem("Classic");
+    ui->skinColourCombo->addItem("-None-");
+    ui->skinColourCombo->addItem("White");
+    ui->skinColourCombo->addItem("Black");
+    ui->skinColourCombo->addItem("Tan");
 
     // Hair Combo Box
-    ui->hairColourSelect->addItem("Brunette");
-    ui->hairColourSelect->addItem("Blonde");
-    ui->hairColourSelect->addItem("Rouge");
+    ui->hairstyleCombo->addItem("-None-");
+    ui->hairstyleCombo->addItem("Black");
+    ui->hairstyleCombo->addItem("Blonde");
+    ui->hairstyleCombo->addItem("Brunette");
+    ui->hairstyleCombo->addItem("Rouge");
 
     // Shirt Combo Box
-    ui->shirtsSelect->addItem("Pink");
-    ui->shirtsSelect->addItem("Blue Suit");
-    ui->shirtsSelect->addItem("Star Trek");
-
-    // Bottoms Combo Box
-    ui->bottomsSelect->addItem("Black Pants");
-    ui->bottomsSelect->addItem("Jeans");
-    ui->bottomsSelect->addItem("Red Shorts");
-*/
-    // Settings Combo Boxes ----------------------------
-//    ui->changeEyeSelect->addItem("Side-Eye");
-//    ui->changeEyeSelect->addItem("Classic");
-
-//    ui->changeSkinSelect->addItem("Black");
-//    ui->changeSkinSelect->addItem("White");
-//    ui->changeSkinSelect->addItem("Tan");
-
-//    ui->changeHColourSelect->addItem("Brunette");
-//    ui->changeHColourSelect->addItem("Blonde");
-//    ui->changeHColourSelect->addItem("Rouge");
+    ui->outfitCombo->addItem("-None-");
+    ui->outfitCombo->addItem("Pink");
+    //ui->outfitCombo->addItem("Blue Suit");
+    ui->outfitCombo->addItem("Star rek");
 
 
 }
@@ -455,4 +433,288 @@ void AtlasWelcome::on_characterSelect4_2_clicked()
 void AtlasWelcome::on_characterSelect5_2_clicked()
 {
     ui->avatarPreviewStack_3->setCurrentIndex(4);
+}
+
+void AtlasWelcome::on_skinColourCombo_currentIndexChanged(int index)
+{
+    if(ui->skinColourCombo->currentIndex() == 1){
+        ui->WHairStacked->setCurrentIndex(0);
+        ui->avatarPreviewStack->setCurrentIndex(0);
+        ui->hairstyleCombo->setCurrentIndex(0);
+       }
+    else if(ui->skinColourCombo->currentIndex() == 2)
+    {
+        ui->BHairStack->setCurrentIndex(0);
+        ui->avatarPreviewStack->setCurrentIndex(1);
+        ui->hairstyleCombo->setCurrentIndex(0);
+    }
+    else if(ui->skinColourCombo->currentIndex() == 3)
+    {
+        ui->THairStacked->setCurrentIndex(0);
+        ui->avatarPreviewStack->setCurrentIndex(2);
+        ui->hairstyleCombo->setCurrentIndex(0);
+    }
+    else{}
+}
+
+// Hairstyle Character Creation Selection.
+void AtlasWelcome::on_hairstyleCombo_currentIndexChanged(int index)
+{
+    if(ui->hairstyleCombo->currentIndex() == 1) //Black hairstyle selected.
+    {
+        if(ui->avatarPreviewStack->currentIndex() == 0) //White avatar w Black hair.
+        {
+            ui->WHairStacked->setCurrentIndex(1);
+            ui->WBStacked->setCurrentIndex(1);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1)    // Black avatar w Black Hair.
+        {
+            ui->BHairStack->setCurrentIndex(1);
+            ui->BBStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else {                                               // Tanned avatar w Black Hair.
+            ui->THairStacked->setCurrentIndex(1);
+            ui->TBStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+    }
+    else if(ui->hairstyleCombo->currentIndex() == 2) //Blonde hairstyle selected.
+    {
+        if(ui->avatarPreviewStack->currentIndex() == 0) // White avatar w Blonde hair.
+        {
+            ui->WHairStacked->setCurrentIndex(2);
+            ui->WBlStacked->setCurrentIndex(1);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1) //Black avatar w Blonde hair.
+        {
+            ui->BHairStack->setCurrentIndex(2);
+            ui->BBlStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else  {                                               // Tanned avatar w Blonde hair.
+            ui->THairStacked->setCurrentIndex(2);
+            ui->TBlStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+    }
+
+    else if(ui->hairstyleCombo->currentIndex() == 3) //Brunnette hairstyle selected.
+    {
+        if(ui->avatarPreviewStack->currentIndex() == 0) // White avatar w Brown hair.
+        {
+            ui->WHairStacked->setCurrentIndex(3);
+            ui->WBrStackedShirts->setCurrentIndex(1);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1) //Black avatar w Brown hair.
+        {
+            ui->BHairStack->setCurrentIndex(3);
+            ui->BBrStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else                                                 // Tanned avatar w Brown hair.
+           {
+            ui->THairStacked->setCurrentIndex(3);
+            ui->TBrStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+    }
+
+    else                                            //Red hairstyle selected.
+    {
+        if(ui->avatarPreviewStack->currentIndex() == 0) // White avatar w Red hair.
+        {
+            ui->WHairStacked->setCurrentIndex(4);
+            ui->WRStackedShirts->setCurrentIndex(1);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1) //Black avatar w Red hair.
+        {
+            ui->BHairStack->setCurrentIndex(4);
+            ui->BRStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+        else                                                 // Tanned avatar w Red hair.
+           {
+            ui->THairStacked->setCurrentIndex(4);
+            ui->TRStackedShirts->setCurrentIndex(0);
+            ui->outfitCombo->setCurrentIndex(0);
+        }
+    }
+}
+
+
+// Outfit Selection
+void AtlasWelcome::on_outfitCombo_currentIndexChanged(int index)
+{
+
+    // PINK SHIRT
+    if(ui->outfitCombo->currentIndex() == 1) //Pink shirt selected.
+    {
+        // BLACK HAIR OPTIONS - Pink
+        if((ui->avatarPreviewStack->currentIndex() == 0) && (ui->hairstyleCombo->currentIndex() == (1))) //White avatar w Black hair.
+        {
+            ui->WBStacked->setCurrentIndex(2);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (1))    // Black avatar w Black Hair.
+        {
+            ui->BBStackedShirts->setCurrentIndex(1);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (1))   // Tanned avatar w Black Hair.
+        {
+            ui->TBStackedShirts->setCurrentIndex(1);
+        }
+
+        // BLONDE HAIR OPTIONS - Pink
+        else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (2)) // White avatar w Blonde hair.
+        {
+            ui->WBlStacked->setCurrentIndex(2);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (2)) //Black avatar w Blonde hair.
+        {
+            ui->BBlStackedShirts->setCurrentIndex(1);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (2)) // Tanned avatar w Blonde hair.
+        {
+            ui->TBlStackedShirts->setCurrentIndex(1);
+        }
+        // BROWN HAIR OPTIONS - Pink
+        else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (3)) // White avatar w Brown hair.
+        {
+            ui->WBrStackedShirts->setCurrentIndex(2);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (3)) //Black avatar w Brown hair.
+        {
+            ui->BBrStackedShirts->setCurrentIndex(1);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (3)) // Tanned avatar w Brown hair.
+        {
+            ui->TBrStackedShirts->setCurrentIndex(1);
+        }
+        // RED HAIR OPTIONS - Pink
+        else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (4)) // White avatar w Red hair.
+        {
+            ui->WRStackedShirts->setCurrentIndex(2);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (4)) //Black avatar w Red hair.
+        {
+            ui->BRStackedShirts->setCurrentIndex(1);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (4)) // Tanned avatar w Red hair.
+        {
+          ui->TRStackedShirts->setCurrentIndex(1);
+        }
+        else{}
+    }
+
+
+    // BLUE SHIRT
+    else if(ui->outfitCombo->currentIndex() == 2) //Blue shirt selected.
+    {
+        // BLACK HAIR OPTIONS - Blue
+        if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (1)) //White avatar w Black hair.
+        {
+            ui->WBStacked->setCurrentIndex(4);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (1))    // Black avatar w Black Hair.
+        {
+            ui->BBStackedShirts->setCurrentIndex(3);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (1))   // Tanned avatar w Black Hair.
+            ui->TBStackedShirts->setCurrentIndex(3);
+
+        // BLONDE HAIR OPTIONS - Blue
+        else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (2)) // White avatar w Blonde hair.
+        {
+            ui->WBlStacked->setCurrentIndex(4);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (2)) //Black avatar w Blonde hair.
+        {
+            ui->BBlStackedShirts->setCurrentIndex(3);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (2)) // Tanned avatar w Blonde hair.
+            ui->TBlStackedShirts->setCurrentIndex(3);
+
+        // BROWN HAIR OPTIONS - Blue
+        else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (3)) // White avatar w Brown hair.
+        {
+            ui->WBrStackedShirts->setCurrentIndex(4);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (3)) //Black avatar w Brown hair.
+        {
+            ui->BBrStackedShirts->setCurrentIndex(3);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (3)) // Tanned avatar w Brown hair.
+            ui->TBrStackedShirts->setCurrentIndex(3);
+
+        // RED HAIR OPTIONS - Blue
+        else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (4)) // White avatar w Red hair.
+        {
+            ui->WRStackedShirts->setCurrentIndex(4);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (4)) //Black avatar w Red hair.
+        {
+            ui->BRStackedShirts->setCurrentIndex(3);
+        }
+        else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (4)) // Tanned avatar w Red hair.
+            ui->TRStackedShirts->setCurrentIndex(3);
+
+
+        /*// STAR TREK SHIRT
+        else if(ui->outfitCombo->currentIndex() == 3) //Star Trek shirt selected.
+        {
+            // BLACK HAIR OPTIONS - Star Trek
+            if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (1)) //White avatar w Black hair.
+            {
+                ui->WBStacked->setCurrentIndex(4);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (1))    // Black avatar w Black Hair.
+            {
+                ui->BBStackedShirts->setCurrentIndex(3);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (1))   // Tanned avatar w Black Hair.
+                ui->TBStackedShirts->setCurrentIndex(3);
+
+            // BLONDE HAIR OPTIONS - Star Trek
+            else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (2)) // White avatar w Blonde hair.
+            {
+                ui->WBlStacked->setCurrentIndex(4);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (2)) //Black avatar w Blonde hair.
+            {
+                ui->BBlStackedShirts->setCurrentIndex(3);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (2)) // Tanned avatar w Blonde hair.
+                ui->TBlStackedShirts->setCurrentIndex(3);
+
+            // BROWN HAIR OPTIONS - Star Trek
+            else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (3)) // White avatar w Brown hair.
+            {
+                ui->WBrStackedShirts->setCurrentIndex(4);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (3)) //Black avatar w Brown hair.
+            {
+                ui->BBrStackedShirts->setCurrentIndex(3);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (3)) // Tanned avatar w Brown hair.
+                ui->TBrStackedShirts->setCurrentIndex(3);
+
+            // RED HAIR OPTIONS - Star Trek
+            else if(ui->avatarPreviewStack->currentIndex() == 0 && ui->hairstyleCombo->currentIndex() == (4)) // White avatar w Red hair.
+            {
+                ui->WRStackedShirts->setCurrentIndex(4);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 1 && ui->hairstyleCombo->currentIndex() == (4)) //Black avatar w Red hair.
+            {
+                ui->BRStackedShirts->setCurrentIndex(3);
+            }
+            else if(ui->avatarPreviewStack->currentIndex() == 2 && ui->hairstyleCombo->currentIndex() == (4)) // Tanned avatar w Red hair.
+                ui->TRStackedShirts->setCurrentIndex(3);
+    }*/
+        else{}
+
+}
 }
