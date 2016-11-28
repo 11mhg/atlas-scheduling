@@ -136,11 +136,11 @@ void Scheduler::getSleepTimes(){
     tm.tm_min = 0;
     tm.tm_sec = 0;
 
-    tm2.tm_hour = 7;
+    tm2.tm_hour = 8;
     tm2.tm_min = 0;
     tm2.tm_sec = 0;
 
-    tm3.tm_hour = 7;
+    tm3.tm_hour = 8;
     tm3.tm_min = 0;
     tm3.tm_sec=0;
 
@@ -155,6 +155,7 @@ void Scheduler::getSleepTimes(){
         time_t a = mktime(&tm),
                b = mktime(&tm2),
                c = mktime(&tm3);
+        a -= 4*3600;
         std::string s_time(ctime(&a)),
                     e_time(ctime(&b)),
                     d_time(ctime(&c));
