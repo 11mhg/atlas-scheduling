@@ -324,3 +324,5 @@ string Category::getName() const{return catName;}
 void Category::changeVisible(){ visible = !visible; }
 
 bool Category::isVisible() const { return visible; }
+
+void Category::setVisible(bool newValue) { visible = newValue; }

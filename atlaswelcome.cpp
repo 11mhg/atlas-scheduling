@@ -236,6 +236,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
         weekTasks.push_back(&User.wtasks.at(i));
     }
     ui->calendar->loadTasks(weekTasks);
+    ui->catList->update();
     setCategorySelect();
     ui->pswdIn->clear();
 }

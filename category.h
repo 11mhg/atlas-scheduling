@@ -22,6 +22,7 @@ public:
     Category(std::string&,int,int);
     CatColour categoryColour();
     bool isVisible() const;
+    void setVisible(bool newValue);
     std::string getName() const;
     QColor getColour();
     int getPriority() const;
