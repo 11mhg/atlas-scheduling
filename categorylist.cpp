@@ -13,38 +13,43 @@ CategoryList::CategoryList(QWidget *parent) :
     ui(new Ui::CategoryList)
 {
     ui->setupUi(this);
-    // create all the labels
-    /*    for(int i = 0; i < 24; i++){
-        QString timeLabel = QString("%1:00-%2:00").arg(QString::number(i), QString::number(i+1));
-        this->setItem(i, 0, new QTableWidgetItem(timeLabel));
-    }
-
-*/
-   // QCheckBox *checkBoxin = new QCheckBox("FU", this);
-    for (int i = 0; i < (myProfile->categories).size(); i++) {
-
-        QString chBoxLabel = QString::fromStdString(myProfile->categories[i]->getName());
-        QCheckBox* chBox = new QCheckBox(chBoxLabel, this);
-    }
-}
+} // end constructor
 
 void CategoryList::setProfile(Profile* myProfile)
 {
-    //QCheckBox::QCheckBox(const QString & text, QWidget * parent = 0)
-  //  for (int i = 0; i < )
- /*  ui->category1->s
-    if (ui->category1->isChecked()) {
-        // draw all tasks in category1
+    int xVal = 100;
+    int yVal = 100;
+    const vector<QString> chBoxNames = {"cb1", "cb2", "cb3", "cb4","cb5","cb5","cb6"};
+    for (int i = 0; i < (myProfile->categories).size(); i++) {
+        QString chBoxLabel = QString::fromStdString((myProfile->categories[i])->getName());
+        checkBoxes.push_back(createChBox(chBoxNames[i], chBoxLabel, xVal, yVal));
+        xVal = xVal - 35;
+        yVal = yVal - 35;
     }
-    if (ui->category2->isChecked()) {
-        // draw all tasks in category2
-    }
-    if (ui->category3->isChecked()) {
-        // draw all tasks in category3
-    }*/
+
+} // end setProfile
+
+QCheckBox* CategoryList::createChBox(QString chBoxName, QString chBoxLabel, int xVal, int yVal) {
+    QCheckBox* chBox = new QCheckBox(this);
+    chBox->setText(chBoxLabel);
+    chBox->setGeometry(0,0,xVal,yVal);
+    chBox->setObjectName(chBoxName);
+    chBox->show();
+    return chBox;
+} // end createChBox
+/*
+ * void ExpandedTask::leaveEvent(QEvent* event){
+    this->close();
+    QWidget::leaveEvent(event);
 }
+ * */
+
 
 CategoryList::~CategoryList()
 {
+    // delete all the checkboxes
+    for (int i = 0; i < checkBoxes.size(); i++) {
+        delete checkBoxes.at(i); // or [i] ?
+    }
     delete ui;
-}
+} // end deconstructor
