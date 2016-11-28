@@ -25,11 +25,65 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
     ui->hairstyleCombo->addItem("Brunette");
     ui->hairstyleCombo->addItem("Rouge");
 
+    ui->W111->hide();
+    ui->W112->hide();
+    ui->W121->hide();
+    ui->W122->hide();
+    ui->W131->hide();
+    ui->W132->hide();
+    ui->W141->hide();
+    ui->W142->hide();
+
+    ui->B211->hide();
+    ui->B212->hide();
+    ui->B221->hide();
+    ui->B222->hide();
+    ui->B231->hide();
+    ui->B232->hide();
+    ui->B241->hide();
+    ui->B242->hide();
+
+    ui->T311->hide();
+    ui->T312->hide();
+    ui->T321->hide();
+    ui->T322->hide();
+    ui->T331->hide();
+    ui->T332->hide();
+    ui->T341->hide();
+    ui->T342->hide();
+
+    ui->W111_2->hide();
+    ui->W112_2->hide();
+    ui->W121_2->hide();
+    ui->W122_2->hide();
+    ui->W131_2->hide();
+    ui->W132_2->hide();
+    ui->W141_2->hide();
+    ui->W142_2->hide();
+
+    ui->B211_2->hide();
+    ui->B212_2->hide();
+    ui->B221_2->hide();
+    ui->B222_2->hide();
+    ui->B231_2->hide();
+    ui->B232_2->hide();
+    ui->B241_2->hide();
+    ui->B242_2->hide();
+
+    ui->T311_2->hide();
+    ui->T312_2->hide();
+    ui->T321_2->hide();
+    ui->T322_2->hide();
+    ui->T331_2->hide();
+    ui->T332_2->hide();
+    ui->T341_2->hide();
+    ui->T342_2->hide();
+
     // Shirt Combo Box
     ui->outfitCombo->addItem("-None-");
     ui->outfitCombo->addItem("Pink");
     //ui->outfitCombo->addItem("Blue Suit");
-    ui->outfitCombo->addItem("Star rek");
+    ui->outfitCombo->addItem("Star Trek");
 
     QPixmap pixToTreasure(":/assets/assets/treasure.png");
             QIcon ButtonIcon(pixToTreasure);
@@ -165,8 +219,108 @@ void AtlasWelcome::on_loginCheckButton_clicked()
         ui->UsernameLabel->setText(tempuser);
         //load profile
         User = Profile(user,pass);
+        User.LoadInfo();
         User.LoadTasks();
         ui->calendar->loadTasks(User.wtasks);
+
+        int comb = atoi(User.combo.c_str());
+
+        switch(comb){
+        case(111):
+            ui->W111->show();
+            ui->W111_2->show();
+            break;
+        case(121):
+                    ui->W121->show();
+                    ui->W121_2->show();
+
+            break;
+        case(131):
+                    ui->W131->show();
+                    ui->W131_2->show();
+            break;
+        case(112):
+                    ui->W112->show();
+                    ui->W112_2->show();
+            break;
+        case(122):
+                    ui->W122->show();
+                    ui->W122_2->show();
+            break;
+        case(132):
+                    ui->W132->show();
+                    ui->W132_2->show();
+            break;
+        case(141):
+                    ui->W141->show();
+                    ui->W141_2->show();
+            break;
+        case(211):
+                    ui->B211->show();
+                    ui->B211_2->show();
+            break;
+        case(221):
+                    ui->B221->show();
+                    ui->B221_2->show();
+            break;
+        case(231):
+                    ui->B231->show();
+                    ui->B231_2->show();
+            break;
+        case(241):
+                    ui->B241->show();
+                    ui->B241_2->show();
+            break;
+        case(212):
+                    ui->B212->show();
+                    ui->B212_2->show();
+            break;
+        case(222):
+                    ui->B222->show();
+                    ui->B222_2->show();
+            break;
+        case(232):
+                    ui->B232->show();
+                    ui->B232_2->show();
+            break;
+        case(242):
+                    ui->B242->show();
+                    ui->B242_2->show();
+            break;
+        case(311):
+                    ui->T311->show();
+                    ui->T311_2->show();
+            break;
+        case(321):
+                    ui->T321->show();
+                    ui->T321_2->show();
+            break;
+        case(331):
+                    ui->T331->show();
+                    ui->T331_2->show();
+            break;
+        case(341):
+                    ui->T341->show();
+                    ui->T341_2->show();
+            break;
+        case(312):
+                    ui->T312->show();
+                    ui->T312_2->show();
+            break;
+        case(322):
+                    ui->T322->show();
+                    ui->T322_2->show();
+            break;
+        case(332):
+                    ui->T332->show();
+                    ui->T332_2->show();
+            break;
+        case(342):
+                    ui->T342->show();
+                    ui->T342_2->show();
+            break;
+
+        }
 
     }else{
         QMessageBox messageBox;
@@ -199,20 +353,131 @@ void AtlasWelcome::on_nextProfile_clicked()
         User.name = ui->nameProfileIn->text().toStdString();
 
         User.name = ui->DoBSelect->dateTime().toString().toStdString();
-
+        ui->userProfileIn->clear();
+        ui->PswdProfileIn->clear();
+        User.Stats.timeManagement = 0;
+        User.Stats.productivity = 0 ;
         User.SaveUserInfo();
+        User.LoadInfo();
         User.LoadTasks();
         std::string def = "Default";
         Category *newCat = new Category(def,13408767,1);
         User.categories.push_back(newCat);
+        ui->calendar->loadTasks(User.wtasks);
         ui->stacked->setCurrentIndex(3);
         ui->usernameDisplay->setText(tempNewUser);
+        ui->catList->setProfile(&User);
+        ui->weekHeader->setProfile(&User, ui->calendar);
     }
 }
 
 void AtlasWelcome::on_finishCharacter_clicked()
 {
     // finalize creation of the character.
+    std::string skin = std::to_string(ui->skinColourCombo->currentIndex());
+    std::string hair = std::to_string(ui->hairstyleCombo->currentIndex());
+    std::string shirt = std::to_string(ui->outfitCombo->currentIndex());
+
+    std::string combo = skin+hair+shirt;
+    User.combo = combo;
+    int comb = atoi(User.combo.c_str());
+
+    switch(comb){
+    case(111):
+        ui->W111->show();
+        ui->W111_2->show();
+        break;
+    case(121):
+                ui->W121->show();
+                ui->W121_2->show();
+
+        break;
+    case(131):
+                ui->W131->show();
+                ui->W131_2->show();
+        break;
+    case(112):
+                ui->W112->show();
+                ui->W112_2->show();
+        break;
+    case(122):
+                ui->W122->show();
+                ui->W122_2->show();
+        break;
+    case(132):
+                ui->W132->show();
+                ui->W132_2->show();
+        break;
+    case(141):
+                ui->W141->show();
+                ui->W141_2->show();
+        break;
+    case(211):
+                ui->B211->show();
+                ui->B211_2->show();
+        break;
+    case(221):
+                ui->B221->show();
+                ui->B221_2->show();
+        break;
+    case(231):
+                ui->B231->show();
+                ui->B231_2->show();
+        break;
+    case(241):
+                ui->B241->show();
+                ui->B241_2->show();
+        break;
+    case(212):
+                ui->B212->show();
+                ui->B212_2->show();
+        break;
+    case(222):
+                ui->B222->show();
+                ui->B222_2->show();
+        break;
+    case(232):
+                ui->B232->show();
+                ui->B232_2->show();
+        break;
+    case(242):
+                ui->B242->show();
+                ui->B242_2->show();
+        break;
+    case(311):
+                ui->T311->show();
+                ui->T311_2->show();
+        break;
+    case(321):
+                ui->T321->show();
+                ui->T321_2->show();
+        break;
+    case(331):
+                ui->T331->show();
+                ui->T331_2->show();
+        break;
+    case(341):
+                ui->T341->show();
+                ui->T341_2->show();
+        break;
+    case(312):
+                ui->T312->show();
+                ui->T312_2->show();
+        break;
+    case(322):
+                ui->T322->show();
+                ui->T322_2->show();
+        break;
+    case(332):
+                ui->T332->show();
+                ui->T332_2->show();
+        break;
+    case(342):
+                ui->T342->show();
+                ui->T342_2->show();
+        break;
+
+    }
     ui->stacked->setCurrentIndex(4);
 
 }
@@ -222,14 +487,19 @@ void AtlasWelcome::on_LogoutButton_clicked()
     //logout, clear memory and return to welcome page.
     User.SaveUserInfo();
     ui->stacked->setCurrentIndex(0);
+    vector<Task*> n;
+    ui->calendar->loadTasks(n);
+    for (uint i = 0 ; i < User.categories.size(); i++)
+    {
+        delete(User.categories.at(i));
+    }
+    User.categories.clear();
     User = Profile();
 }
 
 void AtlasWelcome::on_SettingsButton_clicked()
 {
     //open the settings page
-
-    ui->stacked->setCurrentIndex(9);
 }
 
 void AtlasWelcome::on_addTaskButton_clicked()
@@ -272,21 +542,19 @@ void AtlasWelcome::on_removeTaskButton_clicked()
 
 void AtlasWelcome::on_settingsButton_clicked()
 {
-    //open up the settings page
-
-    ui->stacked->setCurrentIndex(9);
 }
 
 void AtlasWelcome::on_logoutButton_clicked()
 {
     //logout, clear memory and return to welcome page.
-    User.SaveUserInfo();
+    User.UpdateSave();
     ui->pswdIn->clear();
     ui->stacked->setCurrentIndex(0);
 }
 
 void AtlasWelcome::on_saveCatButton_clicked()
 {
+
 
     // this case will have to create and save a new category and task.
     if (ui->newCatNameIn->text().toStdString() == ""){
@@ -325,6 +593,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
     ui->catList->update();
     setCategorySelect();
     ui->pswdIn->clear();
+    ui->newCatNameIn->clear();
 }
 
 void AtlasWelcome::setCategorySelect(){
@@ -409,7 +678,8 @@ void AtlasWelcome::on_applySettingsButton_clicked()
 
 void AtlasWelcome::on_myProfileButton_clicked()
 {
-
+    ui->ProductProgress->setValue(User.Stats.productivity);
+    ui->TimeProgress->setValue(User.Stats.timeManagement);
     ui->stacked->setCurrentIndex(5);
 }
 
@@ -439,7 +709,7 @@ void AtlasWelcome::on_registrationButton_2_clicked()
 
 void AtlasWelcome::on_backProfileButton_clicked()
 {
-    ui->stat1Progress->valueChanged(50);
+
     ui->stacked->setCurrentIndex(5);
 }
 
@@ -572,7 +842,7 @@ void AtlasWelcome::on_owl_clicked(bool checked)
 {
     if (checked == true){
         QPixmap owlEquip(":/assets/assets/math.png");
-        ui->shoulderEquip->setPixmap(owlEquip.scaled(60,60,Qt::KeepAspectRatio));
+        ui->shoulderEquip->setPixmap(owlEquip.scaled(20,20,Qt::KeepAspectRatio));
         ui->shoulderEquip->setAlignment(Qt::AlignCenter);
         ui->shoulder->setPixmap(owlEquip.scaled(60,60,Qt::KeepAspectRatio));
         ui->shoulder->setAlignment(Qt::AlignCenter);

@@ -43,6 +43,7 @@ public:
     void LoadInfo();
     void LoadTasks();
     void pushTasks();
+    std::string combo;
     Profile();
     stats Stats;
     std::string name;

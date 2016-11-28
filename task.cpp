@@ -148,7 +148,7 @@ void Task::increment(){
     QMessageBox msgBox;
     msgBox.setText("Congratulations, you have unlocked new items in your treasure chest!");
 
-    if (TaskUser->Stats.productivity==100){
+    if (TaskUser->Stats.productivity==100 && this->getComplete()){
         msgBox.exec();
         //TODO unlock item here
         //TaskUser->unlockItem();
@@ -157,7 +157,7 @@ void Task::increment(){
     }
     TaskUser->Stats.productivity+=50;
 
-    if(task_time.end<due){
+    if(task_time.end<due && this->getComplete()){
         if (TaskUser->Stats.timeManagement==100){
             msgBox.exec();
             //TODO unlock item here

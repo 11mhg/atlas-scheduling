@@ -88,12 +88,9 @@ void Scheduler::getFreeTime(){
         }
     }
 
-    std::cout << "----FTIMES START----" << std::endl;
     for(int i = 0; i < ftimes.size(); i++){
         ftimes[i].print();
-        std::cout << std::endl;
     }
-    std::cout << "-----FTIMES END-----" << std::endl;
 }
 
 void Scheduler::restartWeek(struct std::tm* tm){

@@ -73,25 +73,6 @@
        <string>Let's get productive!</string>
       </property>
      </widget>
-     <widget class="QLabel" name="logo">
-      <property name="geometry">
-       <rect>
-        <x>395</x>
-        <y>0</y>
-        <width>210</width>
-        <height>201</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>atlas_logo.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QPushButton" name="SignIn">
       <property name="geometry">
        <rect>
@@ -116,6 +97,25 @@
       </property>
       <property name="text">
        <string>Don't have an account? Sign up here!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="logo_4">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>0</y>
+        <width>210</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>atlas_logo.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -184,7 +184,7 @@
      <widget class="QLabel" name="logo_2">
       <property name="geometry">
        <rect>
-        <x>395</x>
+        <x>400</x>
         <y>0</y>
         <width>210</width>
         <height>201</height>
@@ -509,6 +509,9 @@
         <width>141</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
      <widget class="QLabel" name="FavSubjectLabel">
@@ -2076,25 +2079,6 @@
      </widget>
     </widget>
     <widget class="QWidget" name="myCalendarPage">
-     <widget class="QLabel" name="avatarBust">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>430</y>
-        <width>131</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>images.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="removeTaskLabel">
       <property name="geometry">
        <rect>
@@ -2235,8 +2219,8 @@
      <widget class="QLabel" name="usernameDisplay">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>520</y>
+        <x>140</x>
+        <y>540</y>
         <width>81</width>
         <height>21</height>
        </rect>
@@ -2285,9 +2269,9 @@
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>480</y>
-        <width>81</width>
-        <height>71</height>
+        <y>490</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -2304,6 +2288,500 @@
        </rect>
       </property>
      </widget>
+     <widget class="QLabel" name="T312_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/black/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W121_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/blonde/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W111_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/black/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B232_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/brown/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T341_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/red/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B242_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/red/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W141_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/red/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W142_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/red/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B211_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/black/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B231_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/brown/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B241_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/red/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W131_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/brown/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B221_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/blonde/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W132_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/brown/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W112_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/black/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T342_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/red/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B212_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/black/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B222_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/blonde/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T331_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/brown/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T321_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/blonde/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T322_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/blonde/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W122_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/blonde/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T311_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/black/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T332_2">
+      <property name="geometry">
+       <rect>
+        <x>-40</x>
+        <y>400</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/brown/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>T332_2</zorder>
+     <zorder>B231_2</zorder>
+     <zorder>T322_2</zorder>
+     <zorder>B222_2</zorder>
+     <zorder>W132_2</zorder>
+     <zorder>B232_2</zorder>
+     <zorder>T321_2</zorder>
+     <zorder>T312_2</zorder>
+     <zorder>B241_2</zorder>
+     <zorder>B242_2</zorder>
+     <zorder>B212_2</zorder>
+     <zorder>T342_2</zorder>
+     <zorder>W121_2</zorder>
+     <zorder>W141_2</zorder>
+     <zorder>T331_2</zorder>
+     <zorder>W122_2</zorder>
+     <zorder>W112_2</zorder>
+     <zorder>W111_2</zorder>
+     <zorder>T341_2</zorder>
+     <zorder>W131_2</zorder>
+     <zorder>T311_2</zorder>
+     <zorder>B211_2</zorder>
+     <zorder>W142_2</zorder>
+     <zorder>B221_2</zorder>
+     <zorder>removeTaskLabel</zorder>
+     <zorder>MyCalendarLabel</zorder>
+     <zorder>addTaskLabel</zorder>
+     <zorder>LogoutButton</zorder>
+     <zorder>addTaskButton</zorder>
+     <zorder>removeTaskButton</zorder>
+     <zorder>logo_3</zorder>
+     <zorder>SettingsButton</zorder>
+     <zorder>usernameDisplay</zorder>
+     <zorder>myProfileButton</zorder>
+     <zorder>calendar</zorder>
+     <zorder>weekHeader</zorder>
+     <zorder>catList</zorder>
+     <zorder>shoulderEquip</zorder>
     </widget>
     <widget class="QWidget" name="myCharacterPage">
      <widget class="QLabel" name="equippedItemsLabel">
@@ -2343,7 +2821,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QProgressBar" name="stat2Progress">
+     <widget class="QProgressBar" name="TimeProgress">
       <property name="geometry">
        <rect>
         <x>720</x>
@@ -2356,12 +2834,12 @@
        <number>24</number>
       </property>
      </widget>
-     <widget class="QLabel" name="stat1Label">
+     <widget class="QLabel" name="ProductivityLabel">
       <property name="geometry">
        <rect>
         <x>580</x>
         <y>340</y>
-        <width>81</width>
+        <width>91</width>
         <height>16</height>
        </rect>
       </property>
@@ -2371,20 +2849,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Stat1</string>
-      </property>
-     </widget>
-     <widget class="QProgressBar" name="stat3Progress">
-      <property name="geometry">
-       <rect>
-        <x>720</x>
-        <y>480</y>
-        <width>211</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="value">
-       <number>24</number>
+       <string>Productivity</string>
       </property>
      </widget>
      <widget class="QLabel" name="equip2">
@@ -2424,24 +2889,6 @@
       </property>
       <property name="text">
        <string>My Character</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="stat3Label">
-      <property name="geometry">
-       <rect>
-        <x>580</x>
-        <y>480</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Stat3</string>
       </property>
      </widget>
      <widget class="QPushButton" name="logoutButton">
@@ -2549,7 +2996,7 @@
        <rect>
         <x>580</x>
         <y>410</y>
-        <width>81</width>
+        <width>141</width>
         <height>16</height>
        </rect>
       </property>
@@ -2559,10 +3006,10 @@
        </font>
       </property>
       <property name="text">
-       <string>Stat2</string>
+       <string>Time Management</string>
       </property>
      </widget>
-     <widget class="QProgressBar" name="stat1Progress">
+     <widget class="QProgressBar" name="ProductProgress">
       <property name="geometry">
        <rect>
         <x>720</x>
@@ -2689,7 +3136,7 @@
      <widget class="QLabel" name="handsEquip">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>70</x>
         <y>390</y>
         <width>71</width>
         <height>61</height>
@@ -2715,8 +3162,8 @@
      <widget class="QLabel" name="shoulder">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>270</y>
+        <x>200</x>
+        <y>340</y>
         <width>61</width>
         <height>51</height>
        </rect>
@@ -2725,6 +3172,509 @@
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="W111">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/black/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W112">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/black/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W121">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/blonde/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W122">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/blonde/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W131">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/brown/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W132">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/brown/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W141">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/red/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="W142">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/white/eyesSide/red/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B211">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/black/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B212">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/black/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B221">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/blonde/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B222">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/blonde/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B231">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/brown/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B232">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/brown/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T332">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/brown/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B242">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/red/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T331">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/brown/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="B241">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/black/eyesSide/red/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T312">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/black/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T322">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/blonde/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T341">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/red/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T311">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/black/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T342">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/red/starTrek/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="T321">
+      <property name="geometry">
+       <rect>
+        <x>-130</x>
+        <y>150</y>
+        <width>571</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../Atlas-Builds/tanned/eyesSide/blonde/pink/black.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>T332</zorder>
+     <zorder>T311</zorder>
+     <zorder>W122</zorder>
+     <zorder>T322</zorder>
+     <zorder>T321</zorder>
+     <zorder>T331</zorder>
+     <zorder>B222</zorder>
+     <zorder>B212</zorder>
+     <zorder>T342</zorder>
+     <zorder>W112</zorder>
+     <zorder>W132</zorder>
+     <zorder>B221</zorder>
+     <zorder>W131</zorder>
+     <zorder>B241</zorder>
+     <zorder>B231</zorder>
+     <zorder>B211</zorder>
+     <zorder>W142</zorder>
+     <zorder>W141</zorder>
+     <zorder>B242</zorder>
+     <zorder>T341</zorder>
+     <zorder>B232</zorder>
+     <zorder>W111</zorder>
+     <zorder>W121</zorder>
+     <zorder>T312</zorder>
+     <zorder>equippedItemsLabel</zorder>
+     <zorder>equip6</zorder>
+     <zorder>TimeProgress</zorder>
+     <zorder>ProductivityLabel</zorder>
+     <zorder>equip2</zorder>
+     <zorder>myCharacterLabel</zorder>
+     <zorder>logoutButton</zorder>
+     <zorder>stasLevelsLabel</zorder>
+     <zorder>equip1</zorder>
+     <zorder>equip5</zorder>
+     <zorder>TreasureChestLabelButton</zorder>
+     <zorder>settingsButton</zorder>
+     <zorder>stat2Label</zorder>
+     <zorder>ProductProgress</zorder>
+     <zorder>UsernameLabel</zorder>
+     <zorder>equip3</zorder>
+     <zorder>equip4</zorder>
+     <zorder>toTreasureChest</zorder>
+     <zorder>backCharacterButton</zorder>
+     <zorder>avatar</zorder>
+     <zorder>chestEquip</zorder>
+     <zorder>shoulder</zorder>
+     <zorder>handsEquip</zorder>
     </widget>
     <widget class="QWidget" name="myTreasureChestPage">
      <widget class="QPushButton" name="logoutButton_2">
@@ -2770,22 +3720,6 @@
       </property>
       <property name="text">
        <string>Settings</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="comboBox">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>110</y>
-        <width>69</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="accessibleDescription">
-       <string/>
-      </property>
-      <property name="currentText">
-       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="lockedLabel">
@@ -3811,7 +4745,6 @@
   <tabstop>LogoutButton</tabstop>
   <tabstop>settingsButton</tabstop>
   <tabstop>logoutButton</tabstop>
-  <tabstop>comboBox</tabstop>
   <tabstop>settingsButton_2</tabstop>
   <tabstop>logoutButton_2</tabstop>
   <tabstop>newTaskNameIn</tabstop>
