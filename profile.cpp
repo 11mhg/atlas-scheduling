@@ -17,6 +17,11 @@ time_t Profile::EndOfWeek(){
     return t;
 }
 
+void Profile::setUserName(std::string un)
+{
+    username = un;
+}
+
 std::vector<Task*> Profile::getWeeklyTasks(){
     time_t week_start = StartOfWeek(),
            week_end = EndOfWeek();

@@ -95,7 +95,7 @@ QString ExpandedTask::createString(){
 
 void ExpandedTask::on_buttonDelay_clicked()
 {
-    Scheduler().reschedule(content);
+    Scheduler::reschedule(content);
     content->TaskUser->SaveUserInfo();
     this->close();
     parent->update();
@@ -103,6 +103,7 @@ void ExpandedTask::on_buttonDelay_clicked()
 
 void ExpandedTask::on_buttonComplete_clicked()
 {
+    ui->buttonComplete->setEnabled(false);
     content->setComplete();
     parent->update();
 }

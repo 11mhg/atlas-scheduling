@@ -57,7 +57,8 @@ Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& 
     setTimes();
 }
 
-Task::Task(string& in, Profile *User){
+Task::Task(string& in, Profile *User):
+    completeFlag(false){
     string inputs[5];
     TaskUser = User;
     int i = 0;
