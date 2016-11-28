@@ -19,10 +19,11 @@ CategoryList::CategoryList(QWidget *parent) :
         this->setItem(i, 0, new QTableWidgetItem(timeLabel));
     }
 
-     */
+*/
+   // QCheckBox *checkBoxin = new QCheckBox("FU", this);
     for (int i = 0; i < (myProfile->categories).size(); i++) {
-        QString chBoxLabel = QString::fromStdString(myProfile->categories.at(i));
-        QCheckBox chBoxLabel* = new QCheckBox(chBoxLabel, this);
+        QString chBoxLabel = QString::fromStdString((myProfile->categories.at(i))->getName());
+        QCheckBox *aBox = new QCheckBox("FU", this);
     }
 }
 
