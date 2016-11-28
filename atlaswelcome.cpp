@@ -8,6 +8,10 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
     ui(new Ui::AtlasWelcome)
 {
     ui->setupUi(this);
+
+    ui->NewCatColourSelect->addItem("Red");
+    ui->NewCatColourSelect->addItem("Green");
+    ui->NewCatColourSelect->addItem("Blue");
     // Skin Combo Box
     ui->skinColourCombo->addItem("-None-");
     ui->skinColourCombo->addItem("White");
