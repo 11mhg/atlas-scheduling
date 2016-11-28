@@ -6,7 +6,7 @@
 
 std::vector<Category*> Profile::categories;
 std::vector<Task> Profile::ptasks;
-std::vector<Task> Profile::wtasks;
+std::vector<Task*> Profile::wtasks;
 
 std::vector<Task::free_time> Scheduler::ftimes;
 std::vector<Task> Scheduler::sleep;

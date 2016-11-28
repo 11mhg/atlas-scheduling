@@ -31,6 +31,109 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
     //ui->outfitCombo->addItem("Blue Suit");
     ui->outfitCombo->addItem("Star rek");
 
+    QPixmap pixToTreasure(":/items/assets/treasure.png");
+            QIcon ButtonIcon(pixToTreasure);
+            ui->toTreasureChest->setIcon(ButtonIcon);
+            ui->toTreasureChest->setIconSize(pixToTreasure.rect().size());
+            ui->toTreasureChest->setFixedSize(pixToTreasure.rect().size());
+            ui->toTreasureChest->setIconSize(QSize(100,100));
+
+            //draws the back arrow onto corresponding pushbuttons.
+            QPixmap pixBackArrow(":/items/assets/backArrow.png");
+            QIcon ButtonIcon2(pixBackArrow);
+            ui->backCharacterButton->setIcon(ButtonIcon2);
+            ui->backCharacterButton->setIconSize(pixBackArrow.rect().size());
+            ui->backCharacterButton->setFixedSize(pixBackArrow.rect().size());
+            ui->backCharacterButton->setIconSize(QSize(100,100));
+            ui->backProfileButton->setIcon(ButtonIcon2);
+            ui->backProfileButton->setIconSize(pixBackArrow.rect().size());
+            ui->backProfileButton->setFixedSize(pixBackArrow.rect().size());
+            ui->backProfileButton->setIconSize(QSize(100,100));
+
+            //draws a lock icon onto "locked item" pushbuttons.
+            QPixmap pixLock(":/items/assets/lock.png");
+            QIcon ButtonIcon3(pixLock);
+            ui->locked1->setIcon(ButtonIcon3);
+            ui->locked1->setIconSize(pixLock.rect().size());
+            ui->locked1->setFixedSize(pixLock.rect().size());
+            ui->locked1->setIconSize(QSize(100,100));
+            ui->locked2->setIcon(ButtonIcon3);
+            ui->locked2->setIconSize(pixLock.rect().size());
+            ui->locked2->setFixedSize(pixLock.rect().size());
+            ui->locked2->setIconSize(QSize(100,100));
+            ui->locked3->setIcon(ButtonIcon3);
+            ui->locked3->setIconSize(pixLock.rect().size());
+            ui->locked3->setFixedSize(pixLock.rect().size());
+            ui->locked3->setIconSize(QSize(100,100));
+            ui->locked4->setIcon(ButtonIcon3);
+            ui->locked4->setIconSize(pixLock.rect().size());
+            ui->locked4->setFixedSize(pixLock.rect().size());
+            ui->locked4->setIconSize(QSize(100,100));
+
+            //draws the equippable items.
+            QPixmap pixCalc(":/items/assets/calculator1.png");
+            QIcon ButtonIcon4(pixCalc);
+            ui->calculator->setIcon(ButtonIcon4);
+            ui->calculator->setIconSize(pixCalc.rect().size());
+            ui->calculator->setFixedSize(pixCalc.rect().size());
+            ui->calculator->setIconSize(QSize(100,100));
+            ui->calculator->setIcon(ButtonIcon4);
+            QPixmap pixMath(":/items/assets/math.png");
+            QIcon ButtonIcon5(pixMath);
+            ui->owl->setIcon(ButtonIcon5);
+            ui->owl->setIconSize(pixMath.rect().size());
+            ui->owl->setFixedSize(pixMath.rect().size());
+            ui->owl->setIconSize(QSize(100,100));
+            ui->owl->setIcon(ButtonIcon5);
+            QPixmap pixStar(":/items/assets/star.png");
+            QIcon ButtonIcon6(pixStar);
+            ui->star->setIcon(ButtonIcon6);
+            ui->star->setIconSize(pixStar.rect().size());
+            ui->star->setFixedSize(pixStar.rect().size());
+            ui->star->setIconSize(QSize(100,100));
+            ui->star->setIcon(ButtonIcon6);
+            QPixmap pixTrophy(":/items/assets/trophy.png");
+            QIcon ButtonIcon7(pixTrophy);
+            ui->trophy->setIcon(ButtonIcon7);
+            ui->trophy->setIconSize(pixTrophy.rect().size());
+            ui->trophy->setFixedSize(pixTrophy.rect().size());
+            ui->trophy->setIconSize(QSize(100,100));
+            ui->trophy->setIcon(ButtonIcon7);
+            QPixmap pixPencil(":/items/assets/pencil.png");
+            QIcon ButtonIcon8(pixPencil);
+            ui->pencil->setIcon(ButtonIcon8);
+            ui->pencil->setIconSize(pixPencil.rect().size());
+            ui->pencil->setFixedSize(pixPencil.rect().size());
+            ui->pencil->setIconSize(QSize(100,100));
+            ui->pencil->setIcon(ButtonIcon8);
+            QPixmap pixNotebook(":/items/assets/notebook.png");
+            QIcon ButtonIcon9(pixNotebook);
+            ui->notebook->setIcon(ButtonIcon9);
+            ui->notebook->setIconSize(pixNotebook.rect().size());
+            ui->notebook->setFixedSize(pixNotebook.rect().size());
+            ui->notebook->setIconSize(QSize(100,100));
+            ui->notebook->setIcon(ButtonIcon9);
+
+            ui->calculator->setCheckable(true);
+            ui->owl->setCheckable(true);
+            ui->star->setCheckable(true);
+            ui->trophy->setCheckable(true);
+            ui->pencil->setCheckable(true);
+            ui->notebook->setCheckable(true);
+            //hides the pencil and notebook - these will be unlocked.
+            ui->pencil->setCheckable(true);
+            ui->notebook->setCheckable(true);
+            ui->notebook->hide();
+            ui->pencil->hide();
+
+            if(User.lockedItem == true){
+                 ui->notebook->show();
+                 int i = 0;
+                 if (i == 1)
+                     ui->pencil->show();
+                 i =1;
+                 User.lockedItem = false;
+            }
 
 }
 
