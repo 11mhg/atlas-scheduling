@@ -18,7 +18,6 @@ Profile::Profile(std::string User, std::string Pass)
 {
     username=User;
     password=Pass;
-    SaveUserInfo();
 }
 
 void Profile::addTask(Task newTask){
@@ -305,7 +304,6 @@ void Profile::LoadTasks()
     endTime = starTime + (60*60*24*7) + ((60*60*24) - 1);
 
     for (unsigned int i=0; i < ptasks.size(); i++){
-        cout << starTime << "    " << ptasks.at(i).task_time.start << endl;
         if (starTime < ptasks.at(i).task_time.start)
         {
             if(ptasks.at(i).task_time.end < endTime)

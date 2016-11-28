@@ -68,8 +68,8 @@ void AtlasWelcome::on_loginCheckButton_clicked()
     //If statements to check for viable login information.
     QString tempuser = ui->userIn->text();
     QString temppass = ui->pswdIn->text();
-    std::string user = tempuser.toUtf8().constData();
-    std::string pass = temppass.toUtf8().constData();
+    std::string user = tempuser.toStdString();
+    std::string pass = temppass.toStdString();
     if (user == ""){
         QMessageBox messageBox;
         messageBox.critical(0,"Acess Denied","Your user name cannot be blank");
@@ -81,16 +81,16 @@ void AtlasWelcome::on_loginCheckButton_clicked()
         //load profile
         User = Profile(user,pass);
         User.LoadTasks();
-        setCategorySelect();
         vector<Task*> weekTasks;
         for (int i = 0 ; i < User.wtasks.size();i++){
             weekTasks.push_back(&User.wtasks.at(i));
         }
         ui->calendar->loadTasks(weekTasks);
+        cout << User.wtasks.size() << " Is the size" << endl;
 
     }else{
         QMessageBox messageBox;
-        messageBox.critical(0,"Access Denied","Your username or password is wrong.");
+        messageBox.critical(0,"Access Denied","Username or Password is invalid.");
         messageBox.setFixedSize(500,200);
     }
     ui->catList->setProfile(&User);
@@ -111,7 +111,7 @@ void AtlasWelcome::on_nextProfile_clicked()
         messageBox.setFixedSize(500,200);
     }else if (UserNameExists(NewUserString)){
         QMessageBox messageBox;
-        messageBox.critical(0,"Access Denied","Your username has already been used");
+        messageBox.critical(0,"Access Denied","Username or Password is invalid");
         messageBox.setFixedSize(500,200);
     }else{
         User = Profile(NewUserString,NewPassString);
@@ -146,8 +146,8 @@ void AtlasWelcome::on_LogoutButton_clicked()
 {
     //logout, clear memory and return to welcome page.
     User.SaveUserInfo();
-    User.~Profile();
     ui->stacked->setCurrentIndex(0);
+    User = Profile();
 }
 
 void AtlasWelcome::on_SettingsButton_clicked()
@@ -210,14 +210,14 @@ void AtlasWelcome::on_saveCatButton_clicked()
         User.addTask(newTask);
     }else{
         int col;
-        if (ui->NewCatColourSelect->currentText().toUtf8().constData() == "Red")
+        if (ui->NewCatColourSelect->currentText().toStdString() == "Red")
         {
             col = 16711680;
-        }else if(ui->NewCatColourSelect->currentText().toUtf8().constData() == "Green")
+        }else if(ui->NewCatColourSelect->currentText().toStdString() == "Green")
         {
             col = 65280;
         }else{
-            col = 13408767;
+            col = 0;
         }
         Category *newCat = new Category(string(ui->newCatNameIn->text().toUtf8().constData()),col,1);
         QDateTime enddate = ui->newTaskEndSelect->dateTime();

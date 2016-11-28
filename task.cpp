@@ -272,18 +272,16 @@ string Category::fileWrite() const{
 
 QColor Category::getColour()
 {
-    if(colour == 16711680){
+    if(colour >= 1670000){
         categorycolour = red;
         return Qt::red;
-    }else if( colour == 65280){
+    }else if( colour >= 65000){
         categorycolour = green;
         return Qt::green;
     }else{
         categorycolour = mauve;
         return Qt::blue;
     }
-
-
 }
 
 int Category::getPriority() const{return priority;}
