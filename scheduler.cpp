@@ -7,8 +7,10 @@
 std::vector<Category*> Profile::categories;
 std::vector<Task> Profile::ptasks;
 std::vector<Task> Profile::wtasks;
+
 std::vector<Task::free_time> Scheduler::ftimes;
 std::vector<Task> Scheduler::sleep;
+std::vector<Task*> Scheduler::selected_tasks;
 class Profile;
 
 void Scheduler::reschedule(){
@@ -17,11 +19,14 @@ void Scheduler::reschedule(){
         Task* ptr = &(Profile::ptasks[i]);
         temp.push_back(ptr);
     }
+    Scheduler::selected_tasks = temp;
     Scheduler::reschedule(temp);
 }
 
 void Scheduler::reschedule(Task* task){
+    std::cout << "----------------------------------\nrescheduling task" << std::endl;
     std::vector<Task*> t = {task};
+    Scheduler::selected_tasks = t;
     Scheduler::reschedule(t);
 }
 
@@ -31,6 +36,7 @@ void Scheduler::reschedule(std::vector<Task>& tasks){
         Task* t = &tasks[i];
         v.push_back(t);
     }
+    Scheduler::selected_tasks = v;
     Scheduler::reschedule(v);
 }
 
@@ -42,6 +48,7 @@ void Scheduler::reschedule(Category* cat){
             temp.push_back(ptr);
         }
     }
+    Scheduler::selected_tasks = temp;
     Scheduler::reschedule(temp);
 }
 
@@ -60,6 +67,9 @@ void Scheduler::reschedule(std::vector<Task*> r_tasks){
             }
         }
     }
+    Scheduler::sleep.clear();
+    Scheduler::ftimes.clear();
+    Scheduler::selected_tasks.clear();
     //std::vector<Task> v;
     //for(int i = 0; i < r_tasks.size(); i++){
     //    Task t = *r_tasks[i];
@@ -85,10 +95,31 @@ void Scheduler::getFreeTime(){
     Scheduler::ftimes.clear();
     std::vector<Task> static_tasks;
 
-    static_tasks.reserve(Profile::wtasks.size() + 7);
+    static_tasks.reserve(Profile::wtasks.size() + Profile::ptasks.size() + 7 - selected_tasks.size());
     static_tasks.insert(static_tasks.end(), Profile::wtasks.begin(),Profile::wtasks.end());
     getSleepTimes();
     static_tasks.insert(static_tasks.end(), Scheduler::sleep.begin(), Scheduler::sleep.end());
+    //remove all elements in selected_tasks from static_tasks
+
+    //std::sort(Scheduler::selected_tasks.begin(), Scheduler::selected_tasks.end(), Task::less_than_key());
+    //std::sort(static_tasks.begin(),static_tasks.end(),Task::less_than_key());
+
+    //if not in selected_tasks, add to static_tasks
+    for(int i = 0; i < Profile::ptasks.size(); i++){
+        bool add = true;
+        for(int j = 0; j < Scheduler::selected_tasks.size();j++){
+            if(Scheduler::selected_tasks[j] == &Profile::ptasks[i]){
+                add = false;
+                break;
+
+            }
+        }
+        if(add){
+            Task t = Profile::ptasks[i];
+            static_tasks.push_back(t);
+        }
+    }
+
     std::sort(static_tasks.begin(),static_tasks.end(),Task::less_than_key());
 
     for(int i = 0;i < static_tasks.size() - 1; i++){
@@ -155,7 +186,7 @@ void Scheduler::getSleepTimes(){
         time_t a = mktime(&tm),
                b = mktime(&tm2),
                c = mktime(&tm3);
-        a -= 4*3600;
+        a -= 4*3600;//4h
         std::string s_time(ctime(&a)),
                     e_time(ctime(&b)),
                     d_time(ctime(&c));

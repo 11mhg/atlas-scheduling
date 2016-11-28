@@ -95,7 +95,7 @@ QString ExpandedTask::createString(){
 
 void ExpandedTask::on_buttonDelay_clicked()
 {
-    Scheduler().reschedule(content);
+    Scheduler::reschedule(content);
     content->TaskUser->SaveUserInfo();
     vector<Task*> weekTasks;
     Profile *User = content->TaskUser;
