@@ -55,6 +55,7 @@ public:
     std::vector<Task*> getWeeklyTasks();
     std::vector<Task*> getTasksInTime(time_t start, time_t end);
     void addTask(Task newTask);
+    void setUserName(std::string un);
 private:
     std::string Encrypt(std::string s);
     std::string Decrypt(std::string s);

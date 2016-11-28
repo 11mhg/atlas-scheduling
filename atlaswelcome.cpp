@@ -305,7 +305,19 @@ void AtlasWelcome::on_cancelSettingsButton_clicked()
 void AtlasWelcome::on_applySettingsButton_clicked()
 {
     // apply settings
-
+    if(ui->maleGenderSetting->isEnabled()){
+        User.gender = "male";
+    }else if (ui->femaleGenderSetting->isEnabled()){
+        User.gender = "female";
+    }else if (ui->otherGenderSetting->isEnabled()){
+        User.gender = "other";
+    }
+    if (ui->changeUserSelect->text().toStdString() != ""){
+        User.setUserName(ui->changeUserSelect->text().toStdString());
+    }
+    User.SaveUserInfo();
+    User.LoadInfo();
+    User.LoadTasks();
     ui->stacked->setCurrentIndex(4);
 
 }

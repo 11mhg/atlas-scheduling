@@ -62,6 +62,9 @@ void CollapsedTask::update(){
 }
 
 void CollapsedTask::paintEvent(QPaintEvent *pe){
+    if(!content->getCategory()->isVisible()){
+        return;
+    }
     QString output = createString();
     QRect drawingRect = QRect(pe->rect().x(), pe->rect().y(), this->geometry().width(), this->geometry().height());
     QPainter painter(this);
@@ -74,6 +77,9 @@ void CollapsedTask::paintEvent(QPaintEvent *pe){
 }
 
 void CollapsedTask::enterEvent(QEvent* /*event*/){
+    if(!content->getCategory()->isVisible()){
+        return;
+    }
     currentExpanded = new ExpandedTask(parent, content, this->geometry().left(), this->geometry().top());
     currentExpanded->show();
 }
