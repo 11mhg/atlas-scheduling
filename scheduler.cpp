@@ -24,7 +24,6 @@ void Scheduler::reschedule(){
 }
 
 void Scheduler::reschedule(Task* task){
-    std::cout << "----------------------------------\nrescheduling task" << std::endl;
     std::vector<Task*> t = {task};
     Scheduler::selected_tasks = t;
     Scheduler::reschedule(t);
