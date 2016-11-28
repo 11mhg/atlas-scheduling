@@ -103,8 +103,8 @@ void AtlasWelcome::on_nextProfile_clicked()
     //Creates New Profile
     QString tempNewUser = ui->userProfileIn->text();
     QString tempPass = ui->PswdProfileIn->text();
-    std::string NewUserString = tempNewUser.toUtf8().constData();
-    std::string NewPassString = tempPass.toUtf8().constData();
+    std::string NewUserString = tempNewUser.toStdString();
+    std::string NewPassString = tempPass.toStdString();
     if (NewUserString == ""){
         QMessageBox messageBox;
         messageBox.critical(0,"Wrong User Name","Your username cannot be blank");
@@ -115,15 +115,9 @@ void AtlasWelcome::on_nextProfile_clicked()
         messageBox.setFixedSize(500,200);
     }else{
         User = Profile(NewUserString,NewPassString);
-        User.name = ui->nameProfileIn->text().toUtf8().constData();
-        if (ui->femaleSelect->isEnabled()){
-            User.gender = "female";
-        }else if(ui->maleSelect->isEnabled()){
-            User.gender = "male";
-        }else{
-            User.gender = "other";
-        }
-        User.name = ui->DoBSelect->dateTime().toString().toUtf8().constData();
+        User.name = ui->nameProfileIn->text().toStdString();
+
+        User.name = ui->DoBSelect->dateTime().toString().toStdString();
 
         User.SaveUserInfo();
         User.LoadTasks();
@@ -162,6 +156,7 @@ void AtlasWelcome::on_addTaskButton_clicked()
     ui->newTaskNameIn->setText("New Task");
     ui->newCatNameIn->setText("");
     ui->newTaskStartSelect->setDateTime(QDateTime::currentDateTime());
+
     ui->newTaskEndSelect->setDateTime((QDateTime::currentDateTime()).addSecs(60*60*2));
     setCategorySelect();
     //open up add task button
@@ -199,10 +194,10 @@ void AtlasWelcome::on_saveCatButton_clicked()
 {
 
     // this case will have to create and save a new category and task.
-    if (ui->newCatNameIn->text().toUtf8().constData() == ""){
+    if (ui->newCatNameIn->text().toStdString() == ""){
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
-        std::string endd = enddate.toString().toUtf8().constData();
+        std::string endd = enddate.toString().toStdString();
         Category *defCat;
         for (uint i = 0 ; i < User.categories.size(); i++){
             if (User.categories.at(i)->getName() == "Default")
@@ -211,6 +206,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
             }
         }
         Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,defCat->getName(),&User);
+        newTask.setComplete(false);
         User.addTask(newTask);
     }else{
         int col;
@@ -226,9 +222,10 @@ void AtlasWelcome::on_saveCatButton_clicked()
         Category *newCat = new Category(string(ui->newCatNameIn->text().toUtf8().constData()),col,1);
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
-        std::string endd = enddate.toString().toUtf8().constData();
+        std::string endd = enddate.toString().toStdString();
         User.categories.push_back(newCat);
         Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(), enddate,newCat->getName(),&User);
+        newTask.setComplete(false);
         User.addTask(newTask);
     }
     User.UpdateSave();

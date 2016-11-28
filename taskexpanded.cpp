@@ -4,7 +4,7 @@
 
 #include "taskexpanded.h"
 #include "ui_taskexpanded.h"
-
+#include "weeklycalendar.h"
 #include "scheduler.h"
 
 ExpandedTask::ExpandedTask(QWidget *parent) :
@@ -97,12 +97,18 @@ void ExpandedTask::on_buttonDelay_clicked()
 {
     Scheduler().reschedule(content);
     content->TaskUser->SaveUserInfo();
+    vector<Task*> weekTasks;
+    Profile *User = content->TaskUser;
+    for (int i = 0 ; i < content->TaskUser->wtasks.size();i++){
+        weekTasks.push_back(&User->wtasks.at(i));
+    }
+    dynamic_cast<WeeklyCalendar*>(parent)->loadTasks(weekTasks);
     this->close();
     parent->update();
 }
 
 void ExpandedTask::on_buttonComplete_clicked()
 {
-    content->setComplete();
+    content->setComplete(true);
     parent->update();
 }

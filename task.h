@@ -58,7 +58,7 @@ public:
     Task(string& in,Profile *User);
 
     bool getComplete() const;
-    void setComplete();
+    void setComplete(bool t);
     string getName() const;
     string getDue() const;
     int getDrawingDay() const;

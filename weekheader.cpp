@@ -123,6 +123,7 @@ WeekHeader::~WeekHeader()
 void WeekHeader::on_backButton_clicked()
 {
     currentUser->currentWeek -= 7*24*60*60;
+    currentUser->SaveUserInfo();
     currentUser->LoadTasks();
     vector<Task*> weekTasks;
     for (int i = 0 ; i < currentUser->wtasks.size();i++){
@@ -135,6 +136,7 @@ void WeekHeader::on_backButton_clicked()
 void WeekHeader::on_forwardButton_clicked()
 {
     currentUser->currentWeek += 7*24*60*60;
+    currentUser->SaveUserInfo();
     currentUser->LoadTasks();
     vector<Task*> weekTasks;
     for (int i = 0 ; i < currentUser->wtasks.size();i++){
