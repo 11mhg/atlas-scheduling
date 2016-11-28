@@ -10,71 +10,27 @@ std::vector<Task> Profile::wtasks;
 
 std::vector<Task::free_time> Scheduler::ftimes;
 std::vector<Task> Scheduler::sleep;
-std::vector<Task*> Scheduler::selected_tasks;
+Task* Scheduler::selected_task;
 class Profile;
 
-void Scheduler::reschedule(){
-    std::vector<Task*> temp;
-    for(int i = 0; i < Profile::ptasks.size(); i++){
-        Task* ptr = &(Profile::ptasks[i]);
-        temp.push_back(ptr);
-    }
-    Scheduler::selected_tasks = temp;
-    Scheduler::reschedule(temp);
-}
-
 void Scheduler::reschedule(Task* task){
-    std::vector<Task*> t = {task};
-    Scheduler::selected_tasks = t;
-    Scheduler::reschedule(t);
-}
-
-void Scheduler::reschedule(std::vector<Task>& tasks){
-    std::vector<Task*> v;
-    for(int i = 0; i < tasks.size(); i++){
-        Task* t = &tasks[i];
-        v.push_back(t);
-    }
-    Scheduler::selected_tasks = v;
-    Scheduler::reschedule(v);
-}
-
-void Scheduler::reschedule(Category* cat){
-    std::vector<Task*> temp;
-    for(int i = 0; i < Profile::ptasks.size(); i++){
-        if( (Profile::ptasks[i].getCategory())->getPriority() == cat->getPriority()){
-            Task* ptr = &(Profile::ptasks[i]);
-            temp.push_back(ptr);
-        }
-    }
-    Scheduler::selected_tasks = temp;
-    Scheduler::reschedule(temp);
-}
-
-void Scheduler::reschedule(std::vector<Task*> r_tasks){
-    std::sort(r_tasks.begin(), r_tasks.end());
+    task->print();
+    Scheduler::selected_task = task;
     getFreeTime();
-    for(int i = 0; i < r_tasks.size(); i++){
-        for(int j = 0; j < Scheduler::ftimes.size(); j++){
-            if(Scheduler::ftimes[j].start >= Scheduler::ftimes[j].end){
-                Scheduler::ftimes.erase(Scheduler::ftimes.begin()+j);
-                j = 0;
-            }
-            if(fits(r_tasks[i], &Scheduler::ftimes[j])){
-                setTime(r_tasks[i], &Scheduler::ftimes[j]);
-                break;
-            }
+    for(int j = 0; j < Scheduler::ftimes.size(); j++){
+        if(fits(task, &Scheduler::ftimes[j])){
+            setTime(task, &Scheduler::ftimes[j]);
+            break;
         }
     }
     Scheduler::sleep.clear();
     Scheduler::ftimes.clear();
-    Scheduler::selected_tasks.clear();
-    //std::vector<Task> v;
-    //for(int i = 0; i < r_tasks.size(); i++){
-    //    Task t = *r_tasks[i];
-    //    v.push_back(t);
-    //}
-    //Profile::ptasks = v;
+    task->print();
+    std::cout << "--------------" << std::endl;
+    for(int i = 0; i < Profile::wtasks.size(); i++){
+        Profile::wtasks[i]->print();
+    }
+
 }
 
 void Scheduler::setTime(Task* task,Task::free_time* ft){
@@ -89,33 +45,23 @@ bool Scheduler::fits(const Task* task, const Task::free_time* ft){
 
 void Scheduler::getFreeTime(){
     //starts from chrono::now(), goes until things are done
+    getSleepTimes();
 
     time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     Scheduler::ftimes.clear();
     std::vector<Task> static_tasks;
 
-    static_tasks.reserve(Profile::wtasks.size() + Profile::ptasks.size() + 7 - selected_tasks.size());
-    static_tasks.insert(static_tasks.end(), Profile::wtasks.begin(),Profile::wtasks.end());
-    getSleepTimes();
+    static_tasks.reserve(Profile::ptasks.size() + 6);
+    static_tasks.insert(static_tasks.end(), Profile::ptasks.begin(),  Profile::ptasks.end());
     static_tasks.insert(static_tasks.end(), Scheduler::sleep.begin(), Scheduler::sleep.end());
-    //remove all elements in selected_tasks from static_tasks
 
-    //std::sort(Scheduler::selected_tasks.begin(), Scheduler::selected_tasks.end(), Task::less_than_key());
-    //std::sort(static_tasks.begin(),static_tasks.end(),Task::less_than_key());
-
-    //if not in selected_tasks, add to static_tasks
-    for(int i = 0; i < Profile::ptasks.size(); i++){
-        bool add = true;
-        for(int j = 0; j < Scheduler::selected_tasks.size();j++){
-            if(Scheduler::selected_tasks[j] == &Profile::ptasks[i]){
-                add = false;
-                break;
-
-            }
-        }
-        if(add){
-            Task t = Profile::ptasks[i];
-            static_tasks.push_back(t);
+    for(int i = 0; i < static_tasks.size(); i++){
+        //Scheduler::selected_task->print();
+        //std::cout << "------" << std::endl;
+        //static_tasks[i].print();
+        if(*Scheduler::selected_task == static_tasks[i]){
+            std::swap(static_tasks[i], static_tasks[static_tasks.size() - 1]);
+            static_tasks.pop_back();
         }
     }
 
@@ -134,20 +80,20 @@ void Scheduler::getFreeTime(){
 
     for(i -= 1; i > -1;i--){
         if(Scheduler::ftimes[i].end < now){//already ended
-
             Scheduler::ftimes.erase(Scheduler::ftimes.begin() + i);//remove unusable time periods
         }
         else if(Scheduler::ftimes[i].start < now && Scheduler::ftimes[i].end > now){//now is during period
-
             Scheduler::ftimes[i].start = now;
             Scheduler::ftimes[i].duration = difftime(Scheduler::ftimes[i].end,Scheduler::ftimes[i].start);
         }
-        else{//hasn't started yet
-
-        }
     }
 
-
+    std::cout << "----FTIMES START----" << std::endl;
+    for(int i = 0; i < ftimes.size(); i++){
+        ftimes[i].print();
+        std::cout << std::endl;
+    }
+    std::cout << "-----FTIMES END-----" << std::endl;
 }
 
 void Scheduler::restartWeek(struct std::tm* tm){

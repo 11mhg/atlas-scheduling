@@ -7,7 +7,7 @@ private:
     Scheduler();
     static std::vector<Task::free_time> ftimes;
     static std::vector<Task> sleep;
-    static std::vector<Task*> selected_tasks;
+    static Task* selected_task;
     static void getFreeTime();
     static void setTime(Task*,Task::free_time*);
     static bool fits(const Task*, const Task::free_time*);
@@ -15,11 +15,7 @@ private:
     static void getSleepTimes();
 
 public:
-    static void reschedule();
     static void reschedule(Task*);
-    static void reschedule(std::vector<Task*>);
-    static void reschedule(Category*);
-    static void reschedule(std::vector<Task>&);
 
     /* CONSTRAINTS
      * priority 0 categories cannot be rescheduled

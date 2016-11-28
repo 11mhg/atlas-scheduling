@@ -95,6 +95,7 @@ QString ExpandedTask::createString(){
 
 void ExpandedTask::on_buttonDelay_clicked()
 {
+    //cout << content << endl;
     Scheduler::reschedule(content);
     content->TaskUser->SaveUserInfo();
     dynamic_cast<WeeklyCalendar*>(parent)->loadTasks(content->TaskUser->wtasks);
