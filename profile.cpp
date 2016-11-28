@@ -38,7 +38,7 @@ std::vector<Task*> Profile::getTasksInTime(time_t start,time_t end){
         }
     }
     for(int i = 0; i < wtasks.size(); i++){
-        Task* ptr = &wtasks[i];
+        Task* ptr = wtasks[i];
         v.push_back(ptr);
     }
     return v;
@@ -351,7 +351,7 @@ void Profile::LoadTasks()
         {
             if(ptasks.at(i).task_time.end < endTime)
             {
-                wtasks.push_back(ptasks.at(i));
+                wtasks.push_back(&ptasks.at(i));
             }
         }
     }

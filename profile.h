@@ -30,7 +30,7 @@ public:
     };
     static std::vector<Category*> categories;
     static std::vector<Task> ptasks;//user defined tasks
-    static std::vector<Task> wtasks;//weekly tasks
+    static std::vector<Task*> wtasks;//weekly tasks
 
     time_t currentWeek; //really the second you log in...shhhhhhhh
     void SetTasks(vector<Task> t);

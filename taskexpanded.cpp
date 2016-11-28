@@ -97,12 +97,7 @@ void ExpandedTask::on_buttonDelay_clicked()
 {
     Scheduler::reschedule(content);
     content->TaskUser->SaveUserInfo();
-    vector<Task*> weekTasks;
-    Profile *User = content->TaskUser;
-    for (int i = 0 ; i < content->TaskUser->wtasks.size();i++){
-        weekTasks.push_back(&User->wtasks.at(i));
-    }
-    dynamic_cast<WeeklyCalendar*>(parent)->loadTasks(weekTasks);
+    dynamic_cast<WeeklyCalendar*>(parent)->loadTasks(content->TaskUser->wtasks);
     this->close();
     parent->update();
 }

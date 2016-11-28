@@ -63,11 +63,7 @@ void AtlasWelcome::on_loginCheckButton_clicked()
         //load profile
         User = Profile(user,pass);
         User.LoadTasks();
-        vector<Task*> weekTasks;
-        for (int i = 0 ; i < User.wtasks.size();i++){
-            weekTasks.push_back(&User.wtasks.at(i));
-        }
-        ui->calendar->loadTasks(weekTasks);
+        ui->calendar->loadTasks(User.wtasks);
 
     }else{
         QMessageBox messageBox;
@@ -222,11 +218,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
     User.UpdateSave();
     User.LoadTasks();
     ui->stacked->setCurrentIndex(4);
-    vector<Task*> weekTasks;
-    for (int i = 0 ; i < User.wtasks.size();i++){
-        weekTasks.push_back(&User.wtasks.at(i));
-    }
-    ui->calendar->loadTasks(weekTasks);
+    ui->calendar->loadTasks(User.wtasks);
     ui->catList->update();
     setCategorySelect();
     ui->pswdIn->clear();
@@ -270,11 +262,7 @@ void AtlasWelcome::on_deleteTaskButton_clicked()
     User.SetTasks(willReplace);
     User.SaveUserInfo();
     User.LoadTasks();
-    vector<Task*> weekTasks;
-    for (int i = 0 ; i < User.wtasks.size();i++){
-        weekTasks.push_back(&User.wtasks.at(i));
-    }
-    ui->calendar->loadTasks(weekTasks);
+    ui->calendar->loadTasks(User.wtasks);
     ui->stacked->setCurrentIndex(4);
 }
 
