@@ -53,6 +53,7 @@ Profile::Profile()
     username="";
     password="";
     currentWeek = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    lockedItem = false;
 }
 
 /**
@@ -63,6 +64,7 @@ Profile::Profile(std::string User, std::string Pass)
 {
     username=User;
     password=Pass;
+    lockedItem = false;
     currentWeek = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 }
 
@@ -111,7 +113,7 @@ void Profile::SaveUserInfo()
     if (pFile.is_open())
     {
         pFile << output << '\n';
-        std::string info = Encrypt(name+","+gender+","+DoB+","+characterSelect+","+std::to_string(Stats.math)+","+std::to_string(Stats.productivity)+",");
+        std::string info = Encrypt(name+","+gender+","+DoB+","+characterSelect+","+std::to_string(Stats.timeManagement)+","+std::to_string(Stats.productivity)+",");
         pFile << info << '\n';
         pFile << "Category" << '\n';
         std::string cat;
@@ -278,7 +280,7 @@ void Profile::LoadInfo()
             this->characterSelect = inf;
             break;
         case 4:
-            this->Stats.math = atoi(inf.c_str());
+            this->Stats.timeManagement = atoi(inf.c_str());
             break;
         case 5:
             this->Stats.productivity = atoi(inf.c_str());

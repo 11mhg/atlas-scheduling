@@ -59,6 +59,7 @@ public:
 
     bool getComplete() const;
     void setComplete(bool t);
+    void increment();
     string getName() const;
     string getDue() const;
     int getDrawingDay() const;
@@ -68,6 +69,7 @@ public:
     pair<int, int> getDrawingEnd() const;
     string getDuration() const;
     Category* getCategory() const;
+    time_t getDueTime() const;
 
     string fileWrite() const;
 

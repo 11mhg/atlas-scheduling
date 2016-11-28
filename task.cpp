@@ -2,6 +2,9 @@
 #include <ctime>
 #include <iomanip>
 #include <task.h>
+
+#include <profile.h>
+#include <QMessageBox>
 #include <atlaswelcome.h>
 
 Task::Task(string& name, string& start, string& end, string& due, string& catName,Profile *User):
@@ -137,6 +140,33 @@ bool Task::getComplete() const{ return completeFlag; }
 
 void Task::setComplete(bool t) {
     completeFlag = t;
+    increment();
+}
+
+void Task::increment(){
+
+    QMessageBox msgBox;
+    msgBox.setText("Congratulations, you have unlocked new items in your treasure chest!");
+
+    if (TaskUser->Stats.productivity==100){
+        msgBox.exec();
+        //TODO unlock item here
+        //TaskUser->unlockItem();
+        TaskUser->lockedItem=true;
+        TaskUser->Stats.productivity=0;
+    }
+    TaskUser->Stats.productivity+=50;
+
+    if(task_time.end<due){
+        if (TaskUser->Stats.timeManagement==100){
+            msgBox.exec();
+            //TODO unlock item here
+            //TaskUser->unlockItem();
+            TaskUser->lockedItem=true;
+            TaskUser->Stats.timeManagement=0;
+        }
+        TaskUser->Stats.timeManagement+=50;
+    }
 }
 
 Category* Task::getCategory() const{ return category; }

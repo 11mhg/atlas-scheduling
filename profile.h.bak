@@ -25,8 +25,9 @@ class Profile
 {
 public:
     struct stats{
+        int math;
         int productivity;
-        int timeManagement;
+        int science;
     };
     static std::vector<Category*> categories;
     static std::vector<Task> ptasks;//user defined tasks
@@ -36,7 +37,6 @@ public:
     void SetTasks(vector<Task> t);
     std::map<std::string,std::string> settings;
     Profile(std::string User, std::string Pass);
-    bool lockedItem;
     void SaveUserInfo();
     void UpdateSave();
     void LogOut();

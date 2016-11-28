@@ -8,6 +8,10 @@ AtlasWelcome::AtlasWelcome(QWidget *parent) :
     ui(new Ui::AtlasWelcome)
 {
     ui->setupUi(this);
+
+    ui->NewCatColourSelect->addItem("Red");
+    ui->NewCatColourSelect->addItem("Green");
+    ui->NewCatColourSelect->addItem("Blue");
     // Skin Combo Box
     ui->skinColourCombo->addItem("-None-");
     ui->skinColourCombo->addItem("White");
@@ -81,8 +85,8 @@ void AtlasWelcome::on_nextProfile_clicked()
     //Creates New Profile
     QString tempNewUser = ui->userProfileIn->text();
     QString tempPass = ui->PswdProfileIn->text();
-    std::string NewUserString = tempNewUser.toUtf8().constData();
-    std::string NewPassString = tempPass.toUtf8().constData();
+    std::string NewUserString = tempNewUser.toStdString();
+    std::string NewPassString = tempPass.toStdString();
     if (NewUserString == ""){
         QMessageBox messageBox;
         messageBox.critical(0,"Wrong User Name","Your username cannot be blank");
@@ -93,15 +97,9 @@ void AtlasWelcome::on_nextProfile_clicked()
         messageBox.setFixedSize(500,200);
     }else{
         User = Profile(NewUserString,NewPassString);
-        User.name = ui->nameProfileIn->text().toUtf8().constData();
-        if (ui->femaleSelect->isEnabled()){
-            User.gender = "female";
-        }else if(ui->maleSelect->isEnabled()){
-            User.gender = "male";
-        }else{
-            User.gender = "other";
-        }
-        User.name = ui->DoBSelect->dateTime().toString().toUtf8().constData();
+        User.name = ui->nameProfileIn->text().toStdString();
+
+        User.name = ui->DoBSelect->dateTime().toString().toStdString();
 
         User.SaveUserInfo();
         User.LoadTasks();
@@ -177,10 +175,10 @@ void AtlasWelcome::on_saveCatButton_clicked()
 {
 
     // this case will have to create and save a new category and task.
-    if (ui->newCatNameIn->text().toUtf8().constData() == ""){
+    if (ui->newCatNameIn->text().toStdString() == ""){
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
-        std::string endd = enddate.toString().toUtf8().constData();
+        std::string endd = enddate.toString().toStdString();
         Category *defCat;
         for (uint i = 0 ; i < User.categories.size(); i++){
             if (User.categories.at(i)->getName() == "Default")
@@ -189,6 +187,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
             }
         }
         Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,defCat->getName(),&User);
+        newTask.setComplete(false);
         User.addTask(newTask);
     }else{
         int col;
@@ -204,9 +203,10 @@ void AtlasWelcome::on_saveCatButton_clicked()
         Category *newCat = new Category(string(ui->newCatNameIn->text().toUtf8().constData()),col,1);
         QDateTime enddate = ui->newTaskEndSelect->dateTime();
         enddate.addDays(7);
-        std::string endd = enddate.toString().toUtf8().constData();
+        std::string endd = enddate.toString().toStdString();
         User.categories.push_back(newCat);
         Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(), enddate,newCat->getName(),&User);
+        newTask.setComplete(false);
         User.addTask(newTask);
     }
     User.UpdateSave();
@@ -217,6 +217,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
         weekTasks.push_back(&User.wtasks.at(i));
     }
     ui->calendar->loadTasks(weekTasks);
+    ui->catList->update();
     setCategorySelect();
     ui->pswdIn->clear();
 }
@@ -299,6 +300,8 @@ void AtlasWelcome::on_applySettingsButton_clicked()
     User.SaveUserInfo();
     User.LoadInfo();
     User.LoadTasks();
+    ui->usernameDisplay->setText(ui->changeUserSelect->text());
+    ui->changeUserSelect->clear();
     ui->stacked->setCurrentIndex(4);
 
 }
@@ -336,6 +339,7 @@ void AtlasWelcome::on_registrationButton_2_clicked()
 void AtlasWelcome::on_backProfileButton_clicked()
 {
     ui->stat1Progress->valueChanged(50);
+    ui->stacked->setCurrentIndex(5);
 }
 
 
@@ -434,6 +438,143 @@ void AtlasWelcome::on_characterSelect5_2_clicked()
 {
     ui->avatarPreviewStack_3->setCurrentIndex(4);
 }
+
+void AtlasWelcome::on_toTreasureChest_clicked()
+{
+    ui->stacked->setCurrentIndex(6);
+}
+
+void AtlasWelcome::on_backCharacterButton_clicked()
+{
+    ui->stacked->setCurrentIndex(4);
+}
+
+void AtlasWelcome::on_calculator_clicked(bool checked)
+{
+    if (checked == true){
+        QPixmap calcEquip("C:/Users/Daniel/Pictures/items/calculator1.png");
+        ui->handsEquip->setPixmap(calcEquip.scaled(75,75,Qt::KeepAspectRatio));
+        ui->handsEquip->setAlignment(Qt::AlignCenter);
+        ui->equip1->setPixmap(calcEquip.scaled(60,60,Qt::KeepAspectRatio));
+        ui->equip1->setAlignment(Qt::AlignCenter);
+        ui->treasureStatus->setText("Calculator was equipped!");
+    }
+    else{
+        ui->handsEquip->clear();
+        ui->equip1->clear();
+        ui->treasureStatus->setText("");
+    }
+
+}
+
+void AtlasWelcome::on_owl_clicked(bool checked)
+{
+    if (checked == true){
+        QPixmap owlEquip("C:/Users/Daniel/Pictures/items/math.png");
+        ui->shoulderEquip->setPixmap(owlEquip.scaled(60,60,Qt::KeepAspectRatio));
+        ui->shoulderEquip->setAlignment(Qt::AlignCenter);
+        ui->shoulder->setPixmap(owlEquip.scaled(60,60,Qt::KeepAspectRatio));
+        ui->shoulder->setAlignment(Qt::AlignCenter);
+        ui->equip2->setPixmap(owlEquip.scaled(50,50,Qt::KeepAspectRatio));
+        ui->equip2->setAlignment(Qt::AlignCenter);
+        ui->treasureStatus->setText("The Wise Owl of Math was equipped!");
+    }
+    else{
+        ui->shoulderEquip->clear();
+        ui->equip2->clear();
+        ui->shoulder->clear();
+        ui->treasureStatus->setText("");
+    }
+}
+
+void AtlasWelcome::on_star_clicked(bool checked)
+{
+    if (checked == true){
+        QPixmap starEquip("C:/Users/Daniel/Pictures/items/star.png");
+        ui->chestEquip->setPixmap(starEquip.scaled(60,60,Qt::KeepAspectRatio));
+        ui->chestEquip->setAlignment(Qt::AlignCenter);
+        ui->equip3->setPixmap(starEquip.scaled(50,50,Qt::KeepAspectRatio));
+        ui->equip3->setAlignment(Qt::AlignCenter);
+        ui->treasureStatus->setText("Well, at least you tried!");
+    }
+    else{
+        ui->chestEquip->clear();
+        ui->equip3->clear();
+        ui->treasureStatus->setText("");
+    }
+}
+
+void AtlasWelcome::on_trophy_clicked(bool checked)
+{
+    if (checked == true){
+        QPixmap trophyEquip("C:/Users/Daniel/Pictures/items/trophy.png");
+        ui->handsEquip->setPixmap(trophyEquip.scaled(75,75,Qt::KeepAspectRatio));
+        ui->handsEquip->setAlignment(Qt::AlignCenter);
+        ui->equip1->setPixmap(trophyEquip.scaled(50,50,Qt::KeepAspectRatio));
+        ui->equip1->setAlignment(Qt::AlignCenter);
+        ui->treasureStatus->setText("Trophy was equipped!");
+    }
+    else{
+        ui->handsEquip->clear();
+        ui->equip1->clear();
+        ui->treasureStatus->setText("");
+    }
+}
+
+void AtlasWelcome::on_locked1_clicked()
+{
+    ui->treasureStatus->setText("This item is locked - Get your life together.");
+}
+
+void AtlasWelcome::on_locked2_clicked()
+{
+    ui->treasureStatus->setText("This item is locked - Get your life together.");
+}
+
+void AtlasWelcome::on_locked3_clicked()
+{
+    ui->treasureStatus->setText("This item is locked - Get your life together.");
+}
+
+void AtlasWelcome::on_locked4_clicked()
+{
+    ui->treasureStatus->setText("This item is locked - Get your life together.");
+}
+
+void AtlasWelcome::on_pencil_clicked(bool checked)
+{
+    if (checked == true){
+        QPixmap pencilEquip("C:/Users/Daniel/Pictures/items/pencil.png");
+        ui->handsEquip->setPixmap(pencilEquip.scaled(75,75,Qt::KeepAspectRatio));
+        ui->handsEquip->setAlignment(Qt::AlignCenter);
+        ui->equip1->setPixmap(pencilEquip.scaled(50,50,Qt::KeepAspectRatio));
+        ui->equip1->setAlignment(Qt::AlignCenter);
+        ui->treasureStatus->setText("Pencil was equipped!");
+    }
+    else{
+        ui->handsEquip->clear();
+        ui->equip1->clear();
+        ui->treasureStatus->setText("");
+    }
+
+}
+
+void AtlasWelcome::on_notebook_clicked(bool checked)
+{
+    if (checked == true){
+        QPixmap notebookEquip("C:/Users/Daniel/Pictures/items/notebook.png");
+        ui->handsEquip->setPixmap(notebookEquip.scaled(75,75,Qt::KeepAspectRatio));
+        ui->handsEquip->setAlignment(Qt::AlignCenter);
+        ui->equip1->setPixmap(notebookEquip.scaled(50,50,Qt::KeepAspectRatio));
+        ui->equip1->setAlignment(Qt::AlignCenter);
+        ui->treasureStatus->setText("Notebook was equipped!");
+    }
+    else{
+        ui->handsEquip->clear();
+        ui->equip1->clear();
+        ui->treasureStatus->setText("");
+    }
+
 
 void AtlasWelcome::on_skinColourCombo_currentIndexChanged(int index)
 {
@@ -718,4 +859,3 @@ void AtlasWelcome::on_outfitCombo_currentIndexChanged(int index)
 
 }
 }
-

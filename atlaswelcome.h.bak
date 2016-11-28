@@ -104,6 +104,36 @@ private slots:
     void on_characterSelect5_2_clicked();
 
     void setCategorySelect();
+	void on_toTreasureChest_clicked();
+
+    void on_backCharacterButton_clicked();
+
+    void on_calculator_clicked(bool checked);
+
+    void on_owl_clicked(bool checked);
+
+    void on_star_clicked(bool checked);
+
+    void on_trophy_clicked(bool checked);
+
+    void on_locked1_clicked();
+
+    void on_locked2_clicked();
+
+    void on_locked3_clicked();
+
+    void on_locked4_clicked();
+
+    void on_pencil_clicked(bool checked);
+
+    void on_notebook_clicked(bool checked);
+
+    void on_skinColourCombo_currentIndexChanged(int index);
+
+    void on_hairstyleCombo_currentIndexChanged(int index);
+
+    void on_outfitCombo_currentIndexChanged(int index);
+
 };
 
 #endif // ATLASWELCOME_H

@@ -2,8 +2,25 @@
 #include <ctime>
 #include <iomanip>
 #include <task.h>
+
+#include <profile.h>
+#include <QMessageBox>
 #include <atlaswelcome.h>
 
+Task::Task(string& name, string& start, string& end, string& due, string& catName,Profile *User):
+    task_name(name),
+    start_date_time(start),
+    end_date_time(end),
+    due_date_time(due),
+    completeFlag(false){
+    try{
+        category = findCategory(catName);
+    }catch(TaskException e){
+        cout << e.what() << endl;
+    }
+    TaskUser = User;
+    setTimes();
+}
 Task::Task(string& name, string& start, string& end, string& due, string& catName):
     task_name(name),
     start_date_time(start),
@@ -18,7 +35,7 @@ Task::Task(string& name, string& start, string& end, string& due, string& catNam
     setTimes();
 }
 
-Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& catName):
+Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& catName,Profile *User):
     task_name(name),
     completeFlag(false){
 
@@ -39,11 +56,14 @@ Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& 
     }catch(TaskException e){
         cout << e.what() << endl;
     }
+    TaskUser = User;
     setTimes();
 }
 
-Task::Task(string& in){
+Task::Task(string& in, Profile *User):
+    completeFlag(false){
     string inputs[5];
+    TaskUser = User;
     int i = 0;
     size_t pos = in.find(',');
     while(pos != string::npos && i < 6){
@@ -120,6 +140,33 @@ bool Task::getComplete() const{ return completeFlag; }
 
 void Task::setComplete() {
     completeFlag = true;
+    increment();
+}
+
+void Task::increment(){
+
+    QMessageBox msgBox;
+    msgBox.setText("Congratulations, you have unlocked new items in your treasure chest!");
+
+    if (TaskUser->Stats.productivity==100){
+        msgBox.exec();
+        //TODO unlock item here
+        //TaskUser->unlockItem();
+        TaskUser->lockedItem=true;
+        TaskUser->Stats.productivity=0;
+    }
+    TaskUser->Stats.productivity+=50;
+
+    if(task_time.end<due){
+        if (TaskUser->Stats.timeManagement==100){
+            msgBox.exec();
+            //TODO unlock item here
+            //TaskUser->unlockItem();
+            TaskUser->lockedItem=true;
+            TaskUser->Stats.timeManagement=0;
+        }
+        TaskUser->Stats.timeManagement+=50;
+    }
 }
 
 Category* Task::getCategory() const{ return category; }
@@ -203,6 +250,21 @@ bool Task::time_period::operator<( const time_period& right){
     else{
         return start < right.start;
     }
+}
+
+void Task::print(){
+    std::string s_start(ctime(&task_time.start)),
+                s_end(ctime(&task_time.end));
+    std::cout << "name: " << task_name << std::endl
+              << "start: " << s_start
+              << "end:   " << s_end;
+}
+
+void Task::time_period::print(){
+    std::string s_start(ctime(&start)),
+                s_end(ctime(&end));
+    std::cout << "start: " << s_start
+              << "end:   " << s_end;
 }
 
 TaskException::TaskException(string msg) : message(msg){}
@@ -292,3 +354,5 @@ string Category::getName() const{return catName;}
 void Category::changeVisible(){ visible = !visible; }
 
 bool Category::isVisible() const { return visible; }
+
+void Category::setVisible(bool newValue) { visible = newValue; }
