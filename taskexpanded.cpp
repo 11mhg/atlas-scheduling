@@ -95,9 +95,12 @@ void ExpandedTask::on_buttonDelay_clicked()
 {
     Scheduler().reschedule(content);
     content->TaskUser->SaveUserInfo();
+    this->close();
+    parent->update();
 }
 
 void ExpandedTask::on_buttonComplete_clicked()
 {
     content->setComplete();
+    parent->update();
 }
