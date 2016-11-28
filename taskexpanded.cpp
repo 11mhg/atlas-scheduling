@@ -1,5 +1,6 @@
 #include <QPainter>
 #include <QPaintEvent>
+#include <QPushButton>
 
 #include "taskexpanded.h"
 #include "ui_taskexpanded.h"
@@ -18,23 +19,21 @@ ExpandedTask::ExpandedTask(QWidget *parent, Task* newContent, int origin_x, int 
     ui(new Ui::TaskExpanded)
 {
     string statusText;
-    QPalette tempPalette;
+    QPalette tempPalette(palette());
     this->content = newContent;
     ui->setupUi(this);
     this->parent = parent;
 
-    ui->labelName->setText(QString::fromStdString(content->getName()));
-    tempPalette = ui->labelName->palette();
-    tempPalette.setColor(ui->labelName->backgroundRole(), content->getCategory()->getColour());
-    ui->labelName->setPalette(tempPalette);
+    string styleString = "QLabel { background-color :";
+    styleString += content->getCategory()->getColour() == Qt::red ? "red" : content->getCategory()->getColour() == Qt::green ? "light green" : "blue";
+    styleString += "}";
 
-    tempPalette = ui->buttonComplete->palette();
-    tempPalette.setColor(ui->buttonComplete->backgroundRole(), Qt::white);
-    ui->buttonComplete->setPalette(tempPalette);
+    ui->labelName->setStyleSheet(QString::fromStdString(styleString));
+    ui->labelTime->setStyleSheet(QString::fromStdString(styleString));
+    ui->labelStatus->setStyleSheet(QString::fromStdString(styleString));
 
-    tempPalette = ui->buttonDelay->palette();
-    tempPalette.setColor(ui->buttonDelay->backgroundRole(), Qt::white);
-    ui->buttonDelay->setPalette(tempPalette);
+    ui->buttonComplete->setStyleSheet("QPushButton { background-color : white; }");
+    ui->buttonDelay->setStyleSheet("QPushButton { background-color : white; }");
 
     if(content->getComplete()){
         statusText = "Complete";
@@ -43,14 +42,8 @@ ExpandedTask::ExpandedTask(QWidget *parent, Task* newContent, int origin_x, int 
         statusText = chrono::system_clock::to_time_t(chrono::system_clock::now()) > content->task_time.end ? "Late" : "Pending";
     }
     ui->labelStatus->setText(QString::fromStdString("Status: " + statusText));
-    tempPalette = ui->labelStatus->palette();
-    tempPalette.setColor(ui->labelStatus->backgroundRole(), content->getCategory()->getColour());
-    ui->labelStatus->setPalette(tempPalette);
-
     ui->labelTime->setText(createString());
-    tempPalette = ui->labelTime->palette();
-    tempPalette.setColor(ui->labelTime->backgroundRole(), content->getCategory()->getColour());
-    ui->labelTime->setPalette(tempPalette);
+    ui->labelName->setText(QString::fromStdString(content->getName()));
 
     setGeometry(origin_x, origin_y, this->width(), this->height());
 }

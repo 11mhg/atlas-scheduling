@@ -21,8 +21,9 @@ CategoryList::CategoryList(QWidget *parent) :
 
      */
     for (int i = 0; i < (myProfile->categories).size(); i++) {
-        QString chBoxLabel = QString::fromStdString((myProfile->categories.at(i))->getName());
-        QCheckBox *chboxlabel = new QCheckBox(chBoxLabel, this);
+
+        QString chBoxLabel = QString::fromStdString(myProfile->categories[i]->getName());
+        QCheckBox* chBox = new QCheckBox(chBoxLabel, this);
     }
 }
 
