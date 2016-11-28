@@ -67,7 +67,7 @@ void Profile::SaveUserInfo()
     if (pFile.is_open())
     {
         pFile << output << '\n';
-        std::string info = Encrypt(name+","+gender+","+DoB+","+characterSelect);
+        std::string info = Encrypt(name+","+gender+","+DoB+","+characterSelect+","+std::to_string(Stats.math)+","+std::to_string(Stats.productivity)+",");
         pFile << info << '\n';
         pFile << "Category" << '\n';
         std::string cat;
@@ -233,6 +233,13 @@ void Profile::LoadInfo()
         case 3:
             this->characterSelect = inf;
             break;
+        case 4:
+            this->Stats.math = atoi(inf.c_str());
+            break;
+        case 5:
+            this->Stats.productivity = atoi(inf.c_str());
+            break;
+
         }
 
         UserInfo.erase(0,pos + std::strlen(","));
