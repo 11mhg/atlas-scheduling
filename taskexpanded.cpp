@@ -45,6 +45,9 @@ ExpandedTask::ExpandedTask(QWidget *parent, Task* newContent, int origin_x, int 
     ui->labelTime->setText(createString());
     ui->labelName->setText(QString::fromStdString(content->getName()));
 
+    if(origin_y + this->height() > parent->geometry().height()){
+        origin_y -= ((origin_y + this->height()) - parent->geometry().height());
+    }
     setGeometry(origin_x, origin_y, this->width(), this->height());
 }
 
