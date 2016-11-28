@@ -104,6 +104,15 @@ private slots:
     void on_characterSelect5_2_clicked();
 
     void setCategorySelect();
+    void on_skinColourCombo_currentIndexChanged(int index);
+
+    void on_hairstyleCombo_currentIndexChanged(int index);
+
+    void on_outfitCombo_currentIndexChanged(int index);
+
+private:
+    Ui::AtlasWelcome *ui;
+    Profile User;
 };
 
 #endif // ATLASWELCOME_H

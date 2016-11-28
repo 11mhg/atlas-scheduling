@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="welcomePage">
      <widget class="QLabel" name="welcomeMessage">
@@ -128,6 +128,9 @@
         <width>113</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
      <widget class="QLabel" name="Slogan_2">
@@ -617,7 +620,7 @@
        <string>Time to Choose your Character!</string>
       </property>
      </widget>
-     <widget class="QLabel" name="hairColourLabel">
+     <widget class="QLabel" name="chooseCharacterLabel">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -635,13 +638,13 @@
        <string>Choose your Character!</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="characterSelect1">
+     <widget class="QStackedWidget" name="avatarPreviewStack">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>160</y>
-        <width>91</width>
-        <height>31</height>
+        <x>380</x>
+        <y>120</y>
+        <width>601</width>
+        <height>391</height>
        </rect>
       </property>
       <property name="text">
@@ -651,172 +654,86 @@
      <widget class="QPushButton" name="characterSelect2">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>230</y>
-        <width>91</width>
+        <x>80</x>
+        <y>170</y>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Alan</string>
+       <string>Skin Colour:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="characterSelect3">
+     <widget class="QComboBox" name="skinColourCombo">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>300</y>
-        <width>91</width>
+        <x>240</x>
+        <y>170</y>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Meghan</string>
-      </property>
      </widget>
-     <widget class="QPushButton" name="characterSelect4">
+     <widget class="QLabel" name="hairstyleLabel">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>370</y>
-        <width>91</width>
+        <x>80</x>
+        <y>280</y>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Owen</string>
+       <string>Hairstyle:</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="characterSelect5">
+     <widget class="QComboBox" name="hairstyleCombo">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>440</y>
-        <width>91</width>
+        <x>240</x>
+        <y>280</y>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Alex</string>
-      </property>
      </widget>
-     <widget class="QStackedWidget" name="avatarPreviewStack">
+     <widget class="QLabel" name="Outfit">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>130</y>
-        <width>581</width>
-        <height>381</height>
+        <x>80</x>
+        <y>390</y>
+        <width>121</width>
+        <height>31</height>
        </rect>
       </property>
-      <property name="currentIndex">
-       <number>3</number>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
       </property>
-      <widget class="QWidget" name="FirstChoice">
-       <widget class="QLabel" name="FirstAvatarPage">
-        <property name="geometry">
-         <rect>
-          <x>-50</x>
-          <y>-60</y>
-          <width>691</width>
-          <height>431</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>DefaultAvatarImages/5.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="SecondChoice">
-       <widget class="QLabel" name="SecondAvatarPage">
-        <property name="geometry">
-         <rect>
-          <x>-50</x>
-          <y>-60</y>
-          <width>681</width>
-          <height>431</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>DefaultAvatarImages/1.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="ThirdChoice">
-       <widget class="QLabel" name="ThirdAvatarPage">
-        <property name="geometry">
-         <rect>
-          <x>-70</x>
-          <y>-60</y>
-          <width>721</width>
-          <height>431</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>DefaultAvatarImages/4.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="FourthChoice">
-       <widget class="QLabel" name="FourthAvatarPage">
-        <property name="geometry">
-         <rect>
-          <x>-40</x>
-          <y>-70</y>
-          <width>671</width>
-          <height>441</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>DefaultAvatarImages/2.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="FifthChoice">
-       <widget class="QLabel" name="FifthAvatarPage">
-        <property name="geometry">
-         <rect>
-          <x>-60</x>
-          <y>-60</y>
-          <width>701</width>
-          <height>431</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>DefaultAvatarImages/3.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
+      <property name="text">
+       <string>Outfit:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="outfitCombo">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>390</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="myCalendarPage">
@@ -1008,10 +925,30 @@
      <widget class="WeeklyCalendar" name="calendar">
       <property name="geometry">
        <rect>
+        <x>170</x>
+        <y>90</y>
+        <width>771</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="WeekHeader" name="weekHeader" native="true">
+      <property name="geometry">
+       <rect>
         <x>60</x>
-        <y>70</y>
+        <y>40</y>
         <width>881</width>
-        <height>361</height>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="CategoryList" name="catList" native="true">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>100</y>
+        <width>111</width>
+        <height>331</height>
        </rect>
       </property>
      </widget>
@@ -2253,6 +2190,16 @@
        <string>Remember: If you delete a task, the only way to get it back is to re-create it!</string>
       </property>
      </widget>
+     <widget class="QListWidget" name="RemoveListView">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>170</y>
+        <width>431</width>
+        <height>291</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="settingsPage">
      <widget class="QRadioButton" name="maleGenderSetting">
@@ -2640,8 +2587,76 @@
    <extends>QTableWidget</extends>
    <header>weeklycalendar.h</header>
   </customwidget>
+  <customwidget>
+   <class>WeekHeader</class>
+   <extends>QWidget</extends>
+   <header>weekheader.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CategoryList</class>
+   <extends>QWidget</extends>
+   <header>categorylist.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>SignIn</tabstop>
+  <tabstop>registrationButton_2</tabstop>
+  <tabstop>characterSelect3_2</tabstop>
+  <tabstop>cancelSettingsButton</tabstop>
+  <tabstop>applySettingsButton</tabstop>
+  <tabstop>registrationButton</tabstop>
+  <tabstop>nameProfileIn</tabstop>
+  <tabstop>maleSelect</tabstop>
+  <tabstop>femaleSelect</tabstop>
+  <tabstop>otherSelect</tabstop>
+  <tabstop>DoBSelect</tabstop>
+  <tabstop>FavSubjectProfileIn</tabstop>
+  <tabstop>userProfileIn</tabstop>
+  <tabstop>emailProfileIn</tabstop>
+  <tabstop>PswdProfileIn</tabstop>
+  <tabstop>nextProfile</tabstop>
+  <tabstop>backProfileButton</tabstop>
+  <tabstop>characterSelect5_2</tabstop>
+  <tabstop>userIn</tabstop>
+  <tabstop>pswdIn</tabstop>
+  <tabstop>characterSelect2_2</tabstop>
+  <tabstop>loginCheckButton</tabstop>
+  <tabstop>characterSelect1</tabstop>
+  <tabstop>characterSelect2</tabstop>
+  <tabstop>characterSelect3</tabstop>
+  <tabstop>characterSelect4</tabstop>
+  <tabstop>characterSelect5</tabstop>
+  <tabstop>finishCharacter</tabstop>
+  <tabstop>SettingsButton</tabstop>
+  <tabstop>calendar</tabstop>
+  <tabstop>myProfileButton</tabstop>
+  <tabstop>addTaskButton</tabstop>
+  <tabstop>removeTaskButton</tabstop>
+  <tabstop>LogoutButton</tabstop>
+  <tabstop>settingsButton</tabstop>
+  <tabstop>logoutButton</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>settingsButton_2</tabstop>
+  <tabstop>logoutButton_2</tabstop>
+  <tabstop>newTaskNameIn</tabstop>
+  <tabstop>newTaskStartSelect</tabstop>
+  <tabstop>newTaskEndSelect</tabstop>
+  <tabstop>categorySelect</tabstop>
+  <tabstop>newCatNameIn</tabstop>
+  <tabstop>NewCatColourSelect</tabstop>
+  <tabstop>saveCatButton</tabstop>
+  <tabstop>cancelAddTask</tabstop>
+  <tabstop>deleteTaskButton</tabstop>
+  <tabstop>cancelDeleteButton</tabstop>
+  <tabstop>maleGenderSetting</tabstop>
+  <tabstop>femaleGenderSetting</tabstop>
+  <tabstop>otherGenderSetting</tabstop>
+  <tabstop>changeUserSelect</tabstop>
+  <tabstop>characterSelect1_2</tabstop>
+  <tabstop>characterSelect4_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
-

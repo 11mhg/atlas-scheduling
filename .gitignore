@@ -54,4 +54,8 @@ Atlas.pro.user
 *.user
 *.user
 Atlas.pro.user
+<<<<<<< HEAD
+=======
+*.user
+>>>>>>> origin/master
 Atlas.pro.user

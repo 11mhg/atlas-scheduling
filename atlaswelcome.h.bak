@@ -16,7 +16,9 @@ class AtlasWelcome : public QMainWindow
 
 public:
     explicit AtlasWelcome(QWidget *parent = 0);
+    Profile User;
     ~AtlasWelcome();
+    Ui::AtlasWelcome *ui;
 
 private slots:
     void on_SignIn_clicked();
@@ -91,9 +93,17 @@ private slots:
 
     void on_characterSelect5_clicked();
 
-private:
-    Ui::AtlasWelcome *ui;
-    Profile User;
+    void on_characterSelect1_2_clicked();
+
+    void on_characterSelect2_2_clicked();
+
+    void on_characterSelect3_2_clicked();
+
+    void on_characterSelect4_2_clicked();
+
+    void on_characterSelect5_2_clicked();
+
+    void setCategorySelect();
 };
 
 #endif // ATLASWELCOME_H
