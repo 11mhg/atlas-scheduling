@@ -32,7 +32,7 @@ WeeklyCalendar::WeeklyCalendar(QWidget* parent)
     this->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     this->verticalScrollBar()->setValue(8);
  //   QTableView::verticalHeader()->setDefaultSectionSize(50); // this fucks up the vertical from scroll starting at 8
-    QTableView::horizontalHeader()->setDefaultSectionSize(150);
+    QTableView::horizontalHeader()->setDefaultSectionSize(96);
 
     this->setSelectionMode(QTableWidget::NoSelection);
     this->viewport()->setFocusPolicy(Qt::NoFocus);
@@ -44,7 +44,7 @@ WeeklyCalendar::WeeklyCalendar(QWidget* parent)
     }
 
     this->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    this->setColumnWidth(0,75);
+    this->setColumnWidth(0,80);
 }
 
 
