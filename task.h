@@ -7,6 +7,7 @@
 #include <utility>
 #include <QTime>
 
+
 class Profile;
 
 using namespace std;
@@ -29,6 +30,7 @@ private:
     void setTimes();
     void updateTimeString();
 public:
+    Profile* TaskUser;
     struct time_period {
         time_t start,
                end;
@@ -50,9 +52,10 @@ public:
     time_t due;
     time_period task_time;
 
+    Task(string& name, string& start, string& end, string& due, string& category,Profile *User);
     Task(string& name, string& start, string& end, string& due, string& category);
-    Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& category);
-    Task(string& in);
+    Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& category,Profile *User);
+    Task(string& in,Profile *User);
 
     bool getComplete() const;
     void setComplete();

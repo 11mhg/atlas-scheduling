@@ -4,6 +4,20 @@
 #include <task.h>
 #include <atlaswelcome.h>
 
+Task::Task(string& name, string& start, string& end, string& due, string& catName,Profile *User):
+    task_name(name),
+    start_date_time(start),
+    end_date_time(end),
+    due_date_time(due),
+    completeFlag(false){
+    try{
+        category = findCategory(catName);
+    }catch(TaskException e){
+        cout << e.what() << endl;
+    }
+    TaskUser = User;
+    setTimes();
+}
 Task::Task(string& name, string& start, string& end, string& due, string& catName):
     task_name(name),
     start_date_time(start),
@@ -18,7 +32,7 @@ Task::Task(string& name, string& start, string& end, string& due, string& catNam
     setTimes();
 }
 
-Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& catName):
+Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& catName,Profile *User):
     task_name(name),
     completeFlag(false){
 
@@ -39,11 +53,13 @@ Task::Task(string& name, QDateTime start, QDateTime end, QDateTime due, string& 
     }catch(TaskException e){
         cout << e.what() << endl;
     }
+    TaskUser = User;
     setTimes();
 }
 
-Task::Task(string& in){
+Task::Task(string& in, Profile *User){
     string inputs[5];
+    TaskUser = User;
     int i = 0;
     size_t pos = in.find(',');
     while(pos != string::npos && i < 6){

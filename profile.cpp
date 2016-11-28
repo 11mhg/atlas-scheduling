@@ -2,7 +2,7 @@
 
 time_t Profile::StartOfWeek(){
 
-    time_t t = currentWeek;
+    time_t t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     struct std::tm* tm;
     tm = localtime(&t);
     t -= tm->tm_wday*24*3600;//sets day to sunday of the week
@@ -312,7 +312,7 @@ void Profile::LoadTasks()
                     categories.push_back(temp);
                 }
                 if (c==2){
-                    Task temp(Decrypt(lines));
+                    Task temp(Decrypt(lines),this);
                     ptasks.push_back(temp);
                 }
                 if (lines.find("Category")!=std::string::npos){

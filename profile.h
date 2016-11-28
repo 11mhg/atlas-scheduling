@@ -50,6 +50,10 @@ public:
     std::string DoB;
     std::string email;
     std::string characterSelect;
+    static time_t StartOfWeek();
+    time_t EndOfWeek();
+    std::vector<Task*> getWeeklyTasks();
+    std::vector<Task*> getTasksInTime(time_t start, time_t end);
     void addTask(Task newTask);
 private:
     std::string Encrypt(std::string s);

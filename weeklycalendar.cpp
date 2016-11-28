@@ -1,6 +1,6 @@
 #include "weeklycalendar.h"
-#include <QScrollBar>;
-#include <QStandardItem>;
+#include <QScrollBar>
+#include <QStandardItem>
 
 WeeklyCalendar::WeeklyCalendar()
 {

@@ -207,7 +207,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
                 defCat = User.categories.at(i);
             }
         }
-        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,defCat->getName());
+        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(),enddate,defCat->getName(),&User);
         User.addTask(newTask);
     }else{
         int col;
@@ -225,7 +225,7 @@ void AtlasWelcome::on_saveCatButton_clicked()
         enddate.addDays(7);
         std::string endd = enddate.toString().toUtf8().constData();
         User.categories.push_back(newCat);
-        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(), enddate,newCat->getName());
+        Task newTask(ui->newTaskNameIn->text().toStdString(), ui->newTaskStartSelect->dateTime(), ui->newTaskEndSelect->dateTime(), enddate,newCat->getName(),&User);
         User.addTask(newTask);
     }
     User.UpdateSave();

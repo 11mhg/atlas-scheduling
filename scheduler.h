@@ -4,7 +4,6 @@
 
 class Scheduler {
 private:
-    Scheduler();
     static std::vector<Task::free_time> ftimes;
     static std::vector<Task> sleep;
     static void getFreeTime();
@@ -14,6 +13,7 @@ private:
     static void getSleepTimes();
 
 public:
+    Scheduler();
     static void reschedule();
     static void reschedule(Task*);
     static void reschedule(std::vector<Task*>);
