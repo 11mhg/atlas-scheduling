@@ -135,8 +135,8 @@ void Task::setStart(const time_t& time){
 
 bool Task::getComplete() const{ return completeFlag; }
 
-void Task::setComplete() {
-    completeFlag = true;
+void Task::setComplete(bool t) {
+    completeFlag = t;
 }
 
 Category* Task::getCategory() const{ return category; }

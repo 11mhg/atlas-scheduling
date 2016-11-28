@@ -2303,10 +2303,10 @@
      <widget class="CategoryList" name="catList" native="true">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>100</y>
-        <width>111</width>
-        <height>331</height>
+        <x>40</x>
+        <y>90</y>
+        <width>131</width>
+        <height>341</height>
        </rect>
       </property>
      </widget>
@@ -3237,6 +3237,20 @@
         <width>141</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="maximumTime">
+       <time>
+        <hour>20</hour>
+        <minute>0</minute>
+        <second>0</second>
+       </time>
+      </property>
+      <property name="minimumTime">
+       <time>
+        <hour>8</hour>
+        <minute>0</minute>
+        <second>0</second>
+       </time>
       </property>
      </widget>
      <widget class="QLabel" name="newCatNameLabel">

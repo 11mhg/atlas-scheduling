@@ -22,6 +22,8 @@ public:
    void setProfile(Profile* myProfile);
    ~CategoryList();
    QCheckBox* createChBox(QString chBoxName, QString chBoxLabel, int xVal, int yVal);
+ //  void paintEvent(QPaintEvent *pe);
+
 
 private:
    vector<QCheckBox*> checkBoxes;
