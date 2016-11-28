@@ -53,8 +53,8 @@ void CollapsedTask::update(){
     int drawLeft = parent->columnViewportPosition(content->getDrawingDay());
     float percentOfSHour = ((float)startTime.second/60.0);
     float percentOfEHour = ((float)endTime.second/60.0);
-    int drawTop = parent->rowViewportPosition(startTime.first+1) + parent->rowHeight(startTime.first+1)*percentOfSHour - 0.25*parent->rowHeight(startTime.first);
-    int drawBottom = parent->rowViewportPosition(endTime.first+1) + parent->rowHeight(endTime.first+1)*percentOfEHour - 0.25*parent->rowHeight(endTime.first);
+    int drawTop = parent->rowViewportPosition(startTime.first-7) + parent->rowHeight(startTime.first-7)*percentOfSHour - 0.25*parent->rowHeight(startTime.first-7);
+    int drawBottom = parent->rowViewportPosition(endTime.first-7) + parent->rowHeight(endTime.first-7)*percentOfEHour - 0.25*parent->rowHeight(endTime.first-7);
     QRect controlRect(drawLeft, drawTop, drawWidth, abs(drawBottom - drawTop));
     this->setGeometry(controlRect);
 

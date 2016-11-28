@@ -22,7 +22,7 @@ WeeklyCalendar::WeeklyCalendar(QWidget* parent)
     labels.append("Thursday");
     labels.append("Friday");
     labels.append("Saturday");
-    this->setRowCount(24);
+    this->setRowCount(12);
     this->setColumnCount(8);
 
     this->verticalHeader()->setVisible(false);
@@ -38,8 +38,8 @@ WeeklyCalendar::WeeklyCalendar(QWidget* parent)
     this->viewport()->setFocusPolicy(Qt::NoFocus);
 
 
-    for(int i = 0; i < 24; i++){
-        QString timeLabel = QString("%1:00-%2:00").arg(QString::number(i), QString::number(i+1));
+    for(int i = 0; i < 12; i++){
+        QString timeLabel = QString("%1:00-%2:00").arg(QString::number(i+8), QString::number(i+9));
         this->setItem(i, 0, new QTableWidgetItem(timeLabel));
     }
 
