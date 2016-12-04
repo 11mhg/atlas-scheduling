@@ -494,7 +494,62 @@ void AtlasWelcome::on_LogoutButton_clicked()
         delete(User.categories.at(i));
     }
     User.categories.clear();
+    ui->userIn->clear();
+    ui->pswdIn->clear();
     User = Profile();
+    ui->W111->hide();
+    ui->W112->hide();
+    ui->W121->hide();
+    ui->W122->hide();
+    ui->W131->hide();
+    ui->W132->hide();
+    ui->W141->hide();
+    ui->W142->hide();
+
+    ui->B211->hide();
+    ui->B212->hide();
+    ui->B221->hide();
+    ui->B222->hide();
+    ui->B231->hide();
+    ui->B232->hide();
+    ui->B241->hide();
+    ui->B242->hide();
+
+    ui->T311->hide();
+    ui->T312->hide();
+    ui->T321->hide();
+    ui->T322->hide();
+    ui->T331->hide();
+    ui->T332->hide();
+    ui->T341->hide();
+    ui->T342->hide();
+
+    ui->W111_2->hide();
+    ui->W112_2->hide();
+    ui->W121_2->hide();
+    ui->W122_2->hide();
+    ui->W131_2->hide();
+    ui->W132_2->hide();
+    ui->W141_2->hide();
+    ui->W142_2->hide();
+
+    ui->B211_2->hide();
+    ui->B212_2->hide();
+    ui->B221_2->hide();
+    ui->B222_2->hide();
+    ui->B231_2->hide();
+    ui->B232_2->hide();
+    ui->B241_2->hide();
+    ui->B242_2->hide();
+
+    ui->T311_2->hide();
+    ui->T312_2->hide();
+    ui->T321_2->hide();
+    ui->T322_2->hide();
+    ui->T331_2->hide();
+    ui->T332_2->hide();
+    ui->T341_2->hide();
+    ui->T342_2->hide();
 }
 
 void AtlasWelcome::on_SettingsButton_clicked()
